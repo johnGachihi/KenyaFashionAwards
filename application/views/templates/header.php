@@ -14,10 +14,11 @@
 			</div>
 			<div id="navbar">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a href="" id="mhref">Home</a></li>
-				<li class="nav-item"><a href="" id="mhref">About</a></li>
+				<li class="nav-item"><a href="<?php echo base_url(); ?>home" id="mhref">Home</a></li>
+				<li class="nav-item"><a href="<?php echo base_url(); ?>about" id="mhref">About</a></li>
 				<li class="nav-item"><a href="" id="mhref">Categories</a></li>
 				<li class="nav-item"><a href="" id="mhref">Awards</a></li>
+				<li class="nav-item"><a href="<?php echo base_url(); ?>login" id="mhref">Login</a></li>
 			</ul>
 			</div>
 	</div>
