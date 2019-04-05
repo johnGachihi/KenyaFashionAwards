@@ -4,25 +4,22 @@
 	<title>Kenya Fashion Awards</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/morestyling.css">
 </head>
 <body>
 <div class="navbar navbar-expand-lg navbar-dark bg-primary">
 	<div class="container-fluid" style="width:100%;">
-	<div class="navbar-header">
-		<div id="navbar">
 			<div class="navbar-header">
-				<span class="navbar-brand"> Kenya Fashion Awards</span>
+				<a class="navbar-brand" href="/"> Kenya Fashion Awards</a>
 			</div>
-			<div class="collapse navbar-collapse" id="navbarColor01">
+			<div id="navbar">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item">Home</li>
-				<li class="nav-item">About</li>
-				<li class="nav-item">Categories</li>
-				<li class="nav-item">Awards</li>
+				<li class="nav-item"><a href="" id="mhref">Home</a></li>
+				<li class="nav-item"><a href="" id="mhref">About</a></li>
+				<li class="nav-item"><a href="" id="mhref">Categories</a></li>
+				<li class="nav-item"><a href="" id="mhref">Awards</a></li>
 			</ul>
-		</div>
-		</div>	
-	</div>
+			</div>
 	</div>
 </div>
 <div class="container">
