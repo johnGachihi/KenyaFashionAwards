@@ -19,10 +19,15 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootswatch.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/shards.css') }}" rel="stylesheet">
+    @yield('stylesheets')
+
+    <!-- Icons -->
+    <link href="{{ asset('css/icon.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary sticky-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -85,9 +90,11 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-0">
             @yield('content')
         </main>
     </div>
+
+    @yield('scripts')
 </body>
 </html>

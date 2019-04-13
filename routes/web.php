@@ -15,6 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::middleware(['auth', 'adminCheck'])->group(function() {
+
+    Route::prefix('admin')->group(function() {
+    
+        Route::get('/home', 'AwardCategoriesController@awardCategories');
+
+        Route::post('/createCategory', 'AwardCategoriesController@createCategory');
+
+        Route::view('/add_award_category', 'admin.add_award_category');
+    });
+
+});
+
