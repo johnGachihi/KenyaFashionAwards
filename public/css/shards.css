@@ -96,3 +96,20 @@
 .form-control-lg {
     padding: 2rem 1rem;
 }
+
+.submit-success-text {
+    text-transform: uppercase;
+    font-size: 0.765625rem;
+}
+
+.submit-success {
+    transition: all 0.5ms;
+}
+
+.opacity-0 {
+    opacity: 0;
+}
+
+.opacity-100 {
+    opacity: 100!important;
+}

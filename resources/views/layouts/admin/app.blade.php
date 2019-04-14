@@ -39,7 +39,7 @@
                         </a>
                     </li> -->
                     <li class="nav-item">
-                        <a class="nav-link active" href="components-blog-posts.html">
+                        <a class="nav-link active" href="{{ url('admin/award_categories') }}">
                         <i class="material-icons">vertical_split</i>
                         <span>Categories</span>
                         </a>

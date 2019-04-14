@@ -26,6 +26,8 @@ Route::middleware(['auth', 'adminCheck'])->group(function() {
     
         Route::get('/home', 'AwardCategoriesController@awardCategories');
 
+        Route::get('/award_categories', 'AwardCategoriesController@awardCategories');
+
         Route::post('/createCategory', 'AwardCategoriesController@createCategory');
 
         Route::view('/add_award_category', 'admin.add_award_category');

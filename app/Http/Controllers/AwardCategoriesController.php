@@ -16,8 +16,17 @@ class AwardCategoriesController extends Controller
 
     public function createCategory(Request $request) {
         $awardCategory = new AwardCategory();
-        $awardCategory->Category_Title = $request->categoryTitle;
+        $awardCategory->Category_Title = $request->input('categoryTitle');
+        $awardCategory->Category_Requirements = $request->input('categoryRequirements');
 
-        Log::error($request->categoryRequirements);
+        $awardCategory->save();
+
+        return response()->json([
+            'error' => false
+        ]);
     }
+
+    // public function save(AwardCategory $category) {
+
+    // }
 }

@@ -25,7 +25,7 @@
         </div>
         @endforeach
         
-        <div class="col-12 mb-4">
+        <!-- <div class="col-12 mb-4">
             <div class="card card-small card-post card-post--1">
                 <div class="card-body">
                     <h5 class="card-title">
@@ -64,7 +64,7 @@
                     <p class="card-text d-inline-block mb-3">Discovered had get considered projection who favourable. Necessary up knowledge it tolerably. Unwilling departure education to admitted speaking...</p>
                 </div>
             </div>
-        </div>
+        </div> -->
 
     </div>
     
