@@ -28,9 +28,15 @@ Route::middleware(['auth', 'adminCheck'])->group(function() {
 
         Route::get('/award_categories', 'AwardCategoriesController@awardCategories');
 
-        Route::post('/createCategory', 'AwardCategoriesController@createCategory');
+        Route::post('/createCategory/{id?}', 'AwardCategoriesController@createCategory');
 
         Route::view('/add_award_category', 'admin.add_award_category');
+
+        Route::get('/edit_award_category/{id}', 'AwardCategoriesController@editAwardCategory');
+
+        Route::get('/update_award_category/{id}', 'AwardCategoriesController@updateAwardCategory');
+
+        Route::get('/delete_award_category/{id}', 'AwardCategoriesController@deleteAwardCategory');
     });
 
 });

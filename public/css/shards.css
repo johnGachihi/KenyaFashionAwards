@@ -77,7 +77,7 @@
     box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,.1), 0 0.9375rem 1.40625rem rgba(90,97,105,.1), 0 0.25rem 0.53125rem rgba(90,97,105,.12), 0 0.125rem 0.1875rem rgba(90,97,105,.1);
 }
 
-.add-new-post__editor {
+.add-new-category__editor {
     min-height: 200px;
 }
 
@@ -113,3 +113,23 @@
 .opacity-100 {
     opacity: 100!important;
 }
+
+.ck-editor__editable {
+    min-height: 200px;
+}
+
+strong {
+    color: #535252;
+    font-weight: bold;
+}
+
+html {
+    /* scroll-behavior: smooth; */
+}
+
+/* :target::before {
+    content: "";
+    display: block;
+    height: 60px; 
+    margin: -60px 0 0; 
+  } */

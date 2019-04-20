@@ -1,7 +1,6 @@
 @extends('layouts.admin.app')
 
 @section('_stylesheets')
-<link href="{{ asset('css/quill.snow.css') }}" rel="stylesheet">
 @endsection
 
 @section('mainContent')
@@ -19,12 +18,20 @@
                 <!-- Add New Post Form -->
                 <div class="card card-small mb-3">
                   <div class="card-body">
-                    <form id="category-form" class="add-new-post" onsubmit="onSubmit(event)">
+                    <form id="category-form" class="add-new-post" 
+                      action="
+                        @if(isset($category))
+                        {{ url('admin/createCategory'. '/'. $category->id) }}
+                        @else
+                        {{ url('admin/createCategory') }}
+                        @endif
+                      ">
                         @csrf    
-                        <input name="categoryTitle" class="form-control form-control-lg mb-3 inputs" type="text" placeholder="Insert Category Title e.g Male Model" onfocus="clearSubmitSuccessAnimation()">
-                        <textarea name="categoryRequirements" id="editor-container" class="form-control form-control-lg add-new-post__editor mb-1 inputs py-3" placeholder="Insert category requirements" onfocus="clearSubmitSuccessAnimation()"></textarea>
+                        <input id="categoryTitle" name="categoryTitle" class="form-control form-control-lg mb-3 inputs" type="text" placeholder="Insert Category Title e.g Male Model">
+                        <!-- <textarea name="categoryRequirements" id="editor-container" class="form-control form-control-lg add-new-category__editor mb-1 inputs py-3" placeholder="Insert category requirements"></textarea> -->
+                        <textarea id="ckEditor" name="richCategoryRequirements" placeholder="Insert Category Requirements"></textarea>
                         <div class="d-flex align-items-center"> 
-                            <button id="category-form-submit" type="submit" class="btn btn-outline-primary my-3">Submit</button>
+                            <button id="category-form-submit" type="submit" class="btn btn-outline-primary my-3">Save</button>
                             <div id="submit-success" class="d-flex ml-5 align-items-center opacity-0 submit-success">
                               <i class="material-icons text-success font-weight-bold">done</i>
                               <span class="submit-success-text mx-1">Saved</span>
@@ -40,9 +47,19 @@
 @endsection
 
 @section('_scripts')
-<!-- <script src="{{ asset('js/quill.min.js') }}"></script> -->
-<script>
 
+  @isset($category)
+  <script>
+  const titleInput = document.getElementById('categoryTitle');
+  const requirementsInput = document.getElementById('ckEditor');
+
+  titleInput.value = '{{ $category->Category_Title }}';
+  requirementsInput.value = '{!! base64_decode($category->richCategory_Requirements) !!}'
+  </script>
+  @endisset
+
+<!-- Form submittion -->
+<!-- <script>
     const submitSuccess = document.querySelector('#submit-success');
 
     function onSubmit(event) {
@@ -82,5 +99,16 @@
       submitSuccess.classList.add('opacity-0');
     }
 
+</script> -->
+
+<!-- WYSIWYG Editor -->
+<script>
+  // ClassicEditor
+  //   .create(document.querySelector('#ckEditor'), {
+  //     toolbar: ['bold', 'italic', 'link']
+  //   })
+  //   .catch( error => {
+  //     console.log(error);
+  // });
 </script>
 @endsection

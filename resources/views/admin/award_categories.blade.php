@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('mainContent')
-<div class="main-content-container container-fluid px-4">
+<div id='award_categories_page' class="main-content-container container-fluid px-4">
     <!-- Page Header -->
     <div class="page-header row no-gutters py-4">
         <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
@@ -16,10 +16,20 @@
         <div class="col-12 mb-4">
             <div class="card card-small card-post card-post--asisde card-post--1">
                 <div class="card-body">
-                    <h5 class="card-title">
-                        <a href="#">{{ $category->Category_Title }}</a>
+                    <h5 class="card-title d-flex justify-content-between">
+                        <a id="{{ $category->id}}" href="{{ url('admin/edit_award_category/'. $category->id) }}" class="">{{ $category->Category_Title }}</a>
+                        <div>
+                            <a href="{{ url('admin/edit_award_category/'. $category->id) }}">
+                                <i class="material-icons ml-4" style="font-size: large;">edit</i>
+                            </a>
+                            <a href="#" class="deletor" data-id="{{ $category->id }}" data-title="{{ $category->Category_Title }}">
+                                <i class="material-icons ml-1" style="font-size: large;">delete</i>
+                            </a>
+                        </div>
                     </h5>
-                    <p class="card-text d-inline-block mb-3">{{ $category->Category_Requirements }}</p>
+                    <!-- <p class="card-text d-inline-block mb-3">{{ base64_decode($category->richCategory_Requirements) }}</p> -->
+                    <span class="card-text d-inline-block mb-3">{!! base64_decode($category->richCategory_Requirements) !!}</span>
+                    <!-- <p class="bleble"><p>man</p></p> -->
                 </div>
             </div>
         </div>
@@ -69,4 +79,30 @@
     </div>
     
 </div>
+
+
+<button id="showModal" type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#deleteConfirmModal">
+  Launch demo modal
+</button>
+
+<!--Category Deletion Confirmation Modal -->
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Deletion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <a href="{{ url('admin/delete_award_category') }}" id="deleteLink" type="button" class="btn btn-primary">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 @endsection

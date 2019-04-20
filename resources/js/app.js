@@ -4,12 +4,13 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-// import * as QuillNamespace from 'quill';
-// let Quill = QuillNamespace;
+
+// import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+// var ClassicEditor = require("@ckeditor/ckeditor5-build-classic");
 
 require('./bootstrap');
 
-window.Vue = require('vue');
+// window.Vue = require('vue');
 
 /**
  * The following block of code may be used to automatically register your
@@ -22,7 +23,7 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,27 +31,32 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app'
-});
+// const app = new Vue({
+//     el: '#app'
+// });
 
 
-//Quill Editor
-// var toolbarOptions = [
-//     [{ 'header': [1, 2, 3, 4, 5, false] }],
-//     ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-//     ['blockquote', 'code-block'],
-//     [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-//     [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-//     [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-//     [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent                                       // remove formatting button
-//   ];
+/** New awardCategory form */
+const ckEditor = document.getElementById('ckEditor');
+if(typeof(ckEditor) != 'undefined' && ckEditor != null) {
+    import(/* webpackChunkName: "js/add-awardCategory-form" */ './components/add-awardCategory-form').then(module => {
+        module.initEditor();
 
-//   // Init the Quill RTE
-//   var quill = new Quill('#editor-container', {
-//     modules: {
-//       toolbar: toolbarOptions
-//     },
-//     placeholder: 'Words can be like x-rays if you use them properly...',
-//     theme: 'snow'
-//   });
+        function onSubmit(event, url) {
+            module.submitCategoryData(event, url);
+        }
+
+        module.setupForm();
+    })
+}
+
+/** Award Categories */
+const awardCategoriesPageMarker = document.getElementById('award_categories_page');
+if(typeof(awardCategoriesPageMarker) != 'undefined' && awardCategoriesPageMarker != null) {
+    import(/* webpackChunkName: "js/awardCategories.js" */ './components/awardCategories')
+        .then(module => {
+            module.test();
+            module.scrollToEditedElement();
+            module.deletionLinkSetup()
+        })
+}
