@@ -3,12 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8" style="margin-top: 40px">
-            <!-- <div class="card"> -->
-                <!-- <div class="card-header">{{ __('Login') }}</div> -->
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Login') }}</div>
 
-                <!-- <div class="card-body"> -->
-                    <h1 class="h2 mb-3" style="text-align: center;">{{ __('Login')}}</h1>
+                <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -65,15 +64,9 @@
                                 @endif
                             </div>
                         </div>
-
-                        <div class="mt-4" style="text-align: center">
-                            <a class="btn btn-link" href="{{ route('register') }}">
-                                {{ __('Create account') }}
-                            </a>
-                        </div>
                     </form>
-                <!-- </div> -->
-            <!-- </div> -->
+                </div>
+            </div>
         </div>
     </div>
 </div>
