@@ -139,6 +139,6 @@ html {
     margin: -60px 0 0; 
   } */
 
-.applicant-dets-box-leftmost {
-    margin-right: 7rem;
+.show-more-to-show-less {
+    transform: rotate(180deg);
 }
