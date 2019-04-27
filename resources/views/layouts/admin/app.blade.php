@@ -38,18 +38,25 @@
                         <span>Blog Dashboard</span>
                         </a>
                     </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ url('admin/award_categories') }}">
-                        <i class="material-icons">vertical_split</i>
-                        <span>Categories</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="{{ url('admin/add_award_category') }}">
-                        <i class="material-icons">note_add</i>
-                        <span>Add Category</span>
-                        </a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ url('admin/award_categories') }}">
+                            <i class="material-icons">vertical_split</i>
+                            <span>Categories</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="{{ url('admin/add_award_category') }}">
+                            <i class="material-icons">note_add</i>
+                            <span>Add Category</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link " href="{{ url('admin/applications') }}">
+                                <i class="material-icons">list_alt</i>
+                                <span>Applications</span>
+                            </a>
+                        </li>
                     <!-- <li class="nav-item">
                         <a class="nav-link " href="form-components.html">
                         <i class="material-icons">view_module</i>

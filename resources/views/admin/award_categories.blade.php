@@ -14,7 +14,7 @@
     <div class="row">
         @foreach($categories as $category)
         <div class="col-12 mb-4">
-            <div class="card card-small card-post card-post--asisde card-post--1">
+            <div class="card-shards card-small card-post card-post--asisde card-post--1">
                 <div class="card-body">
                     <h5 class="card-title d-flex justify-content-between">
                         <a id="{{ $category->id}}" href="{{ url('admin/edit_award_category/'. $category->id) }}" class="">{{ $category->Category_Title }}</a>

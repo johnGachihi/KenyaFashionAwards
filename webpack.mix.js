@@ -12,7 +12,9 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+   .sass('resources/sass/app.scss', 'public/css', {
+       includePaths: [path.resolve(__dirname, 'node_modules')]
+   });
 
    mix.webpackConfig({
       output: {

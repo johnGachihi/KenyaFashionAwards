@@ -37,6 +37,8 @@ Route::middleware(['auth', 'adminCheck'])->group(function() {
         Route::get('/update_award_category/{id}', 'AwardCategoriesController@updateAwardCategory');
 
         Route::get('/delete_award_category/{id}', 'AwardCategoriesController@deleteAwardCategory');
+
+        Route::get('/applications', 'ApplicationsController@view');
     });
 
 });

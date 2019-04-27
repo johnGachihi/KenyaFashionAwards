@@ -2,7 +2,6 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/js/add-awardCategory-form.js": "/js/add-awardCategory-form.js",
-    "/vendors~js/add-awardCategory-form.js": "/vendors~js/add-awardCategory-form.js",
     "/js/awardCategories.js.js": "/js/awardCategories.js.js",
-    "/vendors~js/awardCategories.js.js": "/vendors~js/awardCategories.js.js"
+    "/vendors~js/add-awardCategory-form.js": "/vendors~js/add-awardCategory-form.js"
 }
