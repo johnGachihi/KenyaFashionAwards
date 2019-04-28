@@ -8,8 +8,13 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-// Material Elevation
+
+$mdc-theme-primary: #1a1a1a;
+
+// Material Components
 @import "~@material/elevation/mdc-elevation";
+@import "~@material/button/mdc-button";
+
 
 .navbar-laravel {
   background-color: #fff;
@@ -21,3 +26,4 @@
 .applicant-dets-titles {
   color: #1a1a1a !important;
 }
+

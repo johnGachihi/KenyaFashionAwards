@@ -1,6 +1,8 @@
 @extends('layouts.admin.app')
 
 @section('mainContent')
+
+
     <div id='applications_page' class="main-content-container container-fluid px-4">
         <!-- Page Header -->
         <div class="page-header row no-gutters py-4">
@@ -11,67 +13,133 @@
         </div>
         <!-- Page Header End -->
 
-        <div class="row">
-            <div class="col-12 mb-4">
-                <div class="card mdc-elevation--z3">
-                    <div class="card-body">
-                        <h5 class="card-title mb-3 applicant-dets-titles">Fashion Designer (Male) Application</h5>
-                        <div class="d-flex mb-3 row">
-                            <div class="col-3">
-                                <span class="applicant-dets-titles" style="font-size: 11px; display: block; letter-spacing: 3px;">Applicant name:</span>
-                                <span>Charles Xavier</span>
-                            </div>
-                            <div class="col-3">
-                                <span class="applicant-dets-titles" style="font-size: 11px; display: block; letter-spacing: 3px;">Company name:</span>
-                                <span>Nyeri Fashion and Design</span>
-                            </div>
-                        </div>
+        <div id="applications-container">
 
-                        <div class="row mb-3">
-                            <div class="col-3">
-                                <span class="applicant-dets-titles" style="font-size: 11px; display: block; letter-spacing: 3px;">Email:</span>
-                                <span>charles.xavier@gmail.com</span>
+            <div class="mb-4">
+                <h4 class="h5 mb-3" style="color: #838383">Pending</h4>
+                @foreach($pending_applications as $application)
+                    @applicationDetails(['application' => $application])
+                        @slot('statusOrAction')
+                        <div class="d-flex">
+                            <div>
+                                <button id="acceptButton" class="mdc-button mdc-button--raised mdc-button--dense mx-1"
+                                        data-applicationid="{{ $application->id }}"
+                                        data-applicant="{{ $application->applicant->name }}">
+                                    Accept
+                                </button>
                             </div>
-                            <div class="col-3">
-                                <span class="applicant-dets-titles" style="font-size: 11px; display: block; letter-spacing: 3px;">Phone number:</span>
-                                <span >+254 712 345678 </span>
+                            <div>
+                                <button id="rejectButton" class="mdc-button mdc-button--outlined mdc-button--dense mx-1"
+                                        data-applicationid="{{ $application->id }}"
+                                        data-applicant="{{ $application->applicant->name }}">
+                                    Reject
+                                </button>
                             </div>
                         </div>
+                        @endslot
+                    @endapplicationDetails
+                @endforeach
+            </div>
 
-                        {{-- Collapsible --}}
-                        <div class="collapse mb-3" id="collapsibleSection">
-                            <div class="row">
-                                <div class="col-7">
-                                    <span class="applicant-dets-titles" style="font-size: 11px; display: block; letter-spacing: 3px;">Bio:</span>
-                                    <span >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-                                </div>
-                            </div>
-                        </div>
-                        {{-- Collapsible --}}
+            <div class="mb-4">
+                <h4 class="h5 mb-3" style="color: #838383">Approved</h4>
+                @foreach($approved_applications as $application)
+                    @applicationDetails(['application' => $application])
+                        @slot('statusOrAction')
+                        @endslot
+                    @endapplicationDetails
+                @endforeach
+            </div>
 
-                        <div>
-                            <a data-toggle="collapse" href="#collapsibleSection" id="collapse-btn">
-                                <i class="material-icons mdc-elevation--z3 rounded-circle" id="collapse-icon">expand_more</i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="mb-4">
+                <h4 class="h5 mb-3" style="color: #838383">Rejected</h4>
+                @foreach($rejected_applications as $application)
+                    @applicationDetails(['application' => $application])
+                        @slot('statusOrAction')
+                        @endslot
+                    @endapplicationDetails
+                @endforeach
             </div>
         </div>
+
+        @decisionModal
+        @enddecisionModal
+
+
     </div>
 @endsection
 
 @section('_scripts')
     <script>
-        const collapseBtn = document.getElementById('collapse-btn');
-        const collapseIcon = document.getElementById('collapse-icon');
+        const DECISION_ACCEPT = 'accept';
+        const DECISION_REJECT = 'reject';
 
-        collapseBtn.addEventListener('click', e => {
-            if(collapseIcon.innerText == 'expand_more') {
-                collapseIcon.innerText = 'expand_less';
-            } else {
-                collapseIcon.innerText = 'expand_more'
+        const applicationsContainer = document.querySelector('#applications-container');
+
+        applicationsContainer.addEventListener('click', e => {
+            const clickedItem = e.target;
+
+            console.log(e.target);
+            if(clickedItem.id === 'collapse-btn') {
+                if(clickedItem.innerText === 'expand_more') {
+                    clickedItem.innerText = 'expand_less';
+                } else {
+                    clickedItem.innerText = 'expand_more';
+                }
             }
+            else if(clickedItem.id === 'acceptButton') {
+                handleDecision(e, DECISION_ACCEPT);
+            }
+            else if(clickedItem.id === 'rejectButton') {
+                handleDecision(e, DECISION_REJECT);
+            }
+
+            // e.stopPropagation();
         });
+
+        function handleDecision(e, decision) {
+            let decisionText;
+            if(decision === DECISION_ACCEPT) {
+                decisionText = 'Accept';
+            } else if(decision === DECISION_REJECT) {
+                decisionText = 'Reject'
+            }
+            const applicant = $(e.target).data('applicant');
+            const applicationId = $(e.target).data('applicationid');
+
+            setUpAndShowModal(
+                decisionText,
+                applicant,
+                `{{ url('admin/applications/decision') }}/${decision}/${applicationId}`
+            );
+        }
+
+
+        function setUpAndShowModal(decisionText, applicant, url) {
+            $('#modal-title').text(`${decisionText} Application`);
+            $('#modal-body-text').text(`${decisionText} ${applicant} application`);
+            $('#modal-decision-btn').text(decisionText);
+            $('#modal-decision-btn').data('url', url);
+
+            $('#decision-modal').modal('show');
+        }
+
+        window.onload = () => {
+            $('#modal-decision-btn').on('click', e => {
+                fetch($('#modal-decision-btn').data('url'))
+                    .then(response => response.json())
+                    .then(result => {
+                        if(!result.error) {
+                            $('#decision-modal').modal('hide');
+                            location.reload();
+                        } else {
+                            console.log(result);
+                        }
+                    })
+                    .catch(err => console.log(err));
+            })
+        }
+
     </script>
+
 @endsection

@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"js/awardCategories.js":"js/awardCategories.js","vendors~js/add-awardCategory-form":"vendors~js/add-awardCategory-form","js/add-awardCategory-form":"js/add-awardCategory-form"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"0":"vendors~js/applications.js","1":"js/applications.js","js/awardCategories.js":"js/awardCategories.js","vendors~js/add-awardCategory-form":"vendors~js/add-awardCategory-form","js/add-awardCategory-form":"js/add-awardCategory-form"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -36994,6 +36994,14 @@ if (typeof awardCategoriesPageMarker != 'undefined' && awardCategoriesPageMarker
     module.scrollToEditedElement();
     module.deletionLinkSetup();
   });
+}
+/** Applications */
+
+
+var applicationsPageMarker = document.getElementById('applications_page');
+
+if (typeof applicationsPageMarker != 'undefined' && applicationsPageMarker != null) {
+  Promise.all(/*! import() | js/applications.js */[__webpack_require__.e(0), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ./components/applications.js */ "./resources/js/components/applications.js"));
 }
 
 /***/ }),

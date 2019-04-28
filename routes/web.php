@@ -39,7 +39,15 @@ Route::middleware(['auth', 'adminCheck'])->group(function() {
         Route::get('/delete_award_category/{id}', 'AwardCategoriesController@deleteAwardCategory');
 
         Route::get('/applications', 'ApplicationsController@view');
+
+        Route::get('/applications/decision/accept/{id}', 'ApplicationsController@accept');
+
+        Route::get('/applications/decision/reject/{id}', 'ApplicationsController@reject');
+
     });
 
 });
+
+Route::post('/application/create', 'ApplicationsController@create');
+
 

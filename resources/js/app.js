@@ -60,3 +60,9 @@ if(typeof(awardCategoriesPageMarker) != 'undefined' && awardCategoriesPageMarker
             module.deletionLinkSetup()
         })
 }
+
+/** Applications */
+const applicationsPageMarker = document.getElementById('applications_page');
+if(typeof(applicationsPageMarker) != 'undefined' && applicationsPageMarker != null) {
+    import(/* webpackChunkName: "js/applications.js" */ './components/applications.js')
+}
