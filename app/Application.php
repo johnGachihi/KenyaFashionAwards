@@ -8,9 +8,9 @@ use \App\Events\ApplicationRespondedToEvent;
 class Application extends Model
 {
 
-    protected $dispatchesEvents = [
-        'updated' => ApplicationRespondedToEvent::class
-    ];
+//    protected $dispatchesEvents = [
+//        'updated' => ApplicationRespondedToEvent::class
+//    ];
 
     public function applicant() {
         return $this->belongsTo('App\Applicant');

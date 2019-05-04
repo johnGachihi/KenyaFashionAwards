@@ -2,7 +2,7 @@
 
 /***/ "./resources/js/components/applications.js":
 /*!*************************************************!*\
-  !*** ./resources/js/components/applications.js ***!
+  !*** ./resources/js/components/submitdecision.js ***!
   \*************************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {

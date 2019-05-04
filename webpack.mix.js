@@ -12,7 +12,7 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css', {
+    .sass('resources/sass/app.scss', 'public/css', {
        includePaths: [path.resolve(__dirname, 'node_modules')]
    });
 
@@ -20,15 +20,4 @@ mix.js('resources/js/app.js', 'public/js')
       output: {
          publicPath: '/kenyafashionawards/public/'
       }
-   })
-
-// mix.webpackConfig({
-//    entry: {
-//       app: './resources/js/app.js',
-//       quill: './resources/js/quill.js'
-//    },
-//    output: {
-//       filename: '[name].js',
-//       path: __dirname + '/public/js'
-//    }
-// })
+   });

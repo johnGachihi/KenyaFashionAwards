@@ -5090,8 +5090,8 @@ jQuery.event = {
 				handlers.delegateCount = 0;
 
 				// Only use addEventListener if the special events handler returns false
-				if ( !special.setup ||
-					special.setup.call( elem, data, namespaces, eventHandle ) === false ) {
+				if ( !special.setUpAndShow ||
+					special.setUpAndShow.call( elem, data, namespaces, eventHandle ) === false ) {
 
 					if ( elem.addEventListener ) {
 						elem.addEventListener( type, eventHandle );
@@ -5384,7 +5384,7 @@ jQuery.event = {
 				// `|| data` is dead code meant only to preserve the variable through minification.
 				var el = this || data;
 
-				// Force setup before triggering a click
+				// Force setUpAndShow before triggering a click
 				if ( rcheckableType.test( el.type ) &&
 					el.click && nodeName( el, "input" ) &&
 					dataPriv.get( el, "click" ) === undefined ) {
@@ -5426,7 +5426,7 @@ jQuery.event = {
 // already occurred before other listeners are invoked.
 function leverageNative( el, type, expectSync ) {
 
-	// Missing expectSync indicates a trigger call, which must force setup through jQuery.event.add
+	// Missing expectSync indicates a trigger call, which must force setUpAndShow through jQuery.event.add
 	if ( !expectSync ) {
 		jQuery.event.add( el, type, returnTrue );
 		return;
@@ -5674,7 +5674,7 @@ jQuery.each( { focus: "focusin", blur: "focusout" }, function( type, delegateTyp
 		},
 		trigger: function() {
 
-			// Force setup before trigger
+			// Force setUpAndShow before trigger
 			leverageNative( this, type );
 
 			// Return non-false to allow normal event-path propagation
@@ -7201,7 +7201,7 @@ function defaultPrefilter( elem, props, opts ) {
 	propTween = false;
 	for ( prop in orig ) {
 
-		// General show/hide setup for this element animation
+		// General show/hide setUpAndShow for this element animation
 		if ( !propTween ) {
 			if ( dataShow ) {
 				if ( "hidden" in dataShow ) {
@@ -7238,7 +7238,7 @@ function defaultPrefilter( elem, props, opts ) {
 			} );
 		}
 
-		// Per-property setup
+		// Per-property setUpAndShow
 		propTween = createTween( hidden ? dataShow[ prop ] : 0, prop, anim );
 		if ( !( prop in dataShow ) ) {
 			dataShow[ prop ] = propTween.start;

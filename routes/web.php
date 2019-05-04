@@ -40,9 +40,9 @@ Route::middleware(['auth', 'adminCheck'])->group(function() {
 
         Route::get('/applications', 'ApplicationsController@view');
 
-        Route::get('/applications/decision/accept/{id}', 'ApplicationsController@accept');
+        Route::post('/applications/decision/accept/{id}', 'ApplicationsController@accept');
 
-        Route::get('/applications/decision/reject/{id}', 'ApplicationsController@reject');
+        Route::post('/applications/decision/reject/{id}', 'ApplicationsController@reject');
 
     });
 

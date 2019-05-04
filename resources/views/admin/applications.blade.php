@@ -65,13 +65,16 @@
         @decisionModal
         @enddecisionModal
 
+        @editEmailModal
+        @endeditEmailModal
 
     </div>
 @endsection
 
 @section('_scripts')
     <script>
-        const DECISION_ACCEPT = 'accept';
+
+        /*const DECISION_ACCEPT = 'accept';
         const DECISION_REJECT = 'reject';
 
         const applicationsContainer = document.querySelector('#applications-container');
@@ -110,7 +113,7 @@
             setUpAndShowModal(
                 decisionText,
                 applicant,
-                `{{ url('admin/applications/decision') }}/${decision}/${applicationId}`
+                {{--`{{ url('admin/applications/decision') }}/${decision}/${applicationId}`--}}
             );
         }
 
@@ -126,20 +129,25 @@
 
         window.onload = () => {
             $('#modal-decision-btn').on('click', e => {
-                fetch($('#modal-decision-btn').data('url'))
-                    .then(response => response.json())
-                    .then(result => {
-                        if(!result.error) {
-                            $('#decision-modal').modal('hide');
-                            location.reload();
-                        } else {
-                            console.log(result);
-                        }
-                    })
-                    .catch(err => console.log(err));
+                // fetch($('#modal-decision-btn').data('url'))
+                //     .then(response => response.json())
+                //     .then(result => {
+                //         if(!result.error) {
+                //             $('#decision-modal').modal('hide');
+                //             location.reload();
+                //         } else {
+                //             console.log(result);
+                //         }
+                //     })
+                //     .catch(err => console.log(err));
+                submitDecision($('#modal-decision-btn').data('url'), {
+                    onConnectionError: (err) => console.log("Error: ", err),
+                    onSuccess: (data) => console.log("Success: " + data),
+                    onFailure: (err) => console.log("Failure: " + err)
+                });
             })
         }
-
+*/
     </script>
 
 @endsection

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ApplicationRespondedToEvent;
+use App\Listeners\SendApplicationResponseEmail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Application;
@@ -47,20 +49,24 @@ class ApplicationsController extends Controller
         $application->save();
     }
 
-    public function accept($id) {
+    public function accept(Request $request, $id) {
         $application = Application::find($id);
         $application->decision = 'approved';
         $application->save();
+
+        event(new ApplicationRespondedToEvent($application, $request));
 
         return response()->json([
             'error' => false
         ]);
     }
 
-    public function reject($id) {
+    public function reject(Request $request, $id) {
         $application = Application::find($id);
         $application->decision = 'rejected';
         $application->save();
+
+        event(new ApplicationRespondedToEvent($application, $request));
 
         return response()->json([
             'error' => false

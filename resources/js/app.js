@@ -38,7 +38,7 @@ require('./bootstrap');
 
 /** New awardCategory form */
 const ckEditor = document.getElementById('ckEditor');
-if(typeof(ckEditor) != 'undefined' && ckEditor != null) {
+if(typeof(ckEditor) !== 'undefined' && ckEditor != null) {
     import(/* webpackChunkName: "js/add-awardCategory-form" */ './components/add-awardCategory-form').then(module => {
         module.initEditor();
 
@@ -52,8 +52,8 @@ if(typeof(ckEditor) != 'undefined' && ckEditor != null) {
 
 /** Award Categories */
 const awardCategoriesPageMarker = document.getElementById('award_categories_page');
-if(typeof(awardCategoriesPageMarker) != 'undefined' && awardCategoriesPageMarker != null) {
-    import(/* webpackChunkName: "js/awardCategories.js" */ './components/awardCategories')
+if(typeof(awardCategoriesPageMarker) !== 'undefined' && awardCategoriesPageMarker != null) {
+    import(/* webpackChunkName: "js/awardCategories" */ './components/awardCategories')
         .then(module => {
             module.test();
             module.scrollToEditedElement();
@@ -63,6 +63,9 @@ if(typeof(awardCategoriesPageMarker) != 'undefined' && awardCategoriesPageMarker
 
 /** Applications */
 const applicationsPageMarker = document.getElementById('applications_page');
-if(typeof(applicationsPageMarker) != 'undefined' && applicationsPageMarker != null) {
-    import(/* webpackChunkName: "js/applications.js" */ './components/applications.js')
+if(typeof(applicationsPageMarker) !== 'undefined' && applicationsPageMarker != null) {
+    import(/* webpackChunkName: "js/applications-page" */ './components/applications-page.js')
+        .then(module => {
+
+        })
 }

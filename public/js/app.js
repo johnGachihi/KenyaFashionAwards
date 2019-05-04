@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"0":"vendors~js/applications.js","1":"js/applications.js","js/awardCategories.js":"js/awardCategories.js","vendors~js/add-awardCategory-form":"vendors~js/add-awardCategory-form","js/add-awardCategory-form":"js/add-awardCategory-form"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"js/awardCategories":"js/awardCategories","vendors~js/add-awardCategory-form~js/applications-page":"vendors~js/add-awardCategory-form~js/applications-page","js/add-awardCategory-form":"js/add-awardCategory-form","vendors~js/applications-page":"vendors~js/applications-page","js/applications-page":"js/applications-page"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -36972,8 +36972,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // window
 
 var ckEditor = document.getElementById('ckEditor');
 
-if (typeof ckEditor != 'undefined' && ckEditor != null) {
-  Promise.all(/*! import() | js/add-awardCategory-form */[__webpack_require__.e("vendors~js/add-awardCategory-form"), __webpack_require__.e("js/add-awardCategory-form")]).then(__webpack_require__.bind(null, /*! ./components/add-awardCategory-form */ "./resources/js/components/add-awardCategory-form.js")).then(function (module) {
+if (typeof ckEditor !== 'undefined' && ckEditor != null) {
+  Promise.all(/*! import() | js/add-awardCategory-form */[__webpack_require__.e("vendors~js/add-awardCategory-form~js/applications-page"), __webpack_require__.e("js/add-awardCategory-form")]).then(__webpack_require__.bind(null, /*! ./components/add-awardCategory-form */ "./resources/js/components/add-awardCategory-form.js")).then(function (module) {
     module.initEditor();
 
     function onSubmit(event, url) {
@@ -36988,8 +36988,8 @@ if (typeof ckEditor != 'undefined' && ckEditor != null) {
 
 var awardCategoriesPageMarker = document.getElementById('award_categories_page');
 
-if (typeof awardCategoriesPageMarker != 'undefined' && awardCategoriesPageMarker != null) {
-  __webpack_require__.e(/*! import() | js/awardCategories.js */ "js/awardCategories.js").then(__webpack_require__.bind(null, /*! ./components/awardCategories */ "./resources/js/components/awardCategories.js")).then(function (module) {
+if (typeof awardCategoriesPageMarker !== 'undefined' && awardCategoriesPageMarker != null) {
+  __webpack_require__.e(/*! import() | js/awardCategories */ "js/awardCategories").then(__webpack_require__.bind(null, /*! ./components/awardCategories */ "./resources/js/components/awardCategories.js")).then(function (module) {
     module.test();
     module.scrollToEditedElement();
     module.deletionLinkSetup();
@@ -37000,8 +37000,8 @@ if (typeof awardCategoriesPageMarker != 'undefined' && awardCategoriesPageMarker
 
 var applicationsPageMarker = document.getElementById('applications_page');
 
-if (typeof applicationsPageMarker != 'undefined' && applicationsPageMarker != null) {
-  Promise.all(/*! import() | js/applications.js */[__webpack_require__.e(0), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ./components/applications.js */ "./resources/js/components/applications.js"));
+if (typeof applicationsPageMarker !== 'undefined' && applicationsPageMarker != null) {
+  Promise.all(/*! import() | js/applications-page */[__webpack_require__.e("vendors~js/add-awardCategory-form~js/applications-page"), __webpack_require__.e("vendors~js/applications-page"), __webpack_require__.e("js/applications-page")]).then(__webpack_require__.bind(null, /*! ./components/applications-page.js */ "./resources/js/components/applications-page.js")).then(function (module) {});
 }
 
 /***/ }),
