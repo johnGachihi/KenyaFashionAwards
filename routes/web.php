@@ -44,6 +44,8 @@ Route::middleware(['auth', 'adminCheck'])->group(function() {
 
         Route::post('/applications/decision/reject/{id}', 'ApplicationsController@reject');
 
+        Route::view('vote_stats', 'admin.vote_stats');
+
     });
 
 });

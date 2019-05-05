@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"js/awardCategories":"js/awardCategories","vendors~js/add-awardCategory-form~js/applications-page":"vendors~js/add-awardCategory-form~js/applications-page","js/add-awardCategory-form":"js/add-awardCategory-form","vendors~js/applications-page":"vendors~js/applications-page","js/applications-page":"js/applications-page"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"js/awardCategories":"js/awardCategories","vendors~js/add-awardCategory-form~js/applications-page":"vendors~js/add-awardCategory-form~js/applications-page","js/add-awardCategory-form":"js/add-awardCategory-form","vendors~js/applications-page":"vendors~js/applications-page","js/applications-page":"js/applications-page","vendors~js/vote-stats":"vendors~js/vote-stats","js/vote-stats":"js/vote-stats"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -37002,6 +37002,14 @@ var applicationsPageMarker = document.getElementById('applications_page');
 
 if (typeof applicationsPageMarker !== 'undefined' && applicationsPageMarker != null) {
   Promise.all(/*! import() | js/applications-page */[__webpack_require__.e("vendors~js/add-awardCategory-form~js/applications-page"), __webpack_require__.e("vendors~js/applications-page"), __webpack_require__.e("js/applications-page")]).then(__webpack_require__.bind(null, /*! ./components/applications-page.js */ "./resources/js/components/applications-page.js")).then(function (module) {});
+}
+/** Vote Statistics */
+
+
+var voteStatsPageMarker = document.getElementById('voteStatsPage');
+
+if (typeof voteStatsPageMarker !== 'undefined' && voteStatsPageMarker != null) {
+  Promise.all(/*! import() | js/vote-stats */[__webpack_require__.e("vendors~js/vote-stats"), __webpack_require__.e("js/vote-stats")]).then(__webpack_require__.bind(null, /*! ./vote-stats */ "./resources/js/vote-stats.js"));
 }
 
 /***/ }),

@@ -27,3 +27,29 @@ $mdc-theme-primary: #1a1a1a;
   color: #1a1a1a !important;
 }
 
+.stat-card {
+  @include mdc-elevation(4);
+  margin-bottom: 30px;
+
+  .card-title {
+    letter-spacing: 0;
+    background-color: #fff;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+
+.stat-card-column {
+  //overflow-y: scroll;
+}
+
+.h-fill-screen {
+  height: calc(100vh - 88.88px);
+}
+
+//canvas {
+//  width: 100px!important;
+//  height: 100px!important;
+//}
+

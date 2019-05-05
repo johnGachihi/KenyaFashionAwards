@@ -69,3 +69,9 @@ if(typeof(applicationsPageMarker) !== 'undefined' && applicationsPageMarker != n
 
         })
 }
+
+/** Vote Statistics */
+const voteStatsPageMarker = document.getElementById('voteStatsPage');
+if(typeof(voteStatsPageMarker) !== 'undefined' && voteStatsPageMarker != null) {
+    import(/* webpackChunkName: "js/vote-stats"*/ './vote-stats')
+}

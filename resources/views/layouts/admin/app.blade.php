@@ -44,6 +44,7 @@
                             <span>Categories</span>
                             </a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link " href="{{ url('admin/add_award_category') }}">
                             <i class="material-icons">note_add</i>
@@ -55,6 +56,13 @@
                             <a class="nav-link " href="{{ url('admin/applications') }}">
                                 <i class="material-icons">list_alt</i>
                                 <span>Applications</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link " href="{{ url('admin/vote_stats') }}">
+                                <i class="material-icons">bar_chart</i>
+                                <span>Vote Statistics</span>
                             </a>
                         </li>
                     <!-- <li class="nav-item">
