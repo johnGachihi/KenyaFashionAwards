@@ -1,131 +1,29 @@
-import Chart from 'chart.js';
-
 import 'simplebar';
 import 'simplebar/dist/simplebar.css';
+import BarChart from "./components/BarChart";
+import SideCharts from "./components/SideCharts";
 
-const chartConfig = {
-    type: 'bar',
-    maintainAspectRatio: true,
-    data: {
-        labels: ['John Gachihi Waithaka', 'Ephestus Njoroge', 'Talia Malindi', 'Lest Otieno', 'Beuler Kirathimo', 'Nathan Chai'],
-        datasets: [{
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(0,0,0,1)',
-                'rgba(0,0,0,1)',
-                'rgba(0,0,0,1)',
-                'rgba(0,0,0,1)',
-                'rgba(0,0,0,1)',
-                'rgba(0,0,0,1)'
-            ],
-            borderColor: [
-                'rgba(0,0,0,1)',
-                'rgba(0,0,0,1)',
-                'rgba(0,0,0,1)',
-                'rgba(0,0,0,1)',
-                'rgba(0,0,0,1)',
-                'rgba(0,0,0,1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        legend: {
-            display: false
-        },
-        title: {
-            // display: true,
-            text: 'Male Fashion Model'
-        },
-        scales: {
-            yAxes: [{
-                gridLines: {
-                    display: false,
-                    drawBorder: false
-                },
-                ticks: {
-                    // beginAtZero: true
-                    display: false
-                }
-            }],
-            xAxes: [{
-                gridLines: {
-                    display: false
-                },
-                ticks: {
-                    // beginAtZero: true
-                    display: false
-                }
-            }]
-        }
+$(window).on('load', () => {
+
+    //
+    let sideCharts = new SideCharts(votesPerCategory);
+
+    /*let sideCharts = new Map();
+    for(const [awardCategory, voteData] of Object.entries(votesPerCategory)) {
+        // console.log(document.querySelector(`#sideChart${voteData.category_id}`));
+        let chart = new BarChart(
+            voteData, document.querySelector(`#sideChart${voteData.category_id}`));
+
+        sideCharts.set(voteData.category_id, chart);
     }
-};
 
-const chartConfig1 = {
-    type: 'bar',
-    maintainAspectRatio: true,
-    data: {
-        labels: ['John Gachihi Waithaka', 'Ephestus Njoroge', 'Talia Malindi', 'Lest Otieno', 'Beuler Kirathimo', 'Nathan Chai'],
-        datasets: [{
-            data: [120, 19, 33, 5, 200, 43],
-            backgroundColor: [
-                'rgba(0,0,0,1)',
-                'rgba(0,0,0,1)',
-                'rgba(0,0,0,1)',
-                'rgba(0,0,0,1)',
-                'rgba(0,0,0,1)',
-                'rgba(0,0,0,1)'
-            ],
-            borderColor: [
-                'rgba(0,0,0,1)',
-                'rgba(0,0,0,1)',
-                'rgba(0,0,0,1)',
-                'rgba(0,0,0,1)',
-                'rgba(0,0,0,1)',
-                'rgba(0,0,0,1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        legend: {
-            display: false
-        },
-        title: {
-            // display: true,
-            text: 'Male Fashion Model'
-        },
-        scales: {
-            yAxes: [{
-                gridLines: {
-                    display: false
-                },
-                ticks: {
-                    // beginAtZero: true
-                    display: false
-                }
-            }],
-            xAxes: [{
-                gridLines: {
-                    display: false
-                },
-                ticks: {
-                    // beginAtZero: true
-                    display: false
-                }
-            }]
-        }
-    }
-};
+    console.log(sideCharts.entries());*/
 
-const ctx = document.getElementById('myChart').getContext('2d');
-let myChart = new Chart(ctx, chartConfig);
+    Echo.channel('the-polls')
+        .listen('VoteCast', e => {
+            console.log(e);
 
-const ctx1 = document.getElementById('myChart1').getContext('2d');
-let myChart1 = new Chart(ctx1, chartConfig1);
+            sideCharts.plusOne(e.vote.award_category_id, e.vote.candidate);
+    })
 
-const ctx2 = document.getElementById('myChart2').getContext('2d');
-let myChart2 = new Chart(ctx2, chartConfig);
-
-const ctx3 = document.getElementById('myChart3').getContext('2d');
-let myChart3 = new Chart(ctx3, chartConfig);
+});

@@ -45,11 +45,10 @@ $mdc-theme-primary: #1a1a1a;
 }
 
 .h-fill-screen {
-  height: calc(100vh - 88.88px);
+  height: calc(100vh - (88.88px + 16px));
 }
 
 //canvas {
 //  width: 100px!important;
 //  height: 100px!important;
 //}
-

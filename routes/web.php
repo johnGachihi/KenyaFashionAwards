@@ -44,12 +44,29 @@ Route::middleware(['auth', 'adminCheck'])->group(function() {
 
         Route::post('/applications/decision/reject/{id}', 'ApplicationsController@reject');
 
-        Route::view('vote_stats', 'admin.vote_stats');
+        Route::get('/vote_stats', 'VotesController@view');
 
     });
 
 });
 
+
+/******************************************************************************************************
+ * CSRF disabled for testing
+ */
+
 Route::post('/application/create', 'ApplicationsController@create');
+
+Route::get('/vote', 'VotesController@cast');
+
+/*
+ *  CSRF disabled for testing
+ */
+/******************************************************************************************************/
+
+
+//Route::get("/test", function () {
+//    event(new \App\Events\TestEvent("This is awesome"));
+//});
 
 

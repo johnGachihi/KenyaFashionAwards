@@ -38,5 +38,6 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('admin.components.application_dets_component', 'applicationDetails');
         Blade::component('admin.components.decision_modal_component','decisionModal');
         Blade::component('admin.components.edit_email_modal', 'editEmailModal');
+        Blade::component('admin.components.votes_stats_bar', 'sideVotesBar');
     }
 }

@@ -286,24 +286,140 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
-/***/ "./resources/js/vote-stats.js":
-/*!************************************!*\
-  !*** ./resources/js/vote-stats.js ***!
-  \************************************/
-/*! no exports provided */
+/***/ "./resources/js/components/BarChart.js":
+/*!*********************************************!*\
+  !*** ./resources/js/components/BarChart.js ***!
+  \*********************************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
-/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(chart_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var simplebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! simplebar */ "./node_modules/simplebar/dist/simplebar.esm.js");
-/* harmony import */ var simplebar_dist_simplebar_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! simplebar/dist/simplebar.css */ "./node_modules/simplebar/dist/simplebar.css");
-/* harmony import */ var simplebar_dist_simplebar_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(simplebar_dist_simplebar_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BarChart; });
+/* harmony import */ var _components_chartjsConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/chartjsConfig */ "./resources/js/components/chartjsConfig.js");
+/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
+/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(chart_js__WEBPACK_IMPORTED_MODULE_1__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 
 
-var chartConfig = {
+
+var BarChart =
+/*#__PURE__*/
+function () {
+  function BarChart(awardCategoryData, canvasEl) {
+    _classCallCheck(this, BarChart);
+
+    this.awardCategoryData = awardCategoryData;
+    this.canvasEl = canvasEl;
+    var ctx = this.canvasEl.getContext('2d');
+    this.chart = new chart_js__WEBPACK_IMPORTED_MODULE_1___default.a(ctx, Object(_components_chartjsConfig__WEBPACK_IMPORTED_MODULE_0__["getChartjsConfig"])(this.awardCategoryData.votes, this.awardCategoryData.candidates));
+    console.log(this.chart);
+  }
+
+  _createClass(BarChart, [{
+    key: "plusOne",
+    value: function plusOne(candidate) {
+      var index = this.awardCategoryData.candidate_ids.indexOf(candidate.id);
+
+      if (index === -1) {
+        this.chart.data.datasets[0].data.push(1);
+        this.chart.data.labels.push(candidate.name);
+        this.awardCategoryData.candidate_ids.push(candidate.id);
+      }
+
+      this.chart.data.datasets[0].data[index] += 1;
+      this.chart.update();
+    }
+  }]);
+
+  return BarChart;
+}();
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/SideCharts.js":
+/*!***********************************************!*\
+  !*** ./resources/js/components/SideCharts.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SideCharts; });
+/* harmony import */ var _BarChart__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BarChart */ "./resources/js/components/BarChart.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+var SideCharts =
+/*#__PURE__*/
+function () {
+  function SideCharts(chartsData) {
+    _classCallCheck(this, SideCharts);
+
+    this.chartsData = chartsData;
+    this.charts = new Map();
+
+    for (var _i = 0, _Object$entries = Object.entries(this.chartsData); _i < _Object$entries.length; _i++) {
+      var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+          title = _Object$entries$_i[0],
+          chartData = _Object$entries$_i[1];
+
+      var canvasEl = document.querySelector("#sideChart".concat(chartData.category_id));
+      var chart = new _BarChart__WEBPACK_IMPORTED_MODULE_0__["default"](chartData, canvasEl);
+      this.charts.set(chartData.category_id, chart);
+    }
+
+    console.log(this.charts);
+  }
+
+  _createClass(SideCharts, [{
+    key: "plusOne",
+    value: function plusOne(category_id, candidate) {
+      var chart = this.charts.get(category_id);
+      chart.plusOne(candidate);
+    } // addChart()
+
+  }]);
+
+  return SideCharts;
+}();
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/chartjsConfig.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/chartjsConfig.js ***!
+  \**************************************************/
+/*! exports provided: default, getChartjsConfig */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getChartjsConfig", function() { return getChartjsConfig; });
+var chartjsConfig = {
   type: 'bar',
   maintainAspectRatio: true,
   data: {
@@ -346,56 +462,96 @@ var chartConfig = {
     }
   }
 };
-var chartConfig1 = {
-  type: 'bar',
-  maintainAspectRatio: true,
-  data: {
-    labels: ['John Gachihi Waithaka', 'Ephestus Njoroge', 'Talia Malindi', 'Lest Otieno', 'Beuler Kirathimo', 'Nathan Chai'],
-    datasets: [{
-      data: [120, 19, 33, 5, 200, 43],
-      backgroundColor: ['rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)'],
-      borderColor: ['rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)'],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    legend: {
-      display: false
-    },
-    title: {
-      // display: true,
-      text: 'Male Fashion Model'
-    },
-    scales: {
-      yAxes: [{
-        gridLines: {
-          display: false
-        },
-        ticks: {
-          // beginAtZero: true
-          display: false
-        }
-      }],
-      xAxes: [{
-        gridLines: {
-          display: false
-        },
-        ticks: {
-          // beginAtZero: true
-          display: false
-        }
+/* harmony default export */ __webpack_exports__["default"] = (chartjsConfig);
+/**
+ *
+ * @param {Array} data
+ * @param {Array} labels A label for each data item in the data array
+ */
+
+function getChartjsConfig(data, labels) {
+  return {
+    type: 'bar',
+    maintainAspectRatio: true,
+    data: {
+      labels: labels,
+      datasets: [{
+        data: data,
+        backgroundColor: ['rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)'],
+        borderColor: ['rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)'],
+        borderWidth: 1
       }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      title: {
+        // display: true,
+        text: 'Male Fashion Model'
+      },
+      scales: {
+        yAxes: [{
+          gridLines: {
+            display: false,
+            drawBorder: false
+          },
+          ticks: {
+            // beginAtZero: true
+            display: false
+          }
+        }],
+        xAxes: [{
+          gridLines: {
+            display: false
+          },
+          ticks: {
+            // beginAtZero: true
+            display: false
+          }
+        }]
+      }
     }
+  };
+}
+
+/***/ }),
+
+/***/ "./resources/js/vote-stats.js":
+/*!************************************!*\
+  !*** ./resources/js/vote-stats.js ***!
+  \************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var simplebar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! simplebar */ "./node_modules/simplebar/dist/simplebar.esm.js");
+/* harmony import */ var simplebar_dist_simplebar_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! simplebar/dist/simplebar.css */ "./node_modules/simplebar/dist/simplebar.css");
+/* harmony import */ var simplebar_dist_simplebar_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(simplebar_dist_simplebar_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_BarChart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/BarChart */ "./resources/js/components/BarChart.js");
+/* harmony import */ var _components_SideCharts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/SideCharts */ "./resources/js/components/SideCharts.js");
+
+
+
+
+$(window).on('load', function () {
+  //
+  var sideCharts = new _components_SideCharts__WEBPACK_IMPORTED_MODULE_3__["default"](votesPerCategory);
+  /*let sideCharts = new Map();
+  for(const [awardCategory, voteData] of Object.entries(votesPerCategory)) {
+      // console.log(document.querySelector(`#sideChart${voteData.category_id}`));
+      let chart = new BarChart(
+          voteData, document.querySelector(`#sideChart${voteData.category_id}`));
+        sideCharts.set(voteData.category_id, chart);
   }
-};
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new chart_js__WEBPACK_IMPORTED_MODULE_0___default.a(ctx, chartConfig);
-var ctx1 = document.getElementById('myChart1').getContext('2d');
-var myChart1 = new chart_js__WEBPACK_IMPORTED_MODULE_0___default.a(ctx1, chartConfig1);
-var ctx2 = document.getElementById('myChart2').getContext('2d');
-var myChart2 = new chart_js__WEBPACK_IMPORTED_MODULE_0___default.a(ctx2, chartConfig);
-var ctx3 = document.getElementById('myChart3').getContext('2d');
-var myChart3 = new chart_js__WEBPACK_IMPORTED_MODULE_0___default.a(ctx3, chartConfig);
+    console.log(sideCharts.entries());*/
+
+  Echo.channel('the-polls').listen('VoteCast', function (e) {
+    console.log(e);
+    sideCharts.plusOne(e.vote.award_category_id, e.vote.candidate);
+  });
+});
 
 /***/ })
 
