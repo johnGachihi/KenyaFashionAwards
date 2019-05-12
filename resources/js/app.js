@@ -1,3 +1,4 @@
+import 'simplebar/dist/simplebar.css';
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -73,5 +74,5 @@ if(typeof(applicationsPageMarker) !== 'undefined' && applicationsPageMarker != n
 /** Vote Statistics */
 const voteStatsPageMarker = document.getElementById('voteStatsPage');
 if(typeof(voteStatsPageMarker) !== 'undefined' && voteStatsPageMarker != null) {
-    import(/* webpackChunkName: "js/vote-stats"*/ './vote-stats')
+    import(/* webpackChunkName: "js/vote-stats"*/ './components/vote-stats')
 }

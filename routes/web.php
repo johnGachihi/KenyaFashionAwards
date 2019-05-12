@@ -55,7 +55,7 @@ Route::middleware(['auth', 'adminCheck'])->group(function() {
  * CSRF disabled for testing
  */
 
-Route::post('/application/create', 'ApplicationsController@create');
+Route::post('/applications/create', 'ApplicationsController@create');
 
 Route::get('/vote', 'VotesController@cast');
 

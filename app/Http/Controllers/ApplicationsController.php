@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\ApplicationRespondedToEvent;
+use App\Events\TestEvent;
 use App\Listeners\SendApplicationResponseEmail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ class ApplicationsController extends Controller
     }
 
     public function create(Request $request) {
-
+        event(new TestEvent('bleble'));
         $request->validate([
             'name' => 'required',
             'company' => 'required',

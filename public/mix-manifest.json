@@ -7,6 +7,5 @@
     "/js/vote-stats.js": "/js/vote-stats.js",
     "/vendors~js/add-awardCategory-form~js/applications-page.js": "/vendors~js/add-awardCategory-form~js/applications-page.js",
     "/vendors~js/applications-page.js": "/vendors~js/applications-page.js",
-    "/vendors~js/vote-stats.js": "/vendors~js/vote-stats.js",
-    "/vendors~js/applications-page~js/vote-stats.js": "/vendors~js/applications-page~js/vote-stats.js"
+    "/vendors~js/vote-stats.js": "/vendors~js/vote-stats.js"
 }

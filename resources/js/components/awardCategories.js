@@ -1,3 +1,4 @@
+
 export function test() {
     if(window.location.hash) {
         console.log('hash--->', window.location.hash);

@@ -1,7 +1,7 @@
 import 'simplebar';
 import 'simplebar/dist/simplebar.css';
-import BarChart from "./components/BarChart";
-import SideCharts from "./components/SideCharts";
+import BarChart from "./BarChart";
+import SideCharts from "./SideCharts";
 
 $(window).on('load', () => {
 

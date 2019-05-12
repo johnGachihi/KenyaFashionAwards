@@ -105,18 +105,19 @@ export function getChartjsConfig(data, labels) {
                         drawBorder: false
                     },
                     ticks: {
-                        // beginAtZero: true
+                        beginAtZero: true,
                         display: false
                     }
                 }],
-                    xAxes: [{
+                xAxes: [{
                     gridLines: {
                         display: false
                     },
                     ticks: {
-                        // beginAtZero: true
+                        // beginAtZero: true,
                         display: false
-                    }
+                    },
+                    minBarLength: 20
                 }]
             }
         }

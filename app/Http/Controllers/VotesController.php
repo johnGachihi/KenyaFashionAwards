@@ -66,8 +66,8 @@ class VotesController extends Controller
             }
         }
 
-        return $voteData;
-//        return $votes_by_category;
+//        return $voteData;
+        return $votes_by_category;
     }
 
 }
