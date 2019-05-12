@@ -300,9 +300,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var chartjsConfig_1 = __webpack_require__(/*! ../components/chartjsConfig */ "./resources/js/components/chartjsConfig.js");
-
 var chart_js_1 = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
+
+var SideBarChartConfig_1 = __webpack_require__(/*! ./ChartConfig/SideBarChartConfig */ "./resources/js/components/ChartConfig/SideBarChartConfig.js");
 
 var BarChart =
 /** @class */
@@ -312,31 +312,163 @@ function () {
     this.awardCategoryData = awardCategoryData;
     this.canvasEl = canvasEl;
     var ctx = this.canvasEl.getContext('2d');
-    this.chart = new chart_js_1.Chart(ctx, chartjsConfig_1.getChartjsConfig(this.awardCategoryData.votes, this.awardCategoryData.candidates));
+    this.chart = new chart_js_1.Chart(ctx, new SideBarChartConfig_1["default"](this.awardCategoryData.votes, this.awardCategoryData.candidates).getConfig());
     console.log(this.chart);
   }
 
-  BarChart.prototype.plusOne = function (candidate) {
-    var index = this.awardCategoryData.candidate_ids.indexOf(candidate.id);
+  BarChart.prototype.getChartData = function () {
+    return this.awardCategoryData;
+  }; // plusOne(candidate : Candidate) {
+  //     const index = this.awardCategoryData.candidate_ids.indexOf(candidate.id);
+  //     if(index === -1) {
+  //         this.chart.data.datasets[0].data.push(1);
+  //         this.chart.data.labels.push(candidate.name);
+  //         this.awardCategoryData.candidate_ids.push(candidate.id);
+  //     }
+  //     this.chart.data.datasets[0].data[index] += 1;
+  //     this.chart.update();
+  // }
 
-    if (index === -1) {
-      this.chart.data.datasets[0].data.push(1);
-      this.chart.data.labels.push(candidate.name);
-      this.awardCategoryData.candidate_ids.push(candidate.id);
-    }
-
-    this.chart.data.datasets[0].data[index] += 1;
-    this.chart.update();
-  };
 
   BarChart.prototype.increment = function (candidate) {
     this.incrementer.incrementDataPoint(this.chart, candidate, this.awardCategoryData);
+    console.log(this.awardCategoryData);
   };
 
   return BarChart;
 }();
 
 exports["default"] = BarChart;
+
+/***/ }),
+
+/***/ "./resources/js/components/ChartConfig/ChartConfig.js":
+/*!************************************************************!*\
+  !*** ./resources/js/components/ChartConfig/ChartConfig.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var ChartConfig =
+/** @class */
+function () {
+  function ChartConfig(data, labels) {
+    this.options = {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          data: data,
+          backgroundColor: ['rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)'],
+          borderColor: ['rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)'],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            gridLines: {
+              display: true,
+              drawBorder: false
+            },
+            ticks: {
+              beginAtZero: true,
+              display: false
+            }
+          }],
+          xAxes: [{
+            gridLines: {
+              display: false
+            },
+            ticks: {
+              // beginAtZero: true,
+              display: false
+            }
+          }]
+        }
+      }
+    };
+  }
+
+  ChartConfig.prototype.getConfig = function () {
+    return this.options;
+  };
+
+  return ChartConfig;
+}();
+
+exports["default"] = ChartConfig;
+
+/***/ }),
+
+/***/ "./resources/js/components/ChartConfig/SideBarChartConfig.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/ChartConfig/SideBarChartConfig.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __extends = this && this.__extends || function () {
+  var _extendStatics = function extendStatics(d, b) {
+    _extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (d, b) {
+      d.__proto__ = b;
+    } || function (d, b) {
+      for (var p in b) {
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+      }
+    };
+
+    return _extendStatics(d, b);
+  };
+
+  return function (d, b) {
+    _extendStatics(d, b);
+
+    function __() {
+      this.constructor = d;
+    }
+
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var ChartConfig_1 = __webpack_require__(/*! ./ChartConfig */ "./resources/js/components/ChartConfig/ChartConfig.js");
+
+var SideBarChartConfig =
+/** @class */
+function (_super) {
+  __extends(SideBarChartConfig, _super);
+
+  function SideBarChartConfig(data, labels) {
+    var _this = _super.call(this, data, labels) || this;
+
+    _this.options.options.scales.yAxes[0].gridLines.display = false;
+    return _this;
+  }
+
+  return SideBarChartConfig;
+}(ChartConfig_1["default"]);
+
+exports["default"] = SideBarChartConfig;
 
 /***/ }),
 
@@ -358,18 +490,28 @@ var SideBarChartDataPointIncrementer =
 /** @class */
 function () {
   function SideBarChartDataPointIncrementer() {}
+  /**
+   * Updates the chart's votes data, total votes and candidate_ids and candidates if necessary
+   */
 
-  SideBarChartDataPointIncrementer.prototype.incrementDataPoint = function (chart, dataPointIdentifier, data) {
+
+  SideBarChartDataPointIncrementer.prototype.incrementDataPoint = function (chart, dataPoint, sideChartData) {
     console.log('SideBarChartDataPointIncrementer.incrementDataPoint');
-    var index = data.candidate_ids.indexOf(dataPointIdentifier.id);
+    var index = sideChartData.candidate_ids.indexOf(dataPoint.id);
 
     if (index === -1) {
-      chart.data.datasets[0].data.push(1);
-      chart.data.labels.push(dataPointIdentifier.name);
-      data.candidate_ids.push(dataPointIdentifier.id);
+      // chart.data.datasets[0].data.push(1);
+      // chart.data.labels.push(dataPoint.name);
+      // data.candidate_ids.push(dataPoint.id);
+      sideChartData.candidate_ids.push(dataPoint.id);
+      sideChartData.candidates.push(dataPoint.name);
+      sideChartData.votes.push(1);
+    } else {
+      // chart.data.datasets[0].data[index] += 1;
+      sideChartData.votes[index] += 1;
     }
 
-    chart.data.datasets[0].data[index] += 1;
+    sideChartData.total += 1;
     chart.update();
   };
 
@@ -514,121 +656,17 @@ function () {
     var chart = new SideBarChart_1["default"](chartData, canvasEl, new SideBarChartDataPointIncrementer_1["default"](), totalEl);
     this.charts.set(chartData.category_id, chart);
     return chart;
+  }; //Temporary
+
+
+  SideCharts.prototype.getSideChart = function (index) {
+    return this.charts.get(index);
   };
 
   return SideCharts;
 }();
 
 exports["default"] = SideCharts;
-
-/***/ }),
-
-/***/ "./resources/js/components/chartjsConfig.js":
-/*!**************************************************!*\
-  !*** ./resources/js/components/chartjsConfig.js ***!
-  \**************************************************/
-/*! exports provided: default, getChartjsConfig */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getChartjsConfig", function() { return getChartjsConfig; });
-var chartjsConfig = {
-  type: 'bar',
-  maintainAspectRatio: true,
-  data: {
-    labels: ['John Gachihi Waithaka', 'Ephestus Njoroge', 'Talia Malindi', 'Lest Otieno', 'Beuler Kirathimo', 'Nathan Chai'],
-    datasets: [{
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: ['rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)'],
-      borderColor: ['rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)'],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    legend: {
-      display: false
-    },
-    title: {
-      // display: true,
-      text: 'Male Fashion Model'
-    },
-    scales: {
-      yAxes: [{
-        gridLines: {
-          display: false,
-          drawBorder: false
-        },
-        ticks: {
-          // beginAtZero: true
-          display: false
-        }
-      }],
-      xAxes: [{
-        gridLines: {
-          display: false
-        },
-        ticks: {
-          // beginAtZero: true
-          display: false
-        }
-      }]
-    }
-  }
-};
-/* harmony default export */ __webpack_exports__["default"] = (chartjsConfig);
-/**
- *
- * @param {Array} data
- * @param {Array} labels A label for each data item in the data array
- */
-
-function getChartjsConfig(data, labels) {
-  return {
-    type: 'bar',
-    maintainAspectRatio: true,
-    data: {
-      labels: labels,
-      datasets: [{
-        data: data,
-        backgroundColor: ['rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)'],
-        borderColor: ['rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)'],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      legend: {
-        display: false
-      },
-      title: {
-        // display: true,
-        text: 'Male Fashion Model'
-      },
-      scales: {
-        yAxes: [{
-          gridLines: {
-            display: false,
-            drawBorder: false
-          },
-          ticks: {
-            beginAtZero: true,
-            display: false
-          }
-        }],
-        xAxes: [{
-          gridLines: {
-            display: false
-          },
-          ticks: {
-            // beginAtZero: true,
-            display: false
-          },
-          minBarLength: 20
-        }]
-      }
-    }
-  };
-}
 
 /***/ }),
 
@@ -644,29 +682,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var simplebar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! simplebar */ "./node_modules/simplebar/dist/simplebar.esm.js");
 /* harmony import */ var simplebar_dist_simplebar_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! simplebar/dist/simplebar.css */ "./node_modules/simplebar/dist/simplebar.css");
 /* harmony import */ var simplebar_dist_simplebar_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(simplebar_dist_simplebar_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _BarChart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BarChart */ "./resources/js/components/BarChart.js");
-/* harmony import */ var _BarChart__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_BarChart__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _SideCharts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SideCharts */ "./resources/js/components/SideCharts.js");
-/* harmony import */ var _SideCharts__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_SideCharts__WEBPACK_IMPORTED_MODULE_3__);
-
+/* harmony import */ var _SideCharts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SideCharts */ "./resources/js/components/SideCharts.js");
+/* harmony import */ var _SideCharts__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_SideCharts__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
 $(window).on('load', function () {
-  //
-  var sideCharts = new _SideCharts__WEBPACK_IMPORTED_MODULE_3___default.a(votesPerCategory);
-  /*let sideCharts = new Map();
-  for(const [awardCategory, voteData] of Object.entries(votesPerCategory)) {
-      // console.log(document.querySelector(`#sideChart${voteData.category_id}`));
-      let chart = new BarChart(
-          voteData, document.querySelector(`#sideChart${voteData.category_id}`));
-        sideCharts.set(voteData.category_id, chart);
-  }
-    console.log(sideCharts.entries());*/
-
+  var sideCharts = new _SideCharts__WEBPACK_IMPORTED_MODULE_2___default.a(votesPerCategory);
   Echo.channel('the-polls').listen('VoteCast', function (e) {
     console.log(e);
     sideCharts.plusOne(e.vote.award_category_id, e.vote.candidate);
+  });
+  $('.stat-card').on('click', function (e) {
+    var categoryId = $(e.target).closest('.stat-card').attr('id');
+    console.log(categoryId);
+    var data = sideCharts.getSideChart(parseInt(categoryId)).getChartData();
+    $('#main-stats-container').text(JSON.stringify(data));
   });
 });
 

@@ -1,4 +1,4 @@
-<div class="card stat-card" style="background-color: #fff; order: 2">
+<div id="{{ $id }}" class="card stat-card" style="background-color: #fff; order: 2">
     <div class="card-body">
         <h5 class="card-title" style="background-color: #fff" title="{{ $award_category }}">{{ $award_category }}</h5>
         <div class="row">

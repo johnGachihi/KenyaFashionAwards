@@ -35,6 +35,9 @@
                     let votesPerCategory = @json($votes_per_category);
                 </script>
             </div>
+            <div id="main-stats-container" class="col-8">
+
+            </div>
         </div>
     </div>
 @endsection
