@@ -38,6 +38,10 @@ var SideCharts = /** @class */ (function () {
         this.charts.set(chartData.category_id, chart);
         return chart;
     };
+    //Temporary
+    SideCharts.prototype.getSideChart = function (index) {
+        return this.charts.get(index);
+    };
     return SideCharts;
 }());
 exports.default = SideCharts;

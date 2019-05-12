@@ -44,5 +44,9 @@ export default class SideCharts {
 
         return chart;
     }
+
+    getSideChart(index) {
+        return this.charts.get(index);
+    }
 }
 
