@@ -574,9 +574,10 @@ function (_super) {
 
     _this.totalEl = totalEl;
     _this.totalEl.innerText = "" + _this.awardCategoryData.total;
-    _this.parentEl = _this.canvasEl.closest('.stat-card');
-    _this.parentEl.style.order = '1';
-    console.log('Parent --->', _this.parentEl);
+    _this.parentStatCard = _this.canvasEl.closest('.stat-card');
+    _this.parentStatCard.style.order = '1';
+    console.log('Parent --->', _this.parentStatCard);
+    $("#" + _this.parentStatCard.id + " .side-vote-bargraph-place-holder").css('display', 'none');
     return _this;
   }
 
@@ -656,8 +657,7 @@ function () {
     var chart = new SideBarChart_1["default"](chartData, canvasEl, new SideBarChartDataPointIncrementer_1["default"](), totalEl);
     this.charts.set(chartData.category_id, chart);
     return chart;
-  }; //Temporary
-
+  };
 
   SideCharts.prototype.getSideChart = function (index) {
     return this.charts.get(index);

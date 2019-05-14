@@ -20,9 +20,10 @@ var SideBarChart = /** @class */ (function (_super) {
         var _this = _super.call(this, awardCategoryData, canvasEl, incrementer) || this;
         _this.totalEl = totalEl;
         _this.totalEl.innerText = "" + _this.awardCategoryData.total;
-        _this.parentEl = _this.canvasEl.closest('.stat-card');
-        _this.parentEl.style.order = '1';
-        console.log('Parent --->', _this.parentEl);
+        _this.parentStatCard = _this.canvasEl.closest('.stat-card');
+        _this.parentStatCard.style.order = '1';
+        console.log('Parent --->', _this.parentStatCard);
+        $("#" + _this.parentStatCard.id + " .side-vote-bargraph-place-holder").css('display', 'none');
         return _this;
     }
     SideBarChart.prototype.increment = function (candidate) {

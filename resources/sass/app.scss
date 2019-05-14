@@ -21,6 +21,18 @@ $mdc-theme-primary: #1a1a1a;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.side-vote-bargraph-place-holder {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 
 //Applications page
 .applicant-dets-titles {
