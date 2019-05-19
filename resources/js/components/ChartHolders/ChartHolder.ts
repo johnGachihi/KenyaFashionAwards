@@ -11,7 +11,7 @@ export default class ChartHolder {
         this.canvasId = `mainChart-canvas_${ChartHolder.counter}`;
         this.chartHolderElementId = `chartHolder_${ChartHolder.counter++}`;
         this.domElementString = `
-            <div id="${this.chartHolderElementId}" class='grid-stack-item mdc-card mdc-elevation--z1 mx-3'
+            <div id="${this.chartHolderElementId}" class='grid-stack-item mdc-card mdc-card--outlined mdc-elevation--z1 mx-3'
                 data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
                 <div class="grid-stack-item-content w-100 h-100">
                     <canvas id="${this.canvasId}" class="main-chart" data-charttype="${chartType}"></canvas>

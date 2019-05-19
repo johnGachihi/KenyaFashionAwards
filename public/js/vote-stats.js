@@ -558,6 +558,7 @@ function (_super) {
 
     _this.options.type = 'pie';
     _this.options.options.legend.display = true;
+    _this.options.options.aspectRatio = 1;
     return _this;
   }
 
@@ -651,7 +652,7 @@ function () {
     this.parentEl = parent;
     this.canvasId = "mainChart-canvas_" + ChartHolder.counter;
     this.chartHolderElementId = "chartHolder_" + ChartHolder.counter++;
-    this.domElementString = "\n            <div id=\"" + this.chartHolderElementId + "\" class='grid-stack-item mdc-card mdc-elevation--z1 mx-3'\n                data-gs-x=\"0\" data-gs-y=\"0\" data-gs-width=\"4\" data-gs-height=\"2\">\n                <div class=\"grid-stack-item-content w-100 h-100\">\n                    <canvas id=\"" + this.canvasId + "\" class=\"main-chart\" data-charttype=\"" + chartType + "\"></canvas>\n                </div>\n            </div>\n        ";
+    this.domElementString = "\n            <div id=\"" + this.chartHolderElementId + "\" class='grid-stack-item mdc-card mdc-card--outlined mdc-elevation--z1 mx-3'\n                data-gs-x=\"0\" data-gs-y=\"0\" data-gs-width=\"4\" data-gs-height=\"2\">\n                <div class=\"grid-stack-item-content w-100 h-100\">\n                    <canvas id=\"" + this.canvasId + "\" class=\"main-chart\" data-charttype=\"" + chartType + "\"></canvas>\n                </div>\n            </div>\n        ";
   }
 
   ChartHolder.prototype.renderChartContainer = function () {
@@ -783,35 +784,78 @@ var PieChartConfig_1 = __webpack_require__(/*! ./ChartConfig/PieChartConfig */ "
 var MainCharts =
 /** @class */
 function () {
-  function MainCharts() {
+  function MainCharts(userPrefCharts) {
+    this.userPrefCharts = userPrefCharts;
     this.charts = [];
     this.chartsParent = $('.grid-stack');
+    this._charts = new Map();
   }
+
+  MainCharts.prototype.makeCharts = function (data) {
+    //First remove all current widgets
+    this.chartsParent.data('gridstack').removeAll();
+
+    for (var _i = 0, _a = this.userPrefCharts; _i < _a.length; _i++) {
+      var c = _a[_i];
+
+      var _b = new ChartHolder_1["default"](this.chartsParent, c).renderChartContainer(),
+          canvas = _b.canvas,
+          holderEl = _b.holderEl;
+
+      var chart = new chart_js_1.Chart(canvas.getContext('2d'), this.getChartConfig(c, data));
+
+      this._charts.set(c, chart);
+
+      this.chartsParent.data('gridstack').makeWidget(holderEl);
+    }
+  };
+  /*populateCharts(data: Data) {
+      this._charts.forEach(((chart, key) => {
+          console.log("------>", chart.data);
+          chart.data.datasets[0].data = data.data;
+          chart.data.datasets[0].labels = data.labels;
+      }))
+  }*/
+
 
   MainCharts.prototype.addChart = function (data, chartType) {
     var chartHolder = new ChartHolder_1["default"](this.chartsParent, chartType);
 
     var _a = chartHolder.renderChartContainer(),
         canvas = _a.canvas,
-        holderEl = _a.holderEl; // let canvas = document.querySelector(`#${canvasId}`);
+        holderEl = _a.holderEl; // console.log('canvas ----->', canvas);
 
 
-    console.log('canvas ----->', canvas);
     var ctx = canvas.getContext('2d');
     var chart = new chart_js_1.Chart(ctx, this.getChartConfig(chartType, data).getConfig());
-    console.log("chart ----->", chart);
+    console.log("chart ----->", chart); //THIS WILL CHANGE TO this._charts.set... WHEN IMPLEMENTING ADDITION OF CHARTS
+
     this.charts.push(chart);
     var gridstack = this.chartsParent.data('gridstack');
     gridstack.makeWidget(holderEl);
     return holderEl;
   };
 
+  MainCharts.prototype.update = function () {
+    this._charts.forEach(function (chart) {
+      chart.update();
+    });
+  };
+
+  MainCharts.prototype.getCharts = function () {
+    return this.charts;
+  };
+
   MainCharts.prototype.getChartConfig = function (chartType, data) {
+    var config;
+
     if (chartType === ChartConstants_1.CHART_BAR) {
-      return new MainBarChartConfig_1["default"](data.data, data.labels);
+      config = new MainBarChartConfig_1["default"](data.data, data.labels);
     } else if (chartType === ChartConstants_1.CHART_PIE) {
-      return new PieChartConfig_1["default"](data.data, data.labels);
+      config = new PieChartConfig_1["default"](data.data, data.labels);
     }
+
+    return config.getConfig();
   };
 
   return MainCharts;
@@ -875,7 +919,8 @@ function (_super) {
     _this.totalEl.innerText = "" + _this.awardCategoryData.total;
     _this.parentStatCard = _this.canvasEl.closest('.stat-card');
     _this.parentStatCard.style.order = '1';
-    console.log('Parent --->', _this.parentStatCard); //Remove the chart's placeholder
+    console.log('Parent --->', _this.parentStatCard);
+    _this.categoryTitle = $("#" + _this.parentStatCard.id + " .card-title").text(); //Remove the chart's placeholder
 
     $("#" + _this.parentStatCard.id + " .side-vote-bargraph-place-holder").css('display', 'none');
     return _this;
@@ -887,6 +932,16 @@ function (_super) {
     var total = parseInt(this.totalEl.innerText);
     this.totalEl.innerText = "" + ++total;
     console.log(total);
+  };
+
+  SideBarChart.prototype.select = function () {
+    $(this.parentStatCard).addClass('selected');
+    $('#selected-category-title').text(this.categoryTitle);
+    console.log(this.categoryTitle);
+  };
+
+  SideBarChart.prototype.deselect = function () {
+    $(this.parentStatCard).removeClass('selected');
   };
 
   return SideBarChart;
@@ -957,8 +1012,29 @@ function () {
     return chart;
   };
 
+  SideCharts.prototype.select = function (chartKey) {
+    if (this.selected !== null && typeof this.selected !== "undefined") this.selected.deselect();
+    this.charts.forEach(function (value, key) {
+      console.log(key, ' - ', value);
+    });
+    this.selected = this.charts.get(chartKey);
+    console.log("selected sidechart", this.charts.get(chartKey));
+    this.selected.select();
+  };
+
   SideCharts.prototype.getSideChart = function (index) {
     return this.charts.get(index);
+  };
+
+  SideCharts.prototype.getFirstChartIndex = function () {
+    var index = this.charts.keys().next().value;
+    console.log(index);
+    this.charts.forEach(function (value, key) {
+      if (index > key) {
+        index = key;
+      }
+    });
+    return index;
   };
 
   return SideCharts;
@@ -982,18 +1058,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var simplebar_dist_simplebar_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(simplebar_dist_simplebar_css__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _SideCharts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SideCharts */ "./resources/js/components/SideCharts.js");
 /* harmony import */ var _SideCharts__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_SideCharts__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _BarChart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BarChart */ "./resources/js/components/BarChart.js");
-/* harmony import */ var _BarChart__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_BarChart__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _DataPointIncrementer_MainChartDataPointIncrementer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./DataPointIncrementer/MainChartDataPointIncrementer */ "./resources/js/components/DataPointIncrementer/MainChartDataPointIncrementer.js");
-/* harmony import */ var _DataPointIncrementer_MainChartDataPointIncrementer__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_DataPointIncrementer_MainChartDataPointIncrementer__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _ChartHolders_ChartHolder__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ChartHolders/ChartHolder */ "./resources/js/components/ChartHolders/ChartHolder.js");
-/* harmony import */ var _ChartHolders_ChartHolder__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_ChartHolders_ChartHolder__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _MainCharts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./MainCharts */ "./resources/js/components/MainCharts.js");
-/* harmony import */ var _MainCharts__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_MainCharts__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _node_modules_gridstack_dist_gridstack_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../../../node_modules/gridstack/dist/gridstack.css */ "./node_modules/gridstack/dist/gridstack.css");
-/* harmony import */ var _node_modules_gridstack_dist_gridstack_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_node_modules_gridstack_dist_gridstack_css__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _node_modules_gridstack_dist_gridstack_all__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../../../node_modules/gridstack/dist/gridstack.all */ "./node_modules/gridstack/dist/gridstack.all.js");
-/* harmony import */ var _node_modules_gridstack_dist_gridstack_all__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_node_modules_gridstack_dist_gridstack_all__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _ChartConfig_ChartConstants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ChartConfig/ChartConstants */ "./resources/js/components/ChartConfig/ChartConstants.js");
+/* harmony import */ var _ChartConfig_ChartConstants__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_ChartConfig_ChartConstants__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _BarChart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./BarChart */ "./resources/js/components/BarChart.js");
+/* harmony import */ var _BarChart__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_BarChart__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _DataPointIncrementer_MainChartDataPointIncrementer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./DataPointIncrementer/MainChartDataPointIncrementer */ "./resources/js/components/DataPointIncrementer/MainChartDataPointIncrementer.js");
+/* harmony import */ var _DataPointIncrementer_MainChartDataPointIncrementer__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_DataPointIncrementer_MainChartDataPointIncrementer__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _ChartHolders_ChartHolder__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ChartHolders/ChartHolder */ "./resources/js/components/ChartHolders/ChartHolder.js");
+/* harmony import */ var _ChartHolders_ChartHolder__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_ChartHolders_ChartHolder__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _MainCharts__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./MainCharts */ "./resources/js/components/MainCharts.js");
+/* harmony import */ var _MainCharts__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_MainCharts__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _node_modules_gridstack_dist_gridstack_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../../../node_modules/gridstack/dist/gridstack.css */ "./node_modules/gridstack/dist/gridstack.css");
+/* harmony import */ var _node_modules_gridstack_dist_gridstack_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_node_modules_gridstack_dist_gridstack_css__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _node_modules_gridstack_dist_gridstack_all__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./../../../node_modules/gridstack/dist/gridstack.all */ "./node_modules/gridstack/dist/gridstack.all.js");
+/* harmony import */ var _node_modules_gridstack_dist_gridstack_all__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_node_modules_gridstack_dist_gridstack_all__WEBPACK_IMPORTED_MODULE_9__);
+
 
 
 
@@ -1005,29 +1084,35 @@ __webpack_require__.r(__webpack_exports__);
 
 
 $(window).on('load', function () {
-  console.log($('.grid-stack'));
-  $('.grid-stack').gridstack();
-  var gridstack = $('.grid-stack').data('gridstack'); // gridstack.enableMove(true, false);
-  // gridstack.movable('.grid-stack-item', true);
-
-  console.log('gridstack ---->', gridstack);
+  var $gridStack = $('.grid-stack');
+  $gridStack.gridstack();
+  var gridstack = $gridStack.data('gridstack');
+  console.log("votesPerCategory", votesPerCategory);
   var sideCharts = new _SideCharts__WEBPACK_IMPORTED_MODULE_2___default.a(votesPerCategory);
+  var mainCharts = new _MainCharts__WEBPACK_IMPORTED_MODULE_7___default.a([_ChartConfig_ChartConstants__WEBPACK_IMPORTED_MODULE_3__["CHART_BAR"], _ChartConfig_ChartConstants__WEBPACK_IMPORTED_MODULE_3__["CHART_PIE"]]);
   Echo.channel('the-polls').listen('VoteCast', function (e) {
-    console.log(e);
+    console.log("eeee e", e);
     sideCharts.plusOne(e.vote.award_category_id, e.vote.candidate);
+    mainCharts.update();
+    console.log("mainCharts", mainCharts);
+    mainCharts.getCharts().forEach(function (value, index) {
+      console.log("MainCharts chart: ", value);
+    });
   });
   $('.stat-card').on('click', function (e) {
     var categoryId = $(e.target).closest('.stat-card').attr('id');
-    var data = sideCharts.getSideChart(parseInt(categoryId)).getChartData();
-    var chartHolder = new _MainCharts__WEBPACK_IMPORTED_MODULE_6___default.a().addChart({
+    var data = sideCharts.getSideChart(parseInt(categoryId)).getChartData(); // let chartHolder = new MainCharts().addChart({data: data.votes, labels: data.candidates}, 'bar');
+    // let chartHolder2 = new MainCharts().addChart({data: data.votes, labels: data.candidates}, 'pie');
+
+    console.log('categoryId', categoryId);
+    sideCharts.select(parseInt(categoryId));
+    mainCharts.makeCharts({
       data: data.votes,
       labels: data.candidates
-    }, 'bar');
-    var chartHolder2 = new _MainCharts__WEBPACK_IMPORTED_MODULE_6___default.a().addChart({
-      data: data.votes,
-      labels: data.candidates
-    }, 'pie');
+    });
   });
+  var firstSideChartId = sideCharts.getFirstChartIndex();
+  $(".stat-card#".concat(firstSideChartId)).trigger('click');
   /*let toBeRemovedChartData;
   let toBeDestroyedChart;
   $('.stat-card').on('click', e => {

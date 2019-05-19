@@ -36,6 +36,7 @@
                 </script>
             </div>
             <div id="main-stats-container" class="col-8">
+                <h4 id="selected-category-title" class="py-3"></h4>
                 <div class="w-100 h-100">
                     <div class="grid-stack">
                         {{--<div id="gsi-1" class="grid-stack-item mdc-elevation--z1"

@@ -36,8 +36,28 @@ var SideCharts = /** @class */ (function () {
         this.charts.set(chartData.category_id, chart);
         return chart;
     };
+    SideCharts.prototype.select = function (chartKey) {
+        if (this.selected !== null && typeof (this.selected) !== "undefined")
+            this.selected.deselect();
+        this.charts.forEach(function (value, key) {
+            console.log(key, ' - ', value);
+        });
+        this.selected = this.charts.get(chartKey);
+        console.log("selected sidechart", this.charts.get(chartKey));
+        this.selected.select();
+    };
     SideCharts.prototype.getSideChart = function (index) {
         return this.charts.get(index);
+    };
+    SideCharts.prototype.getFirstChartIndex = function () {
+        var index = this.charts.keys().next().value;
+        console.log(index);
+        this.charts.forEach(function (value, key) {
+            if (index > key) {
+                index = key;
+            }
+        });
+        return index;
     };
     return SideCharts;
 }());

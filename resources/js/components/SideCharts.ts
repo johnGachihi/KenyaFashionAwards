@@ -4,7 +4,8 @@ import SideBarChart from "./SideBarChart";
 
 export default class SideCharts {
     chartsData: ChartData;
-    charts : Map<number, any>;
+    charts : Map<number, SideBarChart>;
+    selected: SideBarChart;
 
     constructor(chartsData) {
         this.chartsData = chartsData;
@@ -28,7 +29,7 @@ export default class SideCharts {
                 candidates: [candidate.name],
                 votes: [1],
                 total: 1
-            })
+            });
 
             this.charts.set(category_id, newChart);
         }
@@ -44,8 +45,33 @@ export default class SideCharts {
         return chart;
     }
 
+    select(chartKey: number){
+        if(this.selected !== null && typeof(this.selected) !== "undefined")
+            this.selected.deselect();
+
+        this.charts.forEach((value, key) => {
+            console.log(key, ' - ', value);
+        });
+
+        this.selected = this.charts.get(chartKey);
+        console.log("selected sidechart", this.charts.get(chartKey));
+        this.selected.select();
+    }
+
     getSideChart(index) {
         return this.charts.get(index);
+    }
+
+    getFirstChartIndex() {
+        let index = this.charts.keys().next().value;
+        console.log(index);
+        this.charts.forEach((value, key) => {
+            if(index > key) {
+                index = key;
+            }
+        });
+
+        return index;
     }
 }
 

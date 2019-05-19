@@ -11804,6 +11804,10 @@ svg.mdc-button__icon {
   align-items: center;
 }
 
+.stat-card.selected {
+  border: 10px solid #e4b66eb5;
+}
+
 .applicant-dets-titles {
   color: #1a1a1a !important;
 }

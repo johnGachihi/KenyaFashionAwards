@@ -33,6 +33,11 @@ $mdc-theme-primary: #1a1a1a;
   align-items: center;
 }
 
+.stat-card.selected {
+  border: 10px solid #e4b66eb5;
+  //border-radius: inherit;
+}
+
 
 
 //Applications page

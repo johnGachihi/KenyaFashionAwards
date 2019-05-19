@@ -20,6 +20,7 @@ var PieChartConfig = /** @class */ (function (_super) {
         var _this = _super.call(this, data, labels) || this;
         _this.options.type = 'pie';
         _this.options.options.legend.display = true;
+        _this.options.options.aspectRatio = 1;
         return _this;
     }
     return PieChartConfig;
