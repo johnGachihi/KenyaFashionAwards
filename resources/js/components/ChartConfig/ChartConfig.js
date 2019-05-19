@@ -8,14 +8,14 @@ var ChartConfig = /** @class */ (function () {
                 labels: labels,
                 datasets: [{
                         data: data,
-                        backgroundColor: [
+                        /*backgroundColor: [
                             'rgba(0,0,0,1)',
                             'rgba(0,0,0,1)',
                             'rgba(0,0,0,1)',
                             'rgba(0,0,0,1)',
                             'rgba(0,0,0,1)',
                             'rgba(0,0,0,1)'
-                        ],
+                        ],*/
                         borderColor: [
                             'rgba(0,0,0,1)',
                             'rgba(0,0,0,1)',

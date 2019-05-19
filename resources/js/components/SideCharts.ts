@@ -1,10 +1,11 @@
 import SideBarChartDataPointIncrementor from './DataPointIncrementer/SideBarChartDataPointIncrementer';
-import VotesInCategory from "./Interfaces/VotesInCategory";
+import ChartData from "./Interfaces/ChartData";
 import SideBarChart from "./SideBarChart";
 
 export default class SideCharts {
-    chartsData: VotesInCategory;
+    chartsData: ChartData;
     charts : Map<number, any>;
+
     constructor(chartsData) {
         this.chartsData = chartsData;
         this.charts = new Map();
@@ -33,11 +34,9 @@ export default class SideCharts {
         }
     }
 
-    setupChart(chartData: VotesInCategory) {
+    setupChart(chartData: ChartData) {
         console.log(chartData);
         const canvasEl = document.querySelector(`#sideChart${chartData.category_id}`);
-        // console.log(`#sideChart${chartData.category_id}`);
-        // console.log(`#totalVotes${chartData.category_id}`);
         const totalEl = document.querySelector(`#totalVotes${chartData.category_id}`);
         let chart = new SideBarChart(chartData, <HTMLElement>canvasEl, new SideBarChartDataPointIncrementor(), <HTMLElement>totalEl);
         this.charts.set(chartData.category_id, chart);

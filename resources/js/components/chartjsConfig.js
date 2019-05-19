@@ -68,58 +68,133 @@ export function getChartjsConfig(data, labels) {
         type: 'bar',
             maintainAspectRatio: true,
             data: {
-            labels: labels,
+                labels: labels,
                 datasets: [{
-                data: data,
-                backgroundColor: [
-                    'rgba(0,0,0,1)',
-                    'rgba(0,0,0,1)',
-                    'rgba(0,0,0,1)',
-                    'rgba(0,0,0,1)',
-                    'rgba(0,0,0,1)',
-                    'rgba(0,0,0,1)'
-                ],
-                borderColor: [
-                    'rgba(0,0,0,1)',
-                    'rgba(0,0,0,1)',
-                    'rgba(0,0,0,1)',
-                    'rgba(0,0,0,1)',
-                    'rgba(0,0,0,1)',
-                    'rgba(0,0,0,1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            legend: {
-                display: false
-            },
-            title: {
-                // display: true,
-                text: 'Male Fashion Model'
-            },
-            scales: {
-                yAxes: [{
-                    gridLines: {
-                        display: false,
-                        drawBorder: false
-                    },
-                    ticks: {
-                        beginAtZero: true,
-                        display: false
-                    }
-                }],
-                xAxes: [{
-                    gridLines: {
-                        display: false
-                    },
-                    ticks: {
-                        // beginAtZero: true,
-                        display: false
-                    },
-                    minBarLength: 20
+                    data: data,
+                    backgroundColor: [
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)'
+                    ],
+                    borderColor: [
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)'
+                    ],
+                    borderWidth: 1
                 }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    // display: true,
+                    // text: 'Male Fashion Model'
+                },
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            beginAtZero: true,
+                            display: false
+                        }
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            // beginAtZero: true,
+                            display: false
+                        },
+                        // minBarLength: 20
+                    }]
+                }
             }
-        }
-    };
+        };
 }
+
+export function getSideBarChartConfig(data, labels) {
+    let config;
+    ({...config} = chartConfig);
+    config.data.labels = labels;
+    config.data.datasets[0].data = data;
+    config.type = 'bar';
+    config.options.legend.display = false;
+    config.options.scales.yAxes[0].gridLines.display = false;
+    config.options.scales.yAxes[0].gridLines.drawBorder = false;
+    config.options.scales.yAxes[0].ticks.display = false;
+    config.options.scales.xAxes[0].gridLines.display = false;
+    config.options.scales.xAxes[0].ticks.display = false;
+
+    return config;
+}
+
+const chartConfig = {
+    type: 'bar',
+    maintainAspectRatio: true,
+    data: {
+        // labels: labels,
+        datasets: [{
+            // data: data,
+            backgroundColor: [
+                'rgba(0,0,0,1)',
+                'rgba(0,0,0,1)',
+                'rgba(0,0,0,1)',
+                'rgba(0,0,0,1)',
+                'rgba(0,0,0,1)',
+                'rgba(0,0,0,1)'
+            ],
+            borderColor: [
+                'rgba(0,0,0,1)',
+                'rgba(0,0,0,1)',
+                'rgba(0,0,0,1)',
+                'rgba(0,0,0,1)',
+                'rgba(0,0,0,1)',
+                'rgba(0,0,0,1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        legend: {
+        //     display: false
+        },
+        title: {
+            // display: true,
+            // text: 'Male Fashion Model'
+        },
+        scales: {
+            yAxes: [{
+                gridLines: {
+                //     display: false,
+                //     drawBorder: false
+                },
+                ticks: {
+                    beginAtZero: true,
+                    // display: false
+                }
+            }],
+            xAxes: [{
+                gridLines: {
+                    display: true
+                },
+                ticks: {
+                //     // beginAtZero: true,
+                    display: true
+                },
+                // minBarLength: 20
+            }]
+        }
+    }
+};

@@ -23,6 +23,7 @@ var SideBarChart = /** @class */ (function (_super) {
         _this.parentStatCard = _this.canvasEl.closest('.stat-card');
         _this.parentStatCard.style.order = '1';
         console.log('Parent --->', _this.parentStatCard);
+        //Remove the chart's placeholder
         $("#" + _this.parentStatCard.id + " .side-vote-bargraph-place-holder").css('display', 'none');
         return _this;
     }

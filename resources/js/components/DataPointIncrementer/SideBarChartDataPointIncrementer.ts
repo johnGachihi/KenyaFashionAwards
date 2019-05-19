@@ -1,6 +1,6 @@
 import DataPointIncrementer from "./DataPointIncrementer";
 import Candidate from "../Interfaces/Candidate";
-import $ from 'jquery';
+// import $ from 'jquery';
 
 export default class SideBarChartDataPointIncrementer implements DataPointIncrementer{
     /**

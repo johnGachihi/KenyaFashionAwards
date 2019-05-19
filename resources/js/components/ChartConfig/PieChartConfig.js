@@ -14,15 +14,15 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var ChartConfig_1 = require("./ChartConfig");
-var SideBarChartConfig = /** @class */ (function (_super) {
-    __extends(SideBarChartConfig, _super);
-    function SideBarChartConfig(data, labels) {
+var PieChartConfig = /** @class */ (function (_super) {
+    __extends(PieChartConfig, _super);
+    function PieChartConfig(data, labels) {
         var _this = _super.call(this, data, labels) || this;
-        _this.options.options.scales.yAxes[0].gridLines.display = false;
-        _this.options.options.maintainAspectRatio = false;
+        _this.options.type = 'pie';
+        _this.options.options.legend.display = true;
         return _this;
     }
-    return SideBarChartConfig;
+    return PieChartConfig;
 }(ChartConfig_1.default));
-exports.default = SideBarChartConfig;
-//# sourceMappingURL=SideBarChartConfig.js.map
+exports.default = PieChartConfig;
+//# sourceMappingURL=PieChartConfig.js.map

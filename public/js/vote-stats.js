@@ -312,8 +312,7 @@ function () {
     this.awardCategoryData = awardCategoryData;
     this.canvasEl = canvasEl;
     var ctx = this.canvasEl.getContext('2d');
-    this.chart = new chart_js_1.Chart(ctx, new SideBarChartConfig_1["default"](this.awardCategoryData.votes, this.awardCategoryData.candidates).getConfig());
-    console.log(this.chart);
+    this.chart = new chart_js_1.Chart(ctx, new SideBarChartConfig_1["default"](this.awardCategoryData.votes, this.awardCategoryData.candidates).getConfig()); // console.log(this.chart);
   }
 
   BarChart.prototype.getChartData = function () {
@@ -331,8 +330,11 @@ function () {
 
 
   BarChart.prototype.increment = function (candidate) {
-    this.incrementer.incrementDataPoint(this.chart, candidate, this.awardCategoryData);
-    console.log(this.awardCategoryData);
+    this.incrementer.incrementDataPoint(this.chart, candidate, this.awardCategoryData); // console.log(this.awardCategoryData);
+  };
+
+  BarChart.prototype.destroy = function () {
+    this.chart.destroy();
   };
 
   return BarChart;
@@ -366,7 +368,15 @@ function () {
         labels: labels,
         datasets: [{
           data: data,
-          backgroundColor: ['rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)'],
+
+          /*backgroundColor: [
+              'rgba(0,0,0,1)',
+              'rgba(0,0,0,1)',
+              'rgba(0,0,0,1)',
+              'rgba(0,0,0,1)',
+              'rgba(0,0,0,1)',
+              'rgba(0,0,0,1)'
+          ],*/
           borderColor: ['rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)', 'rgba(0,0,0,1)'],
           borderWidth: 1
         }]
@@ -408,6 +418,153 @@ function () {
 }();
 
 exports["default"] = ChartConfig;
+
+/***/ }),
+
+/***/ "./resources/js/components/ChartConfig/ChartConstants.js":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/ChartConfig/ChartConstants.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.CHART_BAR = 'bar';
+exports.CHART_PIE = 'pie';
+
+/***/ }),
+
+/***/ "./resources/js/components/ChartConfig/MainBarChartConfig.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/ChartConfig/MainBarChartConfig.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __extends = this && this.__extends || function () {
+  var _extendStatics = function extendStatics(d, b) {
+    _extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (d, b) {
+      d.__proto__ = b;
+    } || function (d, b) {
+      for (var p in b) {
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+      }
+    };
+
+    return _extendStatics(d, b);
+  };
+
+  return function (d, b) {
+    _extendStatics(d, b);
+
+    function __() {
+      this.constructor = d;
+    }
+
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var ChartConfig_1 = __webpack_require__(/*! ./ChartConfig */ "./resources/js/components/ChartConfig/ChartConfig.js");
+
+var MainBarChartConfig =
+/** @class */
+function (_super) {
+  __extends(MainBarChartConfig, _super);
+
+  function MainBarChartConfig(data, labels) {
+    var _this = _super.call(this, data, labels) || this;
+
+    _this.options.options.legend.display = true;
+    _this.options.options.scales.yAxes[0].gridLines.display = true;
+    _this.options.options.scales.yAxes[0].gridLines.drawBorder = true;
+    _this.options.options.scales.yAxes[0].ticks.display = true;
+    _this.options.options.scales.xAxes[0].gridLines.display = true;
+    _this.options.options.scales.xAxes[0].ticks.display = true;
+    _this.options.options.aspectRatio = 1;
+    return _this;
+  }
+
+  return MainBarChartConfig;
+}(ChartConfig_1["default"]);
+
+exports["default"] = MainBarChartConfig;
+
+/***/ }),
+
+/***/ "./resources/js/components/ChartConfig/PieChartConfig.js":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/ChartConfig/PieChartConfig.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __extends = this && this.__extends || function () {
+  var _extendStatics = function extendStatics(d, b) {
+    _extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (d, b) {
+      d.__proto__ = b;
+    } || function (d, b) {
+      for (var p in b) {
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+      }
+    };
+
+    return _extendStatics(d, b);
+  };
+
+  return function (d, b) {
+    _extendStatics(d, b);
+
+    function __() {
+      this.constructor = d;
+    }
+
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var ChartConfig_1 = __webpack_require__(/*! ./ChartConfig */ "./resources/js/components/ChartConfig/ChartConfig.js");
+
+var PieChartConfig =
+/** @class */
+function (_super) {
+  __extends(PieChartConfig, _super);
+
+  function PieChartConfig(data, labels) {
+    var _this = _super.call(this, data, labels) || this;
+
+    _this.options.type = 'pie';
+    _this.options.options.legend.display = true;
+    return _this;
+  }
+
+  return PieChartConfig;
+}(ChartConfig_1["default"]);
+
+exports["default"] = PieChartConfig;
 
 /***/ }),
 
@@ -462,6 +619,7 @@ function (_super) {
     var _this = _super.call(this, data, labels) || this;
 
     _this.options.options.scales.yAxes[0].gridLines.display = false;
+    _this.options.options.maintainAspectRatio = false;
     return _this;
   }
 
@@ -469,6 +627,80 @@ function (_super) {
 }(ChartConfig_1["default"]);
 
 exports["default"] = SideBarChartConfig;
+
+/***/ }),
+
+/***/ "./resources/js/components/ChartHolders/ChartHolder.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/ChartHolders/ChartHolder.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var ChartHolder =
+/** @class */
+function () {
+  function ChartHolder(parent, chartType) {
+    this.parentEl = parent;
+    this.canvasId = "mainChart-canvas_" + ChartHolder.counter;
+    this.chartHolderElementId = "chartHolder_" + ChartHolder.counter++;
+    this.domElementString = "\n            <div id=\"" + this.chartHolderElementId + "\" class='grid-stack-item mdc-card mdc-elevation--z1 mx-3'\n                data-gs-x=\"0\" data-gs-y=\"0\" data-gs-width=\"4\" data-gs-height=\"2\">\n                <div class=\"grid-stack-item-content w-100 h-100\">\n                    <canvas id=\"" + this.canvasId + "\" class=\"main-chart\" data-charttype=\"" + chartType + "\"></canvas>\n                </div>\n            </div>\n        ";
+  }
+
+  ChartHolder.prototype.renderChartContainer = function () {
+    var parser = new DOMParser();
+    var el = parser.parseFromString(this.domElementString, 'text/html').body.firstChild;
+    this.parentEl.append(el);
+    var canvas = document.getElementById(this.canvasId);
+    var holderEl = document.getElementById(this.chartHolderElementId);
+    return {
+      canvas: canvas,
+      holderEl: holderEl
+    };
+  };
+
+  ChartHolder.counter = 0;
+  return ChartHolder;
+}();
+
+exports["default"] = ChartHolder;
+
+/***/ }),
+
+/***/ "./resources/js/components/DataPointIncrementer/MainChartDataPointIncrementer.js":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/DataPointIncrementer/MainChartDataPointIncrementer.js ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var MainChartDataPointIncrementer =
+/** @class */
+function () {
+  function MainChartDataPointIncrementer() {}
+
+  MainChartDataPointIncrementer.prototype.incrementDataPoint = function (chart, dataPointIdentifier, data) {
+    chart.update();
+  };
+
+  return MainChartDataPointIncrementer;
+}();
+
+exports["default"] = MainChartDataPointIncrementer;
 
 /***/ }),
 
@@ -484,7 +716,7 @@ exports["default"] = SideBarChartConfig;
 
 Object.defineProperty(exports, "__esModule", {
   value: true
-});
+}); // import $ from 'jquery';
 
 var SideBarChartDataPointIncrementer =
 /** @class */
@@ -519,6 +751,73 @@ function () {
 }();
 
 exports["default"] = SideBarChartDataPointIncrementer;
+
+/***/ }),
+
+/***/ "./resources/js/components/MainCharts.js":
+/*!***********************************************!*\
+  !*** ./resources/js/components/MainCharts.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var chart_js_1 = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
+
+var ChartHolder_1 = __webpack_require__(/*! ./ChartHolders/ChartHolder */ "./resources/js/components/ChartHolders/ChartHolder.js");
+
+var MainBarChartConfig_1 = __webpack_require__(/*! ./ChartConfig/MainBarChartConfig */ "./resources/js/components/ChartConfig/MainBarChartConfig.js");
+
+__webpack_require__(/*! ./../../../node_modules/gridstack/dist/gridstack.css */ "./node_modules/gridstack/dist/gridstack.css");
+
+var ChartConstants_1 = __webpack_require__(/*! ./ChartConfig/ChartConstants */ "./resources/js/components/ChartConfig/ChartConstants.js");
+
+var PieChartConfig_1 = __webpack_require__(/*! ./ChartConfig/PieChartConfig */ "./resources/js/components/ChartConfig/PieChartConfig.js");
+
+var MainCharts =
+/** @class */
+function () {
+  function MainCharts() {
+    this.charts = [];
+    this.chartsParent = $('.grid-stack');
+  }
+
+  MainCharts.prototype.addChart = function (data, chartType) {
+    var chartHolder = new ChartHolder_1["default"](this.chartsParent, chartType);
+
+    var _a = chartHolder.renderChartContainer(),
+        canvas = _a.canvas,
+        holderEl = _a.holderEl; // let canvas = document.querySelector(`#${canvasId}`);
+
+
+    console.log('canvas ----->', canvas);
+    var ctx = canvas.getContext('2d');
+    var chart = new chart_js_1.Chart(ctx, this.getChartConfig(chartType, data).getConfig());
+    console.log("chart ----->", chart);
+    this.charts.push(chart);
+    var gridstack = this.chartsParent.data('gridstack');
+    gridstack.makeWidget(holderEl);
+    return holderEl;
+  };
+
+  MainCharts.prototype.getChartConfig = function (chartType, data) {
+    if (chartType === ChartConstants_1.CHART_BAR) {
+      return new MainBarChartConfig_1["default"](data.data, data.labels);
+    } else if (chartType === ChartConstants_1.CHART_PIE) {
+      return new PieChartConfig_1["default"](data.data, data.labels);
+    }
+  };
+
+  return MainCharts;
+}();
+
+exports["default"] = MainCharts;
 
 /***/ }),
 
@@ -576,7 +875,8 @@ function (_super) {
     _this.totalEl.innerText = "" + _this.awardCategoryData.total;
     _this.parentStatCard = _this.canvasEl.closest('.stat-card');
     _this.parentStatCard.style.order = '1';
-    console.log('Parent --->', _this.parentStatCard);
+    console.log('Parent --->', _this.parentStatCard); //Remove the chart's placeholder
+
     $("#" + _this.parentStatCard.id + " .side-vote-bargraph-place-holder").css('display', 'none');
     return _this;
   }
@@ -650,9 +950,7 @@ function () {
 
   SideCharts.prototype.setupChart = function (chartData) {
     console.log(chartData);
-    var canvasEl = document.querySelector("#sideChart" + chartData.category_id); // console.log(`#sideChart${chartData.category_id}`);
-    // console.log(`#totalVotes${chartData.category_id}`);
-
+    var canvasEl = document.querySelector("#sideChart" + chartData.category_id);
     var totalEl = document.querySelector("#totalVotes" + chartData.category_id);
     var chart = new SideBarChart_1["default"](chartData, canvasEl, new SideBarChartDataPointIncrementer_1["default"](), totalEl);
     this.charts.set(chartData.category_id, chart);
@@ -684,10 +982,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var simplebar_dist_simplebar_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(simplebar_dist_simplebar_css__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _SideCharts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SideCharts */ "./resources/js/components/SideCharts.js");
 /* harmony import */ var _SideCharts__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_SideCharts__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _BarChart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BarChart */ "./resources/js/components/BarChart.js");
+/* harmony import */ var _BarChart__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_BarChart__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _DataPointIncrementer_MainChartDataPointIncrementer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./DataPointIncrementer/MainChartDataPointIncrementer */ "./resources/js/components/DataPointIncrementer/MainChartDataPointIncrementer.js");
+/* harmony import */ var _DataPointIncrementer_MainChartDataPointIncrementer__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_DataPointIncrementer_MainChartDataPointIncrementer__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _ChartHolders_ChartHolder__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ChartHolders/ChartHolder */ "./resources/js/components/ChartHolders/ChartHolder.js");
+/* harmony import */ var _ChartHolders_ChartHolder__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_ChartHolders_ChartHolder__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _MainCharts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./MainCharts */ "./resources/js/components/MainCharts.js");
+/* harmony import */ var _MainCharts__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_MainCharts__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _node_modules_gridstack_dist_gridstack_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../../../node_modules/gridstack/dist/gridstack.css */ "./node_modules/gridstack/dist/gridstack.css");
+/* harmony import */ var _node_modules_gridstack_dist_gridstack_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_node_modules_gridstack_dist_gridstack_css__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _node_modules_gridstack_dist_gridstack_all__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../../../node_modules/gridstack/dist/gridstack.all */ "./node_modules/gridstack/dist/gridstack.all.js");
+/* harmony import */ var _node_modules_gridstack_dist_gridstack_all__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_node_modules_gridstack_dist_gridstack_all__WEBPACK_IMPORTED_MODULE_8__);
+
+
+
+
+
+
+ // import gridstack from 'gridstack';
 
 
 
 $(window).on('load', function () {
+  console.log($('.grid-stack'));
+  $('.grid-stack').gridstack();
+  var gridstack = $('.grid-stack').data('gridstack'); // gridstack.enableMove(true, false);
+  // gridstack.movable('.grid-stack-item', true);
+
+  console.log('gridstack ---->', gridstack);
   var sideCharts = new _SideCharts__WEBPACK_IMPORTED_MODULE_2___default.a(votesPerCategory);
   Echo.channel('the-polls').listen('VoteCast', function (e) {
     console.log(e);
@@ -695,10 +1018,29 @@ $(window).on('load', function () {
   });
   $('.stat-card').on('click', function (e) {
     var categoryId = $(e.target).closest('.stat-card').attr('id');
-    console.log(categoryId);
     var data = sideCharts.getSideChart(parseInt(categoryId)).getChartData();
-    $('#main-stats-container').text(JSON.stringify(data));
+    var chartHolder = new _MainCharts__WEBPACK_IMPORTED_MODULE_6___default.a().addChart({
+      data: data.votes,
+      labels: data.candidates
+    }, 'bar');
+    var chartHolder2 = new _MainCharts__WEBPACK_IMPORTED_MODULE_6___default.a().addChart({
+      data: data.votes,
+      labels: data.candidates
+    }, 'pie');
   });
+  /*let toBeRemovedChartData;
+  let toBeDestroyedChart;
+  $('.stat-card').on('click', e => {
+      console.log(typeof toBeDestroyedChart);
+      if (typeof toBeRemovedChart !== 'undefined') {
+          // toBeRemovedChart.destroy();
+      }
+      let categoryId = $(e.target).closest('.stat-card').attr('id');
+      console.log(categoryId);
+      let data = sideCharts.getSideChart(parseInt(categoryId)).getChartData();
+      toBeRemovedChartData = data;
+      // $('#main-stats-container').text(JSON.stringify(data));
+  });*/
 });
 
 /***/ })

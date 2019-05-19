@@ -11,12 +11,14 @@ interface Data {
 
 interface DataSet {
     data?: number[],
-    backgroundColor: string[],
+    backgroundColor?: string[],
     borderColor: string[],
     borderWidth: 1
 }
 
 interface Options {
+    maintainAspectRatio?: boolean,
+    aspectRatio?: number,
     legend?: {display: boolean},
     title?: {display?: boolean, text?: string},
     scales?: Scales

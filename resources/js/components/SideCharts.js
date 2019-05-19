@@ -31,8 +31,6 @@ var SideCharts = /** @class */ (function () {
     SideCharts.prototype.setupChart = function (chartData) {
         console.log(chartData);
         var canvasEl = document.querySelector("#sideChart" + chartData.category_id);
-        // console.log(`#sideChart${chartData.category_id}`);
-        // console.log(`#totalVotes${chartData.category_id}`);
         var totalEl = document.querySelector("#totalVotes" + chartData.category_id);
         var chart = new SideBarChart_1.default(chartData, canvasEl, new SideBarChartDataPointIncrementer_1.default(), totalEl);
         this.charts.set(chartData.category_id, chart);

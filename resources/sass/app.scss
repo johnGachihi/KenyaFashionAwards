@@ -14,6 +14,7 @@ $mdc-theme-primary: #1a1a1a;
 // Material Components
 @import "~@material/elevation/mdc-elevation";
 @import "~@material/button/mdc-button";
+@import "~@material/card/mdc-card";
 
 
 .navbar-laravel {
@@ -58,6 +59,15 @@ $mdc-theme-primary: #1a1a1a;
 
 .h-fill-screen {
   height: calc(100vh - (88.88px + 16px));
+}
+
+.grid {
+  position: relative;
+}
+.item {
+  position: absolute;
+  display: block;
+  margin: 20px;
 }
 
 //canvas {

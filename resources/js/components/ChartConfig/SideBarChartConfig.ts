@@ -6,6 +6,7 @@ export default class SideBarChartConfig extends ChartConfig {
         super(data, labels);
 
         this.options.options.scales.yAxes[0].gridLines.display = false;
+        this.options.options.maintainAspectRatio = false;
     }
 
 }

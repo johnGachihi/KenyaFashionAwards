@@ -9,7 +9,7 @@ var BarChart = /** @class */ (function () {
         this.canvasEl = canvasEl;
         var ctx = this.canvasEl.getContext('2d');
         this.chart = new chart_js_1.Chart(ctx, new SideBarChartConfig_1.default(this.awardCategoryData.votes, this.awardCategoryData.candidates).getConfig());
-        console.log(this.chart);
+        // console.log(this.chart);
     }
     BarChart.prototype.getChartData = function () {
         return this.awardCategoryData;
@@ -26,7 +26,10 @@ var BarChart = /** @class */ (function () {
     // }
     BarChart.prototype.increment = function (candidate) {
         this.incrementer.incrementDataPoint(this.chart, candidate, this.awardCategoryData);
-        console.log(this.awardCategoryData);
+        // console.log(this.awardCategoryData);
+    };
+    BarChart.prototype.destroy = function () {
+        this.chart.destroy();
     };
     return BarChart;
 }());

@@ -11,6 +11,12 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    {{--<script src="{{ asset('js/app.js') }}"></script>--}}
+
+    {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>--}}
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.0/jquery-ui.js"></script>--}}
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.0/lodash.min.js"></script>--}}
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.4.0/gridstack.all.js"></script>--}}
     {{--<script src="https://cdnjs.com/libraries/Chart.js"></script>--}}
     
     <!-- Fonts -->
@@ -21,6 +27,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootswatch.css') }}" rel="stylesheet">
     <link href="{{ asset('css/shards.css') }}" rel="stylesheet">
+
+    {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.4.0/gridstack.css"/>--}}
     @yield('stylesheets')
 
     <!-- Icons -->

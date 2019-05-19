@@ -14,15 +14,20 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var ChartConfig_1 = require("./ChartConfig");
-var SideBarChartConfig = /** @class */ (function (_super) {
-    __extends(SideBarChartConfig, _super);
-    function SideBarChartConfig(data, labels) {
+var MainBarChartConfig = /** @class */ (function (_super) {
+    __extends(MainBarChartConfig, _super);
+    function MainBarChartConfig(data, labels) {
         var _this = _super.call(this, data, labels) || this;
-        _this.options.options.scales.yAxes[0].gridLines.display = false;
-        _this.options.options.maintainAspectRatio = false;
+        _this.options.options.legend.display = true;
+        _this.options.options.scales.yAxes[0].gridLines.display = true;
+        _this.options.options.scales.yAxes[0].gridLines.drawBorder = true;
+        _this.options.options.scales.yAxes[0].ticks.display = true;
+        _this.options.options.scales.xAxes[0].gridLines.display = true;
+        _this.options.options.scales.xAxes[0].ticks.display = true;
+        _this.options.options.aspectRatio = 1;
         return _this;
     }
-    return SideBarChartConfig;
+    return MainBarChartConfig;
 }(ChartConfig_1.default));
-exports.default = SideBarChartConfig;
-//# sourceMappingURL=SideBarChartConfig.js.map
+exports.default = MainBarChartConfig;
+//# sourceMappingURL=MainBarChartConfig.js.map

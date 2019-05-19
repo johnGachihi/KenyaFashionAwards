@@ -4,17 +4,17 @@ import {Chart} from 'chart.js'
 import SideBarChartDataPointIncrementer from "./DataPointIncrementer/SideBarChartDataPointIncrementer";
 import DataPointIncrementer from "./DataPointIncrementer/DataPointIncrementer";
 import Candidate from "./Interfaces/Candidate";
-import VotesInCategory from "./Interfaces/VotesInCategory";
+import ChartData from "./Interfaces/ChartData";
 import SideBarChartConfig from "./ChartConfig/SideBarChartConfig";
 
 export default class BarChart {
-    awardCategoryData: VotesInCategory;
+    awardCategoryData: ChartData;
     canvasEl: HTMLCanvasElement;
     chart: Chart;
 
     incrementer: DataPointIncrementer;
 
-    constructor(awardCategoryData, canvasEl, incrementer: DataPointIncrementer) {
+    constructor(awardCategoryData: ChartData, canvasEl, incrementer: DataPointIncrementer) {
         this.incrementer = incrementer;
 
         this.awardCategoryData = awardCategoryData;
@@ -26,7 +26,7 @@ export default class BarChart {
             this.awardCategoryData.candidates
         ).getConfig());
 
-        console.log(this.chart);
+        // console.log(this.chart);
     }
 
     getChartData() {
@@ -46,7 +46,11 @@ export default class BarChart {
 
     increment(candidate : Candidate) : void {
         this.incrementer.incrementDataPoint(this.chart, candidate, this.awardCategoryData);
-        console.log(this.awardCategoryData);
+        // console.log(this.awardCategoryData);
+    }
+
+    destroy() {
+        this.chart.destroy();
     }
 
 }

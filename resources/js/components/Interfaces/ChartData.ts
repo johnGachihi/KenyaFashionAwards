@@ -1,4 +1,4 @@
-export default interface VotesInCategory {
+export default interface ChartData {
     category_id : number,
     candidate_ids : number[],
     candidates : string[],
