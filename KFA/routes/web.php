@@ -17,7 +17,9 @@ Route::get('/models', 'pagescontroller@models');
 Route::get('/casting', 'pagescontroller@casting');
 Route::get('/contacts', 'pagescontroller@contact');
 Route::get('/projects', 'pagescontroller@projects');
-Route::get('/blog', 'pagescontroller@blog');
+Route::get('/blog', 'pagescontroller@singleblog');
+Route::get('/login','pagescontroller@login');
+Route::get('/signup', 'pagescontroller@singup');
 // Route::get('/', '');
 
 ?>

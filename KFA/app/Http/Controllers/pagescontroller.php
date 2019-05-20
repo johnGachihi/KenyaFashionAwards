@@ -30,4 +30,10 @@ class pagescontroller extends Controller
     public function singleblog(){
         return view('single-blog');
     }
+    public function login(){
+        return view('login');
+    }
+    public function signup(){
+    return view ('signup');
+    }
 }
