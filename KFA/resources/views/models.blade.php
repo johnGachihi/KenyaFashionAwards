@@ -151,40 +151,47 @@
   <!-- ***** Breadcrumb Area End ***** -->
 
   <!-- ***** Model Area Start ***** -->
-  <section class="mona-model-area model-page section-padding-80-0 mb-30">
+  <section class="section-padding-80-0 mb-30">
 
     <!-- Mona Tab Content -->
     <div class="container">
     <div class="row flex-wrap align-content-sm-around">                 
         <!-- Single Model Item -->
-        <div class="card-deck">            
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl">
-                <div class="card" style="width: 18rem;">
-                  <div class="card-block">
+        <div class="card-deck">
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card" style="width: 15rem;">
                     <img class="card-img-top" src="./img/bg-img/kenya10.jpg" alt="Card image cap">
                     <div class="card-footer">
-                    <a href="#" class="card-link">Winnie</a>
-                  </div>
+                    <a href="#" class="card-link"><strong>Winnie</strong></a>
                   </div>
             </div>
         </div>
                   
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl">
-                  <div class="card" style="width: 18rem;">
+        <div class="col-sm-6 col-md-4 col-lg-3">
+                  <div class="card" style="width: 15rem;">
                       <img class="card-img-top" src="./img/bg-img/kenya11.jpg" alt="Card image cap">
                       <div class="card-footer">
-                      <a href="#" class="card-link">Sessy</a>
+                      <a href="#" class="card-link"><strong>Sessie</strong></a>
                     </div> 
         </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl">
-            <div class="card" style="width: 18rem;">
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card" style="width: 15rem;">
                 <img class="card-img-top" src="./img/bg-img/kenya12.jpg" alt="Card image cap">
                 <div class="card-footer">
-                <a href="#" class="card-link">Aminah</a>
+                <a href="#" class="card-link"><strong>Aminah</strong></a>
               </div>
         </div>
     </div>
+    <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card" style="width: 15rem;">
+            <img class="card-img-top" src="./img/bg-img/kenya13.jpg" alt="Card image cap">
+            <div class="card-footer">
+            <a href="#" class="card-link"><strong>Aminah</strong></a>
+          </div>
+    </div>
+</div>
     
         </div>
         </div>

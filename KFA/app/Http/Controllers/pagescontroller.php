@@ -36,4 +36,7 @@ class pagescontroller extends Controller
     public function signup(){
     return view ('signup');
     }
+    public function vote(){
+        return view ('vote');
+    }
 }
