@@ -44,7 +44,7 @@ Route::middleware(['auth', 'adminCheck'])->group(function() {
 
         Route::post('/applications/decision/reject/{id}', 'ApplicationsController@reject');
 
-        Route::get('/vote_stats', 'VotesController@view');
+        Route::get('/vote_stats', 'VotesController@view')->name('vote-stats');
 
     });
 
@@ -58,6 +58,8 @@ Route::middleware(['auth', 'adminCheck'])->group(function() {
 Route::post('/applications/create', 'ApplicationsController@create');
 
 Route::get('/vote', 'VotesController@cast');
+
+Route::get('/category/all', 'AwardCategoriesController@getAllCategories');
 
 /*
  *  CSRF disabled for testing
