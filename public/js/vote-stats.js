@@ -755,6 +755,68 @@ exports["default"] = SideBarChartDataPointIncrementer;
 
 /***/ }),
 
+/***/ "./resources/js/components/ElementHandlers/VotesStatsSideBarCollapser.js":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/ElementHandlers/VotesStatsSideBarCollapser.js ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var VotesStatsSideBarCollapser =
+/** @class */
+function () {
+  function VotesStatsSideBarCollapser(el) {
+    $(el).click(function (event) {
+      new HandleVotesStatsSideBarOnCollapsePrompted()["do"](el, event);
+    });
+  }
+
+  return VotesStatsSideBarCollapser;
+}();
+
+exports["default"] = VotesStatsSideBarCollapser;
+
+var HandleVotesStatsSideBarOnCollapsePrompted =
+/** @class */
+function () {
+  function HandleVotesStatsSideBarOnCollapsePrompted() {}
+
+  HandleVotesStatsSideBarOnCollapsePrompted.prototype["do"] = function (el, event) {
+    // event.preventDefault();
+    $(el).toggleClass('off');
+    $('#_sidebar').toggleClass('width-0');
+
+    if (document.querySelector('#sideMenuCollapser.off')) {
+      setTimeout(function () {
+        $(el).text('menu');
+        $(el).css('border', 'none');
+      }, 500);
+    } else {
+      $(el).text('remove');
+    } //Toggle Main container
+
+
+    if ($('#_mainCont').hasClass('full')) {
+      $('#_mainCont').removeClass('full');
+    } else {
+      setTimeout(function () {
+        $('#_mainCont').toggleClass('full');
+      }, 500);
+    }
+  };
+
+  return HandleVotesStatsSideBarOnCollapsePrompted;
+}();
+
+/***/ }),
+
 /***/ "./resources/js/components/MainCharts.js":
 /*!***********************************************!*\
   !*** ./resources/js/components/MainCharts.js ***!
@@ -1072,14 +1134,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_gridstack_dist_gridstack_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_node_modules_gridstack_dist_gridstack_css__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _node_modules_gridstack_dist_gridstack_all__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./../../../node_modules/gridstack/dist/gridstack.all */ "./node_modules/gridstack/dist/gridstack.all.js");
 /* harmony import */ var _node_modules_gridstack_dist_gridstack_all__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_node_modules_gridstack_dist_gridstack_all__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _ElementHandlers_VotesStatsSideBarCollapser__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./ElementHandlers/VotesStatsSideBarCollapser */ "./resources/js/components/ElementHandlers/VotesStatsSideBarCollapser.js");
+/* harmony import */ var _ElementHandlers_VotesStatsSideBarCollapser__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_ElementHandlers_VotesStatsSideBarCollapser__WEBPACK_IMPORTED_MODULE_10__);
 
 
 
+ // import VotesStatsSideBarCollapser from "./ElementHandlers/VotesStatsSideBarCollapser"
 
 
 
 
  // import gridstack from 'gridstack';
+
 
 
 
@@ -1101,9 +1167,7 @@ $(window).on('load', function () {
   });
   $('.stat-card').on('click', function (e) {
     var categoryId = $(e.target).closest('.stat-card').attr('id');
-    var data = sideCharts.getSideChart(parseInt(categoryId)).getChartData(); // let chartHolder = new MainCharts().addChart({data: data.votes, labels: data.candidates}, 'bar');
-    // let chartHolder2 = new MainCharts().addChart({data: data.votes, labels: data.candidates}, 'pie');
-
+    var data = sideCharts.getSideChart(parseInt(categoryId)).getChartData();
     console.log('categoryId', categoryId);
     sideCharts.select(parseInt(categoryId));
     mainCharts.makeCharts({
@@ -1113,19 +1177,7 @@ $(window).on('load', function () {
   });
   var firstSideChartId = sideCharts.getFirstChartIndex();
   $(".stat-card#".concat(firstSideChartId)).trigger('click');
-  /*let toBeRemovedChartData;
-  let toBeDestroyedChart;
-  $('.stat-card').on('click', e => {
-      console.log(typeof toBeDestroyedChart);
-      if (typeof toBeRemovedChart !== 'undefined') {
-          // toBeRemovedChart.destroy();
-      }
-      let categoryId = $(e.target).closest('.stat-card').attr('id');
-      console.log(categoryId);
-      let data = sideCharts.getSideChart(parseInt(categoryId)).getChartData();
-      toBeRemovedChartData = data;
-      // $('#main-stats-container').text(JSON.stringify(data));
-  });*/
+  new _ElementHandlers_VotesStatsSideBarCollapser__WEBPACK_IMPORTED_MODULE_10___default.a(document.getElementById('sideMenuCollapser'));
 });
 
 /***/ })

@@ -35,7 +35,7 @@
                     let votesPerCategory =  @json($votes_per_category);
                 </script>
             </div>
-            <div id="main-stats-container" class="col-8">
+            <div id="main-stats-container" class="col">
                 <h4 id="selected-category-title" class="py-3"></h4>
                 <div class="w-100 h-100">
                     <div class="grid-stack">

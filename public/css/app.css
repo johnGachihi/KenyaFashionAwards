@@ -11808,6 +11808,41 @@ svg.mdc-button__icon {
   border: 10px solid #e4b66eb5;
 }
 
+#sideMenuCollapser {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 7px;
+  transition: box-shadow 0.2s;
+}
+
+#sideMenuCollapser:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+#sideMenuCollapser.off {
+  z-index: 1000;
+  top: 10px;
+  right: -50px;
+  transition: top 0.5s linear 0.5s, right 0.5s linear 0.5s, box-shadow 0.2s;
+}
+
+#_sidebar {
+  transition: all 1s;
+}
+
+#_mainCont {
+  transition: all 0.5s;
+}
+
+#_mainCont.full {
+  margin-left: 4% !important;
+}
+
+.width-0 {
+  width: 0 !important;
+}
+
 .applicant-dets-titles {
   color: #1a1a1a !important;
 }
