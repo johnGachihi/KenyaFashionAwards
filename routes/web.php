@@ -11,6 +11,66 @@
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Auth::routes(['verify' => true]);
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::middleware(['auth', 'adminCheck'])->group(function() {
+
+    Route::prefix('admin')->group(function() {
+
+        Route::get('/home', 'AwardCategoriesController@awardCategories');
+
+        Route::get('/award_categories', 'AwardCategoriesController@awardCategories');
+
+        Route::post('/createCategory/{id?}', 'AwardCategoriesController@createCategory');
+
+        Route::view('/add_award_category', 'admin.add_award_category');
+
+        Route::get('/edit_award_category/{id}', 'AwardCategoriesController@editAwardCategory');
+
+        Route::get('/update_award_category/{id}', 'AwardCategoriesController@updateAwardCategory');
+
+        Route::get('/delete_award_category/{id}', 'AwardCategoriesController@deleteAwardCategory');
+
+        Route::get('/applications', 'ApplicationsController@view');
+
+        Route::post('/applications/decision/accept/{id}', 'ApplicationsController@accept');
+
+        Route::post('/applications/decision/reject/{id}', 'ApplicationsController@reject');
+
+        Route::get('/vote_stats', 'VotesController@view');
+
+    });
+
+});
+
+
+/******************************************************************************************************
+ * CSRF disabled for testing
+ */
+
+Route::post('/applications/create', 'ApplicationsController@create');
+
+Route::get('/vote', 'VotesController@cast');
+
+/*
+ *  CSRF disabled for testing
+ */
+/******************************************************************************************************/
+
+
+//Route::get("/test", function () {
+//    event(new \App\Events\TestEvent("This is awesome"));
+//});
+
+
+
 Route::get('/index', 'pagescontroller@index' );
 Route::get('/about', 'pagescontroller@about');
 Route::get('/models', 'pagescontroller@models');
@@ -18,8 +78,6 @@ Route::get('/casting', 'pagescontroller@casting');
 Route::get('/contacts', 'pagescontroller@contact');
 Route::get('/projects', 'pagescontroller@projects');
 Route::get('/blog', 'pagescontroller@singleblog');
-Route::get('/login','pagescontroller@login');
+//Route::get('/login','pagescontroller@login');
 Route::get('/signup', 'pagescontroller@singup');
 // Route::get('/', '');
-
-?>

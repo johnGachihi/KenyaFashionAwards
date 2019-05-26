@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Str;
+
 return [
 
     /*
@@ -20,7 +22,7 @@ return [
     | Database Connections
     |--------------------------------------------------------------------------
     |
-    | Here are each of the database connections setup for your application.
+    | Here are each of the database connections setUpAndShow for your application.
     | Of course, examples of configuring each database platform that is
     | supported by Laravel is shown below to make development simple.
     |
@@ -52,7 +54,16 @@ return [
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
             'prefix_indexes' => true,
-            'strict' => true,
+            'strict' => false,
+            'modes' => [
+//                'ONLY_FULL_GROUP_BY',
+                'STRICT_TRANS_TABLES',
+                'NO_ZERO_IN_DATE',
+                'NO_ZERO_DATE',
+                'ERROR_FOR_DIVISION_BY_ZERO',
+                'NO_AUTO_CREATE_USER',
+                'NO_ENGINE_SUBSTITUTION'
+            ],
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
@@ -117,6 +128,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'predis'),
+            'prefix' => Str::slug(env('APP_NAME', 'laravel'), '_').'_database',
         ],
 
         'default' => [

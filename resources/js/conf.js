@@ -1,0 +1,1 @@
+export const HOME_URL = 'http://localhost/kenyafashionawards/public/index.php';

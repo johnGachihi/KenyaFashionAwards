@@ -11,5 +11,24 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+// mix
+//     mix.sass('resources/sass/app.scss', 'public/css', {
+//         includePaths: [path.resolve(__dirname, 'node_modules')]
+//     })
+        mix.js('resources/js/app.js', 'public/js')
+            .sass('resources/sass/app.scss', 'public/css', {
+               includePaths: [path.resolve(__dirname, 'node_modules')]
+            });
+            // .sass('temp_ts/temp.scss', 'public/css');
+    // .ts('temp_ts/temp.ts', 'public/js');
+
+   mix.webpackConfig({
+      output: {
+         publicPath: '/kenyafashionawards/public/'
+      },
+      resolve: {
+          alias: {
+              'jquery-ui': 'jquery-ui/ui'
+          }
+      }
+   });
