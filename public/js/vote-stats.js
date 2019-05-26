@@ -871,28 +871,19 @@ function () {
       this.chartsParent.data('gridstack').makeWidget(holderEl);
     }
   };
-  /*populateCharts(data: Data) {
-      this._charts.forEach(((chart, key) => {
-          console.log("------>", chart.data);
-          chart.data.datasets[0].data = data.data;
-          chart.data.datasets[0].labels = data.labels;
-      }))
-  }*/
-
 
   MainCharts.prototype.addChart = function (data, chartType) {
-    var chartHolder = new ChartHolder_1["default"](this.chartsParent, chartType);
-
-    var _a = chartHolder.renderChartContainer(),
+    var _a = new ChartHolder_1["default"](this.chartsParent, chartType).renderChartContainer(),
         canvas = _a.canvas,
-        holderEl = _a.holderEl; // console.log('canvas ----->', canvas);
+        holderEl = _a.holderEl;
 
-
-    var ctx = canvas.getContext('2d');
-    var chart = new chart_js_1.Chart(ctx, this.getChartConfig(chartType, data).getConfig());
+    console.log("this.getChartConfig", this.getChartConfig(chartType, data));
+    var chart = new chart_js_1.Chart(canvas.getContext('2d'), this.getChartConfig(chartType, data));
     console.log("chart ----->", chart); //THIS WILL CHANGE TO this._charts.set... WHEN IMPLEMENTING ADDITION OF CHARTS
+    // this.charts.push(chart);
 
-    this.charts.push(chart);
+    this._charts.set(chartType, chart);
+
     var gridstack = this.chartsParent.data('gridstack');
     gridstack.makeWidget(holderEl);
     return holderEl;
@@ -1155,7 +1146,7 @@ $(window).on('load', function () {
   var gridstack = $gridStack.data('gridstack');
   console.log("votesPerCategory", votesPerCategory);
   var sideCharts = new _SideCharts__WEBPACK_IMPORTED_MODULE_2___default.a(votesPerCategory);
-  var mainCharts = new _MainCharts__WEBPACK_IMPORTED_MODULE_7___default.a([_ChartConfig_ChartConstants__WEBPACK_IMPORTED_MODULE_3__["CHART_BAR"], _ChartConfig_ChartConstants__WEBPACK_IMPORTED_MODULE_3__["CHART_PIE"]]);
+  var mainCharts = new _MainCharts__WEBPACK_IMPORTED_MODULE_7___default.a([_ChartConfig_ChartConstants__WEBPACK_IMPORTED_MODULE_3__["CHART_PIE"]]);
   Echo.channel('the-polls').listen('VoteCast', function (e) {
     console.log("eeee e", e);
     sideCharts.plusOne(e.vote.award_category_id, e.vote.candidate);
@@ -1165,6 +1156,7 @@ $(window).on('load', function () {
       console.log("MainCharts chart: ", value);
     });
   });
+  var data;
   $('.stat-card').on('click', function (e) {
     var categoryId = $(e.target).closest('.stat-card').attr('id');
     var data = sideCharts.getSideChart(parseInt(categoryId)).getChartData();
@@ -1178,6 +1170,15 @@ $(window).on('load', function () {
   var firstSideChartId = sideCharts.getFirstChartIndex();
   $(".stat-card#".concat(firstSideChartId)).trigger('click');
   new _ElementHandlers_VotesStatsSideBarCollapser__WEBPACK_IMPORTED_MODULE_10___default.a(document.getElementById('sideMenuCollapser'));
+  $('#bar-graph').click(function (e) {
+    var categoryId = $('.stat-card.selected').attr('id');
+    var data = sideCharts.getSideChart(parseInt(categoryId)).getChartData();
+    console.log("The data on click:", data);
+    mainCharts.addChart({
+      data: data.votes,
+      labels: data.candidates
+    }, $(e.target).data('charttype'));
+  });
 });
 
 /***/ })

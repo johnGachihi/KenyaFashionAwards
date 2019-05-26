@@ -24,22 +24,14 @@ var MainCharts = /** @class */ (function () {
             this.chartsParent.data('gridstack').makeWidget(holderEl);
         }
     };
-    /*populateCharts(data: Data) {
-        this._charts.forEach(((chart, key) => {
-            console.log("------>", chart.data);
-            chart.data.datasets[0].data = data.data;
-            chart.data.datasets[0].labels = data.labels;
-        }))
-    }*/
     MainCharts.prototype.addChart = function (data, chartType) {
-        var chartHolder = new ChartHolder_1.default(this.chartsParent, chartType);
-        var _a = chartHolder.renderChartContainer(), canvas = _a.canvas, holderEl = _a.holderEl;
-        // console.log('canvas ----->', canvas);
-        var ctx = canvas.getContext('2d');
-        var chart = new chart_js_1.Chart(ctx, this.getChartConfig(chartType, data).getConfig());
+        var _a = new ChartHolder_1.default(this.chartsParent, chartType).renderChartContainer(), canvas = _a.canvas, holderEl = _a.holderEl;
+        console.log("this.getChartConfig", this.getChartConfig(chartType, data));
+        var chart = new chart_js_1.Chart(canvas.getContext('2d'), this.getChartConfig(chartType, data));
         console.log("chart ----->", chart);
         //THIS WILL CHANGE TO this._charts.set... WHEN IMPLEMENTING ADDITION OF CHARTS
-        this.charts.push(chart);
+        // this.charts.push(chart);
+        this._charts.set(chartType, chart);
         var gridstack = this.chartsParent.data('gridstack');
         gridstack.makeWidget(holderEl);
         return holderEl;

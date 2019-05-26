@@ -21,7 +21,7 @@ $(window).on('load', () => {
 
     console.log("votesPerCategory", votesPerCategory);
     let sideCharts = new SideCharts(votesPerCategory);
-    let mainCharts = new MainCharts([CHART_BAR, CHART_PIE]);
+    let mainCharts = new MainCharts([CHART_PIE]);
 
     Echo.channel('the-polls')
         .listen('VoteCast', e => {
@@ -34,6 +34,7 @@ $(window).on('load', () => {
             })
     });
 
+    let data;
 
     $('.stat-card').on('click', e => {
         let categoryId = $(e.target).closest('.stat-card').attr('id');
@@ -50,4 +51,12 @@ $(window).on('load', () => {
     new VotesStatsSideBarCollapser(
         document.getElementById('sideMenuCollapser')
     );
+
+    $('#bar-graph').click(e => {
+        let categoryId = $('.stat-card.selected').attr('id');
+        let data = sideCharts.getSideChart(parseInt(categoryId)).getChartData();
+
+        console.log("The data on click:", data);
+        mainCharts.addChart({data: data.votes, labels: data.candidates}, $(e.target).data('charttype'));
+    })
 });

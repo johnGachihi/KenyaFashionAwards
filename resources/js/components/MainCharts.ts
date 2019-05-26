@@ -41,26 +41,21 @@ export default class MainCharts {
         }
     }
 
-    /*populateCharts(data: Data) {
-        this._charts.forEach(((chart, key) => {
-            console.log("------>", chart.data);
-            chart.data.datasets[0].data = data.data;
-            chart.data.datasets[0].labels = data.labels;
-        }))
-    }*/
+    addChart(data: Data, chartType: string) {
+        let {canvas, holderEl} = new ChartHolder(
+            this.chartsParent, chartType).renderChartContainer();
 
-    addChart(data: {data: number[], labels: string[]}, chartType: string) {
-        const chartHolder = new ChartHolder(this.chartsParent, chartType);
-        let {canvas, holderEl} = chartHolder.renderChartContainer();
-
-        // console.log('canvas ----->', canvas);
-        const ctx = (<HTMLCanvasElement>canvas).getContext('2d');
-        const chart = new Chart(ctx, this.getChartConfig(chartType, data).getConfig());
+        console.log("this.getChartConfig", this.getChartConfig(chartType, data));
+        const chart = new Chart(
+            (<HTMLCanvasElement>canvas).getContext('2d'),
+            this.getChartConfig(chartType, data)
+        );
         console.log("chart ----->", chart);
 
         //THIS WILL CHANGE TO this._charts.set... WHEN IMPLEMENTING ADDITION OF CHARTS
-        this.charts.push(chart);
+        // this.charts.push(chart);
 
+        this._charts.set(chartType, chart);
 
         let gridstack = this.chartsParent.data('gridstack');
         gridstack.makeWidget(holderEl);

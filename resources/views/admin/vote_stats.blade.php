@@ -36,7 +36,24 @@
                 </script>
             </div>
             <div id="main-stats-container" class="col">
-                <h4 id="selected-category-title" class="py-3"></h4>
+                <div class="d-flex justify-content-between">
+                    <h4 id="selected-category-title" class="py-3"></h4>
+                    <div class="dropdown" style="align-self: center;">
+                        <button class="mdc-button mdc-button--outlined mdc-button--dense dropdown-toggle"
+                                type="button"
+                                id="chartsChoiceDropdownBtn"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false">
+                            Add chart
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="chartsChoiceDropdownBtn">
+                            <a id="bar-graph" data-charttype="bar" class="dropdown-item" href="#">Bar graph</a>
+                            <a id="pie-chart" class="dropdown-item" data-charttype="pie" href="#">Pie chart</a>
+                            <a class="dropdown-item disabled" href="#">Line chart</a>
+                        </div>
+                    </div>
+                </div>
                 <div class="w-100 h-100">
                     <div class="grid-stack">
                         {{--<div id="gsi-1" class="grid-stack-item mdc-elevation--z1"
