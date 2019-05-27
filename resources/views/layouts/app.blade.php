@@ -61,7 +61,7 @@
                                 <a class="nav-link" href="{{ url('/') }}">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/') }}">Categories</a>
+                                <a class="nav-link" href="profiles">Profiles</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/') }}">Awards</a>

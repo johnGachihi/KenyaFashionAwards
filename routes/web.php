@@ -81,3 +81,7 @@ Route::get('/blog', 'pagescontroller@singleblog');
 //Route::get('/login','pagescontroller@login');
 Route::get('/signup', 'pagescontroller@singup');
 // Route::get('/', '');
+
+
+Route::resource('profiles', 'ProfilesController');
+
