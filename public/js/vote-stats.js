@@ -653,6 +653,8 @@ function () {
     this.canvasId = "mainChart-canvas_" + ChartHolder.counter;
     this.chartHolderElementId = "chartHolder_" + ChartHolder.counter++;
     this.domElementString = "\n            <div id=\"" + this.chartHolderElementId + "\" class='grid-stack-item mdc-card mdc-card--outlined mdc-elevation--z1 mx-3'\n                data-gs-x=\"0\" data-gs-y=\"0\" data-gs-width=\"4\" data-gs-height=\"2\">\n                <div class=\"grid-stack-item-content w-100 h-100\">\n                    <canvas id=\"" + this.canvasId + "\" class=\"main-chart\" data-charttype=\"" + chartType + "\"></canvas>\n                </div>\n            </div>\n        ";
+    this.chartContainerDomString = "\n            <div id=\"" + this.chartHolderElementId + "\" class='mdc-card mdc-card--outlined mdc-elevation--z1 mx-3'>\n                <div class=\"grid-stack-item-content w-100 h-100\">\n                </div>\n            </div>\n        ";
+    this.canvasElDomString = "\n            <canvas id=\"" + this.canvasId + "\" class=\"main-chart\" data-charttype=\"" + chartType + "\"></canvas>\n        ";
   }
 
   ChartHolder.prototype.renderChartContainer = function () {
@@ -664,6 +666,16 @@ function () {
     return {
       canvas: canvas,
       holderEl: holderEl
+    };
+  };
+
+  ChartHolder.prototype.inflateChartContainer = function () {
+    var container = new DOMParser().parseFromString(this.chartContainerDomString, 'text/html').body.firstElementChild;
+    var canvas = new DOMParser().parseFromString(this.canvasElDomString, 'text/html').body.firstElementChild;
+    container.getElementsByClassName('grid-stack-item-content').item(0).append(canvas);
+    return {
+      canvas: canvas,
+      holderEl: container
     };
   };
 
@@ -859,34 +871,47 @@ function () {
 
     for (var _i = 0, _a = this.userPrefCharts; _i < _a.length; _i++) {
       var c = _a[_i];
+      /*let {canvas, holderEl} = new ChartHolder(
+          this.chartsParent, c).renderChartContainer();
+        const chart = new Chart(
+          (<HTMLCanvasElement>canvas).getContext('2d'),
+          this.getChartConfig(c, data)
+      );
+        this._charts.set(c, chart);
+        this.chartsParent.data('gridstack').makeWidget(holderEl);*/
 
-      var _b = new ChartHolder_1["default"](this.chartsParent, c).renderChartContainer(),
-          canvas = _b.canvas,
-          holderEl = _b.holderEl;
-
-      var chart = new chart_js_1.Chart(canvas.getContext('2d'), this.getChartConfig(c, data));
-
-      this._charts.set(c, chart);
-
-      this.chartsParent.data('gridstack').makeWidget(holderEl);
+      this.addChart(data, c);
     }
   };
+  /*addChart(data: Data, chartType: string) {
+      let {canvas, holderEl} = new ChartHolder(
+          this.chartsParent, chartType).renderChartContainer();
+        console.log("this.getChartConfig", this.getChartConfig(chartType, data));
+      const chart = new Chart(
+          (<HTMLCanvasElement>canvas).getContext('2d'),
+          this.getChartConfig(chartType, data)
+      );
+      console.log("chart ----->", chart);
+        //THIS WILL CHANGE TO this._charts.set... WHEN IMPLEMENTING ADDITION OF CHARTS
+      // this.charts.push(chart);
+        this._charts.set(chartType, chart);
+        let gridstack = this.chartsParent.data('gridstack');
+      gridstack.makeWidget(holderEl);
+        return holderEl;
+  }*/
+
 
   MainCharts.prototype.addChart = function (data, chartType) {
-    var _a = new ChartHolder_1["default"](this.chartsParent, chartType).renderChartContainer(),
+    var _a = new ChartHolder_1["default"](this.chartsParent, chartType).inflateChartContainer(),
         canvas = _a.canvas,
         holderEl = _a.holderEl;
 
-    console.log("this.getChartConfig", this.getChartConfig(chartType, data));
     var chart = new chart_js_1.Chart(canvas.getContext('2d'), this.getChartConfig(chartType, data));
-    console.log("chart ----->", chart); //THIS WILL CHANGE TO this._charts.set... WHEN IMPLEMENTING ADDITION OF CHARTS
-    // this.charts.push(chart);
 
     this._charts.set(chartType, chart);
 
-    var gridstack = this.chartsParent.data('gridstack');
-    gridstack.makeWidget(holderEl);
-    return holderEl;
+    var gridStack = this.chartsParent.data('gridstack');
+    gridStack.addWidget(holderEl, 0, 0, 3, 3); // return holderEl;
   };
 
   MainCharts.prototype.update = function () {
