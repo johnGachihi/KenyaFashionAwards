@@ -27,7 +27,7 @@ export default class MainCharts {
         this.chartsParent.data('gridstack').removeAll();
 
         for(let c of this.userPrefCharts) {
-            let {canvas, holderEl} = new ChartHolder(
+            /*let {canvas, holderEl} = new ChartHolder(
                 this.chartsParent, c).renderChartContainer();
 
             const chart = new Chart(
@@ -37,11 +37,12 @@ export default class MainCharts {
 
             this._charts.set(c, chart);
 
-            this.chartsParent.data('gridstack').makeWidget(holderEl);
+            this.chartsParent.data('gridstack').makeWidget(holderEl);*/
+            this.addChart(data, c);
         }
     }
 
-    addChart(data: Data, chartType: string) {
+    /*addChart(data: Data, chartType: string) {
         let {canvas, holderEl} = new ChartHolder(
             this.chartsParent, chartType).renderChartContainer();
 
@@ -61,6 +62,23 @@ export default class MainCharts {
         gridstack.makeWidget(holderEl);
 
         return holderEl;
+    }*/
+
+    addChart(data: Data, chartType: string) {
+        let {canvas, holderEl} = new ChartHolder(
+            this.chartsParent, chartType).inflateChartContainer();
+
+        const chart = new Chart(
+            (<HTMLCanvasElement>canvas).getContext('2d'),
+            this.getChartConfig(chartType, data)
+        );
+
+        this._charts.set(chartType, chart);
+
+        let gridStack = this.chartsParent.data('gridstack');
+        gridStack.addWidget(holderEl, 0, 0, 3, 3);
+
+        // return holderEl;
     }
 
     update() {
