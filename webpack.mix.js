@@ -24,7 +24,7 @@ const mix = require('laravel-mix');
 
    mix.webpackConfig({
       output: {
-         publicPath: '/kenyafashionawards/public/'
+         publicPath: '/kenyafashionawards/john/public/'
       },
       resolve: {
           alias: {

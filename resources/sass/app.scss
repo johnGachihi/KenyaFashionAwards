@@ -75,6 +75,59 @@ $mdc-theme-primary: #1a1a1a;
   margin: 20px;
 }
 
+
+/* Import Fonts & All CSS */
+@import '/public/css/default-assets/hkgrotesk-fonts.css';
+@import '/public/css/bootstrap.min.css';
+@import '/public/css/animate.css';
+@import '/public/css/default-assets/classy-nav.css';
+@import '/public/css/owl.carousel.min.css';
+@import '/public/css/magnific-popup.css';
+@import '/public/css/font-awesome.min.css';
+@import '/public/css/default-assets/slick.css';
+@import '/public/css/style.css';
+
+// **************
+
+// Utilities
+// **************
+@import "utilities/fonts";
+@import "utilities/variables";
+@import "utilities/responsive";
+@import "utilities/color";
+
+// *************
+
+// Mixins
+// *************
+
+@import "mixins/flex";
+@import "mixins/miscellaneous";
+
+// **************
+
+// Stylesheet
+// *************
+@import "reboot";
+@import "spacing";
+@import "preloader";
+@import "heading";
+@import "backtotop";
+@import "buttons";
+@import "header";
+@import "hero";
+@import "gallery";
+@import "testimonial";
+@import "model";
+@import "about";
+@import "breadcrumb";
+@import "blog";
+@import "cta";
+@import "team";
+@import "widget";
+@import "footer";
+@import "contact";
+
 //canvas {
 //  width: 100px!important;
 //  height: 100px!important;

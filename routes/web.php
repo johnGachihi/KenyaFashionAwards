@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
@@ -49,6 +49,20 @@ Route::middleware(['auth', 'adminCheck'])->group(function() {
     });
 
 });
+
+
+Route::get('/index', 'pagescontroller@index' );
+Route::get('/category', 'pagescontroller@category');
+Route::get('/models', 'pagescontroller@models');
+Route::get('/criteria', 'pagescontroller@criteria');
+Route::get('/contacts', 'pagescontroller@contact');
+Route::get('/projects', 'pagescontroller@projects');
+Route::get('/blog', 'pagescontroller@blog');
+// Route::get('/login', 'pagescontroller@login');
+Route::get('/signup', 'pagescontroller@signup');
+Route::get('/votes', 'pagescontroller@vote');
+
+Route::resource('posts','PostsController');
 
 
 /******************************************************************************************************
