@@ -84,4 +84,4 @@ Route::get('/signup', 'pagescontroller@singup');
 
 
 Route::resource('profiles', 'ProfilesController');
-
+Route::resource('articles', 'ArticlesController');
