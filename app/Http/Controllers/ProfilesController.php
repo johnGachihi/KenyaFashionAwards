@@ -60,7 +60,8 @@ class ProfilesController extends Controller
      */
     public function show($id)
     {
-        //
+        $profile = Profile::find($id);
+        return view('profiles.show')->with('profile', $profile);
     }
 
     /**
@@ -71,7 +72,8 @@ class ProfilesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $profile = Profile::find($id);
+        return view('profiles.edit')->with('profile', $profile);
     }
 
     /**
@@ -83,7 +85,20 @@ class ProfilesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'fname' => 'required',
+            'lname' => 'required',
+            'category' => 'required',
+            'description' => 'required'
+        ]);
+        $profile = Profile::find($id);
+        $profile->fname = $request->input('fname');
+        $profile->lname = $request->input('lname');
+        $profile->category = $request->input('category');
+        $profile->description = $request->input('description');
+
+        $profile->save();
+        return redirect('profiles');
     }
 
     /**
@@ -94,6 +109,8 @@ class ProfilesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $profile = Profile::find($id);
+        $profile->delete();
+        return redirect('profiles');
     }
 }
