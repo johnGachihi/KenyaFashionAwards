@@ -28,7 +28,7 @@ class ApplicationsController extends Controller
     }
 
     public function create(Request $request) {
-        event(new TestEvent('bleble'));
+//        event(new TestEvent('bleble'));
         $request->validate([
             'name' => 'required',
             'company' => 'required',
