@@ -8,7 +8,7 @@ use App\Listeners\SendApplicationResponseEmail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Application;
-use App\Applicant;
+use App\applicants;
 
 class ApplicationsController extends Controller
 {
@@ -26,27 +26,35 @@ class ApplicationsController extends Controller
             'rejected_applications' => $rejected_applications
         ]);
     }
+    public function create()
+    {
+        return view('/contact');
+    }
 
-    public function create(Request $request) {
-        event(new TestEvent('bleble'));
-        $request->validate([
-            'name' => 'required',
+
+    public function store(Request $request) {
+        //event(new TestEvent('bleble'));
+        $this->validate($request, [
+            'name' =>'required',
             'company' => 'required',
-            'phone-number' => 'required',
             'email' => 'required',
-            'category' => 'required'
+            'telephone_number' => 'required',
+            'award_category_id' => 'required',
+            'bio' => 'required'
         ]);
 
-        $applicant = new Applicant();
+        $applicant = new applicants();
         $applicant->name = $request->input('name');
         $applicant->company = $request->input('company');
-        $applicant->phone_number = $request->input('phone-number');
+        $applicant->phone_number = $request->input('telephone_number');
         $applicant->email = $request->input('email');
+        $applicant->bio = $request->input('bio');
         $applicant->save();
+        return redirect('/contacts')->with('success', 'Form Submitted');
 
-        $application = new Application();
+        $application = new applications();
         $application->applicant_id = $applicant->id;
-        $application->award_category_id = $request->input('category');
+        $application->award_category_id = $request->input('award_category_id');
         $application->save();
     }
 

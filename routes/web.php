@@ -62,7 +62,7 @@ Route::get('/blog', 'pagescontroller@blog');
 Route::get('/signup', 'pagescontroller@signup');
 Route::get('/votes', 'pagescontroller@vote');
 
-Route::resource('posts','PostsController');
+//Route::resource('posts','PostsController');
 
 
 /******************************************************************************************************
@@ -70,6 +70,7 @@ Route::resource('posts','PostsController');
  */
 
 Route::post('/applications/create', 'ApplicationsController@create');
+Route::post('/applications', 'ApplicationsController@store');
 
 Route::get('/vote', 'VotesController@cast');
 

@@ -131,7 +131,7 @@
 
         <!-- Contact Form -->
                 <div class="col-12 col-lg-12">
-                  {!! Form::open(['action' => 'PostsController@store', 'method'=> 'POST']) !!}
+                  {!! Form::open(['action' => 'ApplicationsController@store', 'method'=> 'POST']) !!}
                       <div class="form-group">
                         {{Form::label('name', 'Name')}}
                         {{Form::text('name', '', ['placeholder' => 'Name'])}}
@@ -147,6 +147,16 @@
                           <div class="form-group">
                               {{Form::label('telephone_number', 'Telephone Number')}}
                               {{Form::tel('telephone_number', '', [ 'placeholder' => 'Telephone Number'])}}
+                            </div>
+                            <div class="form-group">
+                              {{Form::label('award_category_id', 'Category')}}
+                              <br />
+                              {{Form::radio('award_category_id', '24')}} Female Model
+                              <br />
+                              {{Form::radio('award_category_id','23')}} Male Model
+                              <br />
+                              {{Form::radio('award_category_id', '1')}}Fashion Designer
+                              <br />
                             </div>
                           <div class="form-group">
                               {{Form::label('bio', 'Bio')}}
