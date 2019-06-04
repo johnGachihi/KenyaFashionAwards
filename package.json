@@ -34,6 +34,7 @@
         "@material/button": "^1.1.1",
         "@material/card": "^2.1.1",
         "@material/elevation": "^1.1.0",
+        "@material/linear-progress": "^2.3.0",
         "@types/jquery": "^3.3.29",
         "animejs": "^3.0.1",
         "chart.js": "^2.8.0",

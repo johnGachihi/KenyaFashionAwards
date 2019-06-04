@@ -2,13 +2,7 @@ import 'simplebar';
 import 'simplebar/dist/simplebar.css';
 import SideCharts from "./SideCharts";
 import {CHART_BAR, CHART_PIE} from "./ChartConfig/ChartConstants";
-// import VotesStatsSideBarCollapser from "./ElementHandlers/VotesStatsSideBarCollapser"
-
-import BarChart from "./BarChart";
-import MainChartDataPointIncrementer from "./DataPointIncrementer/MainChartDataPointIncrementer";
-import ChartHolder from "./ChartHolders/ChartHolder";
 import MainCharts from "./MainCharts";
-// import gridstack from 'gridstack';
 
 import './../../../node_modules/gridstack/dist/gridstack.css';
 import gridstack from './../../../node_modules/gridstack/dist/gridstack.all';
@@ -21,7 +15,13 @@ $(window).on('load', () => {
 
     console.log("votesPerCategory", votesPerCategory);
     let sideCharts = new SideCharts(votesPerCategory);
-    let mainCharts = new MainCharts([CHART_PIE]);
+
+    // let mainChartsPrefs = new MainChartsPreferences(userId);
+    // mainChartsPrefs.load().then(() => {
+        //hide progress indicator
+    // });
+    // let mainCharts = new MainCharts(mainChartsPrefs.get());
+    let mainCharts = new MainCharts([{chartType: CHART_PIE, x: 1, y: 2, width: 6, height: 6}]);
 
     Echo.channel('the-polls')
         .listen('VoteCast', e => {
@@ -57,6 +57,12 @@ $(window).on('load', () => {
         let data = sideCharts.getSideChart(parseInt(categoryId)).getChartData();
 
         console.log("The data on click:", data);
-        mainCharts.addChart({data: data.votes, labels: data.candidates}, $(e.target).data('charttype'));
+        mainCharts.addChart(
+            {data: data.votes, labels: data.candidates},
+            {
+                chartType: $(e.target).data('charttype'),
+                x: 6, y: 5, width: 5, height: 6
+            }
+        );
     })
 });

@@ -32,73 +32,74 @@
                 @endforeach
                 </div>
                 <script>
-                    let votesPerCategory =  @json($votes_per_category);
+                    let votesPerCategory = @json($votes_per_category);
+                    let chartsPreferences = @json($chartsPreferences);
                 </script>
             </div>
             <div id="main-stats-container" class="col">
                 <div class="d-flex justify-content-between">
-                    <h4 id="selected-category-title" class="py-3"></h4>
-                    <div class="dropdown" style="align-self: center;">
-                        <button class="mdc-button mdc-button--outlined mdc-button--dense dropdown-toggle"
-                                type="button"
-                                id="chartsChoiceDropdownBtn"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false">
-                            Add chart
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="chartsChoiceDropdownBtn">
-                            <a id="bar-graph" data-charttype="bar" class="dropdown-item" href="#">Bar graph</a>
-                            <a id="pie-chart" class="dropdown-item" data-charttype="pie" href="#">Pie chart</a>
-                            <a class="dropdown-item disabled" href="#">Line chart</a>
+                    <h4 id="selected-category-title" class="pt-4"></h4>
+                    <div class="align-self-end mr-5">
+                        <div class="dropdown d-inline">
+                            <button class="mdc-button material-icons dropdown-toggle top-menu-btn"
+                                    type="button"
+                                    id="chartsChoiceDropdownBtn"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false">
+                                add
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="chartsChoiceDropdownBtn">
+                                <a id="bar-graph" data-charttype="bar" class="dropdown-item" href="#">Bar graph</a>
+                                <a id="pie-chart" class="dropdown-item" data-charttype="pie" href="#">Pie chart</a>
+                                <a class="dropdown-item disabled" href="#">Line chart</a>
+                            </div>
                         </div>
+
+                        <button id="save-chart-area" class="material-icons mdc-button top-menu-btn">save</button>
                     </div>
                 </div>
                 <div class="w-100 h-100">
-                    <div class="grid-stack">
-                        {{--<div id="gsi-1" class="grid-stack-item mdc-elevation--z1"
-                             data-gs-x="0" data-gs-y="0"
-                             data-gs-width="4" data-gs-height="2">
-                            <div class="grid-stack-item-content">bleble-1</div>
+                    {{--<div role="progressbar" class="mdc-linear-progress mdc-linear-progress--indeterminate mb-3">
+                        <div class="mdc-linear-progress__buffering-dots"></div>
+                        <div class="mdc-linear-progress__buffer"></div>
+                        <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+                            <span class="mdc-linear-progress__bar-inner"></span>
                         </div>
-                        <div id="gsi-1" class="grid-stack-item mdc-elevation--z1"
-                             data-gs-x="4" data-gs-y="0"
-                             data-gs-width="4" data-gs-height="4">
-                            <div class="grid-stack-item-content">bleble-2</div>--}}
+                        <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+                            <span class="mdc-linear-progress__bar-inner"></span>
                         </div>
-                    </div>
+                    </div>--}}
+                    {{--@if(isset($chartsPreferencses))--}}
+                        <div class="grid-stack">
+                            {{--<div id="gsi-1" class="grid-stack-item mdc-elevation--z1"
+                                 data-gs-x="0" data-gs-y="0"
+                                 data-gs-width="4" data-gs-height="2">
+                                <div class="grid-stack-item-content">bleble-1</div>
+                            </div>
+                            <div id="gsi-1" class="grid-stack-item mdc-elevation--z1"
+                                 data-gs-x="4" data-gs-y="0"
+                                 data-gs-width="4" data-gs-height="4">
+                                <div class="grid-stack-item-content">bleble-2</div>
+                            </div>--}}
+                        </div>
+                    {{--@else--}}
+                        {{--<div class="w-100 h-100 d-flex justify-content-center align-items-center">--}}
+                            {{--<div style="text-align: center">--}}
+                                {{--<span class="d-block" style="font-size: 40px;">Not charts yet!</span>--}}
+                                {{--<button class="mdc-button mdc-button--outlined dropdown-toggle" id="chartsDropdownButton" data-toggle="dropdown">--}}
+                                    {{--Create one--}}
+                                {{--</button>--}}
+                                {{--<div class="dropdown-menu" aria-labelledby="chartsDropdownButton">--}}
+                                    {{--<a class="dropdown-item" href="#">Action</a>--}}
+                                    {{--<a class="dropdown-item" href="#">Another action</a>--}}
+                                    {{--<a class="dropdown-item" href="#">Something else here</a>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--@endif--}}
                 </div>
-                <script>
-                    // $('.grid-stack').gridstack();
-                </script>
-                {{--<div class="mdc-card" style="height: 500px;">
-                    ble
-                </div>--}}
-                {{--<div class="w-100 h-100 d-flex justify-content-center align-items-center">
-                    <div style="text-align: center">
-                        <span class="d-block" style="font-size: 40px;">Not charts yet!</span>
-                        <button class="mdc-button mdc-button--outlined dropdown-toggle" id="chartsDropdownButton" data-toggle="dropdown">
-                            Create one
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="chartsDropdownButton">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>
-                </div>--}}
-                {{--<div class="grid">
-                    <div class="item resizable" data-x=0 data-y=0 style="height: 170px; width: 500px; background-color: #4dc0b5">
-                        <div class="item-content">
-                            <canvas id="toBeRemovedChart" style="width: 92px; height: 92px;"></canvas>
-                        </div>
-                    </div>
-                    <div class="item resizable" style="height: 170px; width: 500px; background-color: #4BBF73;">
-                        <div class="item-content">
-                            bleble
-                        </div>
-                    </div>
-                </div>--}}
+
             </div>
         </div>
     </div>

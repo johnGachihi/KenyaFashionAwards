@@ -15,6 +15,7 @@ $mdc-theme-primary: #1a1a1a;
 @import "~@material/elevation/mdc-elevation";
 @import "~@material/button/mdc-button";
 @import "~@material/card/mdc-card";
+@import "~@material/linear-progress/mdc-linear-progress";
 
 
 .navbar-laravel {
@@ -112,6 +113,10 @@ $mdc-theme-primary: #1a1a1a;
   position: absolute;
   display: block;
   margin: 20px;
+}
+
+.top-menu-btn {
+  min-width: 10px;
 }
 
 

@@ -687,36 +687,6 @@ exports["default"] = ChartHolder;
 
 /***/ }),
 
-/***/ "./resources/js/components/DataPointIncrementer/MainChartDataPointIncrementer.js":
-/*!***************************************************************************************!*\
-  !*** ./resources/js/components/DataPointIncrementer/MainChartDataPointIncrementer.js ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var MainChartDataPointIncrementer =
-/** @class */
-function () {
-  function MainChartDataPointIncrementer() {}
-
-  MainChartDataPointIncrementer.prototype.incrementDataPoint = function (chart, dataPointIdentifier, data) {
-    chart.update();
-  };
-
-  return MainChartDataPointIncrementer;
-}();
-
-exports["default"] = MainChartDataPointIncrementer;
-
-/***/ }),
-
 /***/ "./resources/js/components/DataPointIncrementer/SideBarChartDataPointIncrementer.js":
 /*!******************************************************************************************!*\
   !*** ./resources/js/components/DataPointIncrementer/SideBarChartDataPointIncrementer.js ***!
@@ -871,15 +841,6 @@ function () {
 
     for (var _i = 0, _a = this.userPrefCharts; _i < _a.length; _i++) {
       var c = _a[_i];
-      /*let {canvas, holderEl} = new ChartHolder(
-          this.chartsParent, c).renderChartContainer();
-        const chart = new Chart(
-          (<HTMLCanvasElement>canvas).getContext('2d'),
-          this.getChartConfig(c, data)
-      );
-        this._charts.set(c, chart);
-        this.chartsParent.data('gridstack').makeWidget(holderEl);*/
-
       this.addChart(data, c);
     }
   };
@@ -901,17 +862,17 @@ function () {
   }*/
 
 
-  MainCharts.prototype.addChart = function (data, chartType) {
-    var _a = new ChartHolder_1["default"](this.chartsParent, chartType).inflateChartContainer(),
+  MainCharts.prototype.addChart = function (data, chartProps) {
+    var _a = new ChartHolder_1["default"](this.chartsParent, chartProps.chartType).inflateChartContainer(),
         canvas = _a.canvas,
         holderEl = _a.holderEl;
 
-    var chart = new chart_js_1.Chart(canvas.getContext('2d'), this.getChartConfig(chartType, data));
+    var chart = new chart_js_1.Chart(canvas.getContext('2d'), this.getChartConfig(chartProps.chartType, data));
 
-    this._charts.set(chartType, chart);
+    this._charts.set(chartProps.chartType, chart);
 
     var gridStack = this.chartsParent.data('gridstack');
-    gridStack.addWidget(holderEl, 0, 0, 3, 3); // return holderEl;
+    gridStack.addWidget(holderEl, chartProps.x, chartProps.y, chartProps.width, chartProps.height); // return holderEl;
   };
 
   MainCharts.prototype.update = function () {
@@ -1138,29 +1099,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SideCharts__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_SideCharts__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _ChartConfig_ChartConstants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ChartConfig/ChartConstants */ "./resources/js/components/ChartConfig/ChartConstants.js");
 /* harmony import */ var _ChartConfig_ChartConstants__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_ChartConfig_ChartConstants__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _BarChart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./BarChart */ "./resources/js/components/BarChart.js");
-/* harmony import */ var _BarChart__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_BarChart__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _DataPointIncrementer_MainChartDataPointIncrementer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./DataPointIncrementer/MainChartDataPointIncrementer */ "./resources/js/components/DataPointIncrementer/MainChartDataPointIncrementer.js");
-/* harmony import */ var _DataPointIncrementer_MainChartDataPointIncrementer__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_DataPointIncrementer_MainChartDataPointIncrementer__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _ChartHolders_ChartHolder__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ChartHolders/ChartHolder */ "./resources/js/components/ChartHolders/ChartHolder.js");
-/* harmony import */ var _ChartHolders_ChartHolder__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_ChartHolders_ChartHolder__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _MainCharts__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./MainCharts */ "./resources/js/components/MainCharts.js");
-/* harmony import */ var _MainCharts__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_MainCharts__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _node_modules_gridstack_dist_gridstack_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../../../node_modules/gridstack/dist/gridstack.css */ "./node_modules/gridstack/dist/gridstack.css");
-/* harmony import */ var _node_modules_gridstack_dist_gridstack_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_node_modules_gridstack_dist_gridstack_css__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _node_modules_gridstack_dist_gridstack_all__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./../../../node_modules/gridstack/dist/gridstack.all */ "./node_modules/gridstack/dist/gridstack.all.js");
-/* harmony import */ var _node_modules_gridstack_dist_gridstack_all__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_node_modules_gridstack_dist_gridstack_all__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _ElementHandlers_VotesStatsSideBarCollapser__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./ElementHandlers/VotesStatsSideBarCollapser */ "./resources/js/components/ElementHandlers/VotesStatsSideBarCollapser.js");
-/* harmony import */ var _ElementHandlers_VotesStatsSideBarCollapser__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_ElementHandlers_VotesStatsSideBarCollapser__WEBPACK_IMPORTED_MODULE_10__);
-
-
-
- // import VotesStatsSideBarCollapser from "./ElementHandlers/VotesStatsSideBarCollapser"
+/* harmony import */ var _MainCharts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MainCharts */ "./resources/js/components/MainCharts.js");
+/* harmony import */ var _MainCharts__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_MainCharts__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_gridstack_dist_gridstack_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../../../node_modules/gridstack/dist/gridstack.css */ "./node_modules/gridstack/dist/gridstack.css");
+/* harmony import */ var _node_modules_gridstack_dist_gridstack_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_gridstack_dist_gridstack_css__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_gridstack_dist_gridstack_all__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../../../node_modules/gridstack/dist/gridstack.all */ "./node_modules/gridstack/dist/gridstack.all.js");
+/* harmony import */ var _node_modules_gridstack_dist_gridstack_all__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_node_modules_gridstack_dist_gridstack_all__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _ElementHandlers_VotesStatsSideBarCollapser__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ElementHandlers/VotesStatsSideBarCollapser */ "./resources/js/components/ElementHandlers/VotesStatsSideBarCollapser.js");
+/* harmony import */ var _ElementHandlers_VotesStatsSideBarCollapser__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_ElementHandlers_VotesStatsSideBarCollapser__WEBPACK_IMPORTED_MODULE_7__);
 
 
 
 
- // import gridstack from 'gridstack';
 
 
 
@@ -1170,8 +1120,19 @@ $(window).on('load', function () {
   $gridStack.gridstack();
   var gridstack = $gridStack.data('gridstack');
   console.log("votesPerCategory", votesPerCategory);
-  var sideCharts = new _SideCharts__WEBPACK_IMPORTED_MODULE_2___default.a(votesPerCategory);
-  var mainCharts = new _MainCharts__WEBPACK_IMPORTED_MODULE_7___default.a([_ChartConfig_ChartConstants__WEBPACK_IMPORTED_MODULE_3__["CHART_PIE"]]);
+  var sideCharts = new _SideCharts__WEBPACK_IMPORTED_MODULE_2___default.a(votesPerCategory); // let mainChartsPrefs = new MainChartsPreferences(userId);
+  // mainChartsPrefs.load().then(() => {
+  //hide progress indicator
+  // });
+  // let mainCharts = new MainCharts(mainChartsPrefs.get());
+
+  var mainCharts = new _MainCharts__WEBPACK_IMPORTED_MODULE_4___default.a([{
+    chartType: _ChartConfig_ChartConstants__WEBPACK_IMPORTED_MODULE_3__["CHART_PIE"],
+    x: 1,
+    y: 2,
+    width: 6,
+    height: 6
+  }]);
   Echo.channel('the-polls').listen('VoteCast', function (e) {
     console.log("eeee e", e);
     sideCharts.plusOne(e.vote.award_category_id, e.vote.candidate);
@@ -1194,7 +1155,7 @@ $(window).on('load', function () {
   });
   var firstSideChartId = sideCharts.getFirstChartIndex();
   $(".stat-card#".concat(firstSideChartId)).trigger('click');
-  new _ElementHandlers_VotesStatsSideBarCollapser__WEBPACK_IMPORTED_MODULE_10___default.a(document.getElementById('sideMenuCollapser'));
+  new _ElementHandlers_VotesStatsSideBarCollapser__WEBPACK_IMPORTED_MODULE_7___default.a(document.getElementById('sideMenuCollapser'));
   $('#bar-graph').click(function (e) {
     var categoryId = $('.stat-card.selected').attr('id');
     var data = sideCharts.getSideChart(parseInt(categoryId)).getChartData();
@@ -1202,7 +1163,13 @@ $(window).on('load', function () {
     mainCharts.addChart({
       data: data.votes,
       labels: data.candidates
-    }, $(e.target).data('charttype'));
+    }, {
+      chartType: $(e.target).data('charttype'),
+      x: 6,
+      y: 5,
+      width: 5,
+      height: 6
+    });
   });
 });
 

@@ -5,15 +5,16 @@ import './../../../node_modules/gridstack/dist/gridstack.css';
 import gridstack from './../../../node_modules/gridstack/dist/gridstack.all';
 import {CHART_BAR, CHART_PIE} from "./ChartConfig/ChartConstants";
 import PieChartConfig from "./ChartConfig/PieChartConfig";
+import ChartProperties from "./Interfaces/ChartProperties";
 
 export default class MainCharts {
-    private userPrefCharts: string[];
+    private userPrefCharts: ChartProperties[];
     private _charts: Map<string, Chart>;
 
     private charts: Chart[];
     private chartsParent;
 
-    constructor(userPrefCharts: string[]) {
+    constructor(userPrefCharts: ChartProperties[]) {
         this.userPrefCharts = userPrefCharts;
 
         this.charts = [];
@@ -27,17 +28,6 @@ export default class MainCharts {
         this.chartsParent.data('gridstack').removeAll();
 
         for(let c of this.userPrefCharts) {
-            /*let {canvas, holderEl} = new ChartHolder(
-                this.chartsParent, c).renderChartContainer();
-
-            const chart = new Chart(
-                (<HTMLCanvasElement>canvas).getContext('2d'),
-                this.getChartConfig(c, data)
-            );
-
-            this._charts.set(c, chart);
-
-            this.chartsParent.data('gridstack').makeWidget(holderEl);*/
             this.addChart(data, c);
         }
     }
@@ -64,19 +54,23 @@ export default class MainCharts {
         return holderEl;
     }*/
 
-    addChart(data: Data, chartType: string) {
+    addChart(data: Data, chartProps: ChartProperties) {
         let {canvas, holderEl} = new ChartHolder(
-            this.chartsParent, chartType).inflateChartContainer();
+            this.chartsParent, chartProps.chartType).inflateChartContainer();
 
         const chart = new Chart(
             (<HTMLCanvasElement>canvas).getContext('2d'),
-            this.getChartConfig(chartType, data)
+            this.getChartConfig(chartProps.chartType, data)
         );
 
-        this._charts.set(chartType, chart);
+        this._charts.set(chartProps.chartType, chart);
 
         let gridStack = this.chartsParent.data('gridstack');
-        gridStack.addWidget(holderEl, 0, 0, 3, 3);
+        gridStack.addWidget(
+            holderEl,
+            chartProps.x, chartProps.y,
+            chartProps.width, chartProps.height
+        );
 
         // return holderEl;
     }
