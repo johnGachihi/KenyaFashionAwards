@@ -11,10 +11,12 @@
   <title>Kenya Fashion Awards</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="./img/core-img/favicon.ico">
+  {{--<link rel="icon" href="img/core-img/favicon.ico">--}}
+  <link rel="icon" href="{{ asset('img/core-img/favicon.ico') }}">
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="css/style2.css">
+  {{--<link rel="stylesheet" href="css/style2.css">--}}
+  <link rel="stylesheet" href="{{ asset('css/style2.css') }}">
 
 </head>
 
@@ -35,10 +37,11 @@
         <nav class="classy-navbar justify-content-between" id="monaNav">
 
           <!-- Background Curve -->
-          <div class="bg-curve" style="background-image: url(./img/core-img/choice.png);"></div>
+          <div class="bg-curve" style="background-image: url({{ asset('img/core-img/choice.png') }});"></div>
 
           <!-- Logo -->
-          <a class="nav-brand" href="/"><img src="./img/core-img/KFA.jpg" alt=""></a>
+          {{--<a class="nav-brand" href="/"><img src="./img/core-img/KFA.jpg" alt=""></a>--}}
+          <a class="nav-brand" href="/"><img src="{{ asset('img/core-img/KFA.jpg') }}" alt=""></a>
 
           <!-- Navbar Toggler -->
           <div class="classy-navbar-toggler">
@@ -134,7 +137,7 @@
 
             <div class="col-sm-6 col-md-4 col-lg-3">
                 <div class="card" style="width: 15rem;">
-                    <img class="card-img-top" src="./img/bg-img/kenya10.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="{{ asset('img/bg-img/kenya10.jpg') }}" alt="Card image cap">
                     <div class="card-footer">
                     <a href="/votes" class="card-link"><strong>Winnie</strong></a>
                   </div>
@@ -182,7 +185,7 @@
         <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
           <div class="single-footer-widget mb-60">
             <!-- Logo -->
-            <a href="#" class="d-block mb-4"><img src="./img/core-img/logo.png" alt=""></a>
+            <a href="#" class="d-block mb-4"><img src="{{ asset('img/core-img/logo.png') }}" alt=""></a>
             <p>Integer vehicula mauris libero, at molestie eros imperdiet sit amet. Suspendisse mattis ante sit amet ante.</p>
             <div class="copywrite-text">
               <p>&copy; 
@@ -243,15 +246,19 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
   <!-- ******* All JS ******* -->
   <!-- jQuery js -->
-  <script src="js/jquery.min.js"></script>
+  {{--<script src="js/jquery.min.js"></script>--}}
+  <script src="{{ asset('js/jquery.min.js') }}"></script>
   <!-- Popper js -->
-  <script src="js/popper.min.js"></script>
+  {{--<script src="js/popper.min.js"></script>--}}
+  <script src="{{ asset('js/popper.min.js') }}"></script>
   <!-- Bootstrap js -->
-  <script src="js/bootstrap.min.js"></script>
+  {{--<script src="js/bootstrap.min.js"></script>--}}
+  <script src="{{ asset('js/bootstrap.min.js') }}"></script>
   <!-- All js -->
-  <script src="js/mona.bundle.js"></script>
+  {{--<script src="js/mona.bundle.js"></script>--}}
+  <script src="{{ asset('js/mona.bundle.js') }}"></script>
   <!-- Active js -->
-  <script src="js/default-assets/active.js"></script>
+  <script src="{{ asset('js/default-assets/active.js') }}"></script>
 
 </body>
 
