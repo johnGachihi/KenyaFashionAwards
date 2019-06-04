@@ -52,6 +52,7 @@
   <script>
   const titleInput = document.getElementById('categoryTitle');
   const requirementsInput = document.getElementById('ckEditor');
+  console.log(@json($category));
 
   titleInput.value = '{{ $category->Category_Title }}';
   requirementsInput.value = '{!! base64_decode($category->richCategory_Requirements) !!}'

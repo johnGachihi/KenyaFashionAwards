@@ -19,6 +19,9 @@ const mix = require('laravel-mix');
             .sass('resources/sass/app.scss', 'public/css', {
                includePaths: [path.resolve(__dirname, 'node_modules')]
             });
+        mix.sass('resources/sass/app1.scss', 'public/css', {
+            includePaths: [path.resolve(__dirname, 'node_modules')]
+        });
             // .sass('temp_ts/temp.scss', 'public/css');
     // .ts('temp_ts/temp.ts', 'public/js');
 
