@@ -83,11 +83,15 @@
 
         <!-- About Us Content -->
         <div class="col-12 col-lg-8">
-          <div class="about-us-content mb-50">
-            <h2>Winnie</h2>
-            <p>She 20 years old.<br>
-            currently pursuing Bachelor in Enviroment Enginnering at UON </p>
-            <button class="bt">Vote</button>
+            <div class="about-us-content mb-50">
+                <h2>{{ $candidate->name }}</h2>
+                @if(!empty($candidate->bio))
+                    <p>$candidate->bio</p>
+                @else
+                    <p>Bio not provided</p>
+                @endif
+
+                <button id="vote-btn" class="bt">Vote</button>
           </div>
       </div>
     </div>
@@ -106,6 +110,20 @@
   <script src="{{ asset('js/mona.bundle.js') }}"></script>
   <!-- Active js -->
   <script src="{{ asset('js/default-assets/active.js') }}"></script>
+
+    <script>
+        $('#vote-btn').click(() => {
+            $.ajax({
+                url: '{{ url('vote') }}',
+                method: 'get',
+                data: {
+                    award_category: {{$candidate->application->award_category_id}},
+                    applicant: {{ $candidate->id }}
+                }
+            });
+        });
+
+    </script>
 
 </body>
 </html>

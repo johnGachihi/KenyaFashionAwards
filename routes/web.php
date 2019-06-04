@@ -60,16 +60,23 @@ Route::get('/projects', 'pagescontroller@projects');
 Route::get('/blog', 'pagescontroller@blog');
 // Route::get('/login', 'pagescontroller@login');
 Route::get('/signup', 'pagescontroller@signup');
-Route::get('/votes', 'pagescontroller@vote');
+//Route::get('/votes', 'pagescontroller@vote');
+
+Route::get('/votes/{candidate_id}', function ($candidate_id) {
+    $candidate = \App\Applicant::with('application')->find($candidate_id);
+
+    return view('vote',
+        ['candidate' => $candidate]
+    );
+//    return $candidate;
+});
 
 Route::get('/models', function () {
     $approved_applications  = \App\Applicant::whereHas('application', function ($query) {
         $query->where('decision', 'approved');
     })->get();
-    $a = \App\Applicant::all();
-//    return view('models');
-    return $approved_applications;
-//    return $a;
+
+    return view('models', ['candidates' => $approved_applications]);
 });
 
 //Route::resource('posts','PostsController');

@@ -134,8 +134,18 @@
     <div class="row flex-wrap align-content-sm-around">                 
         <!-- Single Model Item -->
         <div class="card-deck">
+            @foreach($candidates as $candidate)
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="card" style="width: 15rem;">
+                        <img class="card-img-top" src="{{ asset('img/bg-img/kenya10.jpg') }}" alt="Card image cap">
+                        <div class="card-footer">
+                            <a href="{{ url('/votes/'. $candidate->id) }}" class="card-link"><strong>{{ $candidate->name }}</strong></a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            {{--<div class="col-sm-6 col-md-4 col-lg-3">
                 <div class="card" style="width: 15rem;">
                     <img class="card-img-top" src="{{ asset('img/bg-img/kenya10.jpg') }}" alt="Card image cap">
                     <div class="card-footer">
@@ -143,7 +153,7 @@
                     </div>
                 </div>
             </div>
-                  
+
             <div class="col-sm-6 col-md-4 col-lg-3">
                 <div class="card" style="width: 15rem;">
                     <img class="card-img-top" src="./img/bg-img/kenya11.jpg" alt="Card image cap">
@@ -152,27 +162,29 @@
                     </div>
                 </div>
             </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="card" style="width: 15rem;">
-                <img class="card-img-top" src="./img/bg-img/kenya12.jpg" alt="Card image cap">
-                <div class="card-footer">
-                <a href="#" class="card-link"><strong>Aminah</strong></a>
-              </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card" style="width: 15rem;">
-            <img class="card-img-top" src="./img/bg-img/kenya13.jpg" alt="Card image cap">
-            <div class="card-footer">
-            <a href="#" class="card-link"><strong>Aminah</strong></a>
-          </div>
-    </div>
-</div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card" style="width: 15rem;">
+                    <img class="card-img-top" src="./img/bg-img/kenya12.jpg" alt="Card image cap">
+                    <div class="card-footer">
+                        <a href="#" class="card-link"><strong>Aminah</strong></a>
+                  </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card" style="width: 15rem;">
+                    <img class="card-img-top" src="./img/bg-img/kenya13.jpg" alt="Card image cap">
+                    <div class="card-footer">
+                        <a href="#" class="card-link"><strong>Aminah</strong></a>
+                    </div>
+                </div>
+            </div>--}}
     
         </div>
         </div>
       </div>
-    </div>
+    {{--</div>--}}
   </section>
   <!-- ***** Model Area End ***** -->
 
