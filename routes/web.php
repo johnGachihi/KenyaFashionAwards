@@ -62,6 +62,16 @@ Route::get('/blog', 'pagescontroller@blog');
 Route::get('/signup', 'pagescontroller@signup');
 Route::get('/votes', 'pagescontroller@vote');
 
+Route::get('/models', function () {
+    $approved_applications  = \App\Applicant::whereHas('application', function ($query) {
+        $query->where('decision', 'approved');
+    })->get();
+    $a = \App\Applicant::all();
+//    return view('models');
+    return $approved_applications;
+//    return $a;
+});
+
 //Route::resource('posts','PostsController');
 
 

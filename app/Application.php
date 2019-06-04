@@ -13,7 +13,7 @@ class Application extends Model
 //    ];
 
     public function applicant() {
-        return $this->belongsTo('App\applicants');
+        return $this->belongsTo('App\Applicant');
     }
 
     public function award_category() {

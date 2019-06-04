@@ -26,11 +26,18 @@
                         {{ url('admin/createCategory') }}
                         @endif
                       ">
-                        @csrf    
-                        <input id="categoryTitle" name="categoryTitle" class="form-control form-control-lg mb-3 inputs" type="text" placeholder="Insert Category Title e.g Male Model">
+                        @csrf
+                        @if(isset($category))
+                        <input id="categoryTitle" name="categoryTitle" class="form-control form-control-lg mb-3 inputs" type="text" placeholder="Insert Category Title e.g Male Model" value="{{ $category->Category_Title }}">
+                        <textarea id="ckEditor" name="richCategoryRequirements" placeholder="Insert Category Requirements">
+                            {!! base64_decode($category->richCategory_Requirements) !!}
+                        </textarea>
+                        @else
+                            <input id="categoryTitle" name="categoryTitle" class="form-control form-control-lg mb-3 inputs" type="text" placeholder="Insert Category Title e.g Male Model">
+                            <textarea id="ckEditor" name="richCategoryRequirements" placeholder="Insert Category Requirements"></textarea>
+                        @endif
                         <!-- <textarea name="categoryRequirements" id="editor-container" class="form-control form-control-lg add-new-category__editor mb-1 inputs py-3" placeholder="Insert category requirements"></textarea> -->
-                        <textarea id="ckEditor" name="richCategoryRequirements" placeholder="Insert Category Requirements"></textarea>
-                        <div class="d-flex align-items-center"> 
+                        <div class="d-flex align-items-center">
                             <button id="category-form-submit" type="submit" class="btn btn-outline-primary my-3">Save</button>
                             <div id="submit-success" class="d-flex ml-5 align-items-center opacity-0 submit-success">
                               <i class="material-icons text-success font-weight-bold">done</i>
@@ -46,16 +53,30 @@
           </div>
 @endsection
 
+{{--
 @section('_scripts')
 
   @isset($category)
   <script>
-  const titleInput = document.getElementById('categoryTitle');
-  const requirementsInput = document.getElementById('ckEditor');
-  console.log(@json($category));
+      // window.onload = () => {
 
-  titleInput.value = '{{ $category->Category_Title }}';
-  requirementsInput.value = '{!! base64_decode($category->richCategory_Requirements) !!}'
+      const titleInput = document.getElementById('categoryTitle');
+      const requirementsInput = document.getElementById('ckEditor');
+      // $(requirementsInput).val('ble');
+
+      console.log(@json($category));
+
+      let categoryDets = @json($category);
+      titleInput.onload = () => {
+          titleInput.value = 'ble';
+      }
+
+      requirementsInput.value = '{!! base64_decode($category->richCategory_Requirements) !!}';
+      requirementsInput.value = 'ble';
+      // titleInput.value = 'ble';
+      console.log(requirementsInput);
+      console.log(requirementsInput.value);
+      // };
   </script>
   @endisset
 
@@ -112,4 +133,4 @@
   //     console.log(error);
   // });
 </script>
-@endsection
+@endsection--}}
