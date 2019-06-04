@@ -1,5 +1,9 @@
 export default class ChartHolder {
     domElementString: string;
+
+    chartContainerDomString: string;
+    canvasElDomString: string;
+
     parentEl: HTMLElement;
     chartHolderElementId: string;
     canvasId: string;
@@ -17,6 +21,17 @@ export default class ChartHolder {
                     <canvas id="${this.canvasId}" class="main-chart" data-charttype="${chartType}"></canvas>
                 </div>
             </div>
+        `;
+
+        this.chartContainerDomString = `
+            <div id="${this.chartHolderElementId}" class='mdc-card mdc-card--outlined mdc-elevation--z1 mx-3'>
+                <div class="grid-stack-item-content w-100 h-100">
+                </div>
+            </div>
+        `;
+
+        this.canvasElDomString = `
+            <canvas id="${this.canvasId}" class="main-chart" data-charttype="${chartType}"></canvas>
         `
     }
 
@@ -29,5 +44,17 @@ export default class ChartHolder {
         let canvas = document.getElementById(this.canvasId);
         let holderEl = document.getElementById(this.chartHolderElementId);
         return {canvas: canvas, holderEl: holderEl};
+    }
+
+    inflateChartContainer() {
+        let container = new DOMParser().parseFromString(
+            this.chartContainerDomString, 'text/html').body.firstElementChild;
+        let canvas = new DOMParser().parseFromString(
+            this.canvasElDomString, 'text/html').body.firstElementChild;
+
+        container.getElementsByClassName('grid-stack-item-content')
+            .item(0).append(canvas);
+
+        return {canvas: canvas, holderEl: container};
     }
 }

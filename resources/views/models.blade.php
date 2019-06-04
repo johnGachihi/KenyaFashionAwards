@@ -139,19 +139,19 @@
                 <div class="card" style="width: 15rem;">
                     <img class="card-img-top" src="{{ asset('img/bg-img/kenya10.jpg') }}" alt="Card image cap">
                     <div class="card-footer">
-                    <a href="/votes" class="card-link"><strong>Winnie</strong></a>
-                  </div>
+                        <a href="{{ url('/votes') }}" class="card-link"><strong>Winnie</strong></a>
+                    </div>
+                </div>
             </div>
-        </div>
                   
-        <div class="col-sm-6 col-md-4 col-lg-3">
-                  <div class="card" style="width: 15rem;">
-                      <img class="card-img-top" src="./img/bg-img/kenya11.jpg" alt="Card image cap">
-                      <div class="card-footer">
-                      <a href="#" class="card-link"><strong>Sessie</strong></a>
-                    </div> 
-        </div>
-        </div>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card" style="width: 15rem;">
+                    <img class="card-img-top" src="./img/bg-img/kenya11.jpg" alt="Card image cap">
+                    <div class="card-footer">
+                        <a href="#" class="card-link"><strong>Sessie</strong></a>
+                    </div>
+                </div>
+            </div>
         <div class="col-sm-6 col-md-4 col-lg-3">
             <div class="card" style="width: 15rem;">
                 <img class="card-img-top" src="./img/bg-img/kenya12.jpg" alt="Card image cap">

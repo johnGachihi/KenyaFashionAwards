@@ -44,7 +44,7 @@ Route::middleware(['auth', 'adminCheck'])->group(function() {
 
         Route::post('/applications/decision/reject/{id}', 'ApplicationsController@reject');
 
-        Route::get('/vote_stats', 'VotesController@view');
+        Route::get('/vote_stats', 'VotesController@view')->name('vote-stats');
 
     });
 
@@ -58,7 +58,7 @@ Route::get('/criteria', 'pagescontroller@criteria');
 Route::get('/contacts', 'pagescontroller@contact');
 Route::get('/projects', 'pagescontroller@projects');
 Route::get('/blog', 'pagescontroller@blog');
- Route::get('/login', 'pagescontroller@login');
+// Route::get('/login', 'pagescontroller@login');
 Route::get('/signup', 'pagescontroller@signup');
 Route::get('/votes', 'pagescontroller@vote');
 
@@ -73,6 +73,8 @@ Route::post('/applications/create', 'ApplicationsController@create');
 Route::post('/applications', 'ApplicationsController@store');
 
 Route::get('/vote', 'VotesController@cast');
+
+Route::get('/category/all', 'AwardCategoriesController@getAllCategories');
 
 /*
  *  CSRF disabled for testing

@@ -179,7 +179,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/kenyafashionawards/john/public/";
+/******/ 	__webpack_require__.p = "/kenyafashionawards/public/";
 /******/
 /******/ 	// on error function for async loading
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
@@ -60295,8 +60295,8 @@ if (token) {
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "",
-  cluster: "mt1",
+  key: "cdf32a8be7051cc8b599",
+  cluster: "ap2",
   encrypted: true
 });
 
@@ -60389,8 +60389,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\KenyaFashionAwards\John\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\KenyaFashionAwards\John\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp2\htdocs\KenyaFashionAwards\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp2\htdocs\KenyaFashionAwards\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

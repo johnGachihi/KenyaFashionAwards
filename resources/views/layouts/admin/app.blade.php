@@ -7,7 +7,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
+            <aside id="_sidebar" class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
                 <!-- <div class="main-navbar">
                     <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
                     <a class="navbar-brand w-100 mr-0" href="#" style="line-height: 25px;">
@@ -91,8 +91,17 @@
                     </li> -->
                     </ul>
                 </div>
+
+                {{--Collapse Button--}}
+                @if(Route::currentRouteName() === 'vote-stats')
+                <a id="sideMenuCollapser" class="material-icons rounded-circle" style="text-decoration: none;" href="#a">
+                    remove
+                </a>
+
+                @endif
             </aside>
-            <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+            <main id="_mainCont" class="col p-0 offset-lg-2 offset-md-3">
+            {{--<main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">--}}
                 @yield('mainContent')
             </main>
         </div>

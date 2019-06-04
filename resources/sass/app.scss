@@ -15,6 +15,7 @@ $mdc-theme-primary: #1a1a1a;
 @import "~@material/elevation/mdc-elevation";
 @import "~@material/button/mdc-button";
 @import "~@material/card/mdc-card";
+@import "~@material/linear-progress/mdc-linear-progress";
 
 
 .navbar-laravel {
@@ -38,6 +39,45 @@ $mdc-theme-primary: #1a1a1a;
   //border-radius: inherit;
 }
 
+#sideMenuCollapser {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 7px;
+  transition: box-shadow 0.2s ;
+}
+
+#sideMenuCollapser:hover {
+  @include mdc-elevation(4);
+}
+
+#sideMenuCollapser.off {
+  z-index: 1000;
+  top: 10px;
+  right: -50px;
+  transition: top 0.5s linear .5s, right 0.5s linear .5s, box-shadow 0.2s ;
+}
+
+#_sidebar{
+  transition: all 1s;
+}
+
+#_mainCont{
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#_mainCont.full {
+  margin-left: 4% !important;
+}
+
+
+.width-0 {
+  width: 0!important;
+}
 
 
 //Applications page
@@ -74,6 +114,11 @@ $mdc-theme-primary: #1a1a1a;
   display: block;
   margin: 20px;
 }
+
+.top-menu-btn {
+  min-width: 10px;
+}
+
 
 
 /* Import Fonts & All CSS */
