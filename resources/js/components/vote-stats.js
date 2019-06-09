@@ -2,15 +2,11 @@ import 'simplebar';
 import 'simplebar/dist/simplebar.css';
 import SideCharts from "./SideCharts";
 import {CHART_BAR, CHART_PIE} from "./ChartConfig/ChartConstants";
-
-import BarChart from "./BarChart";
-import MainChartDataPointIncrementer from "./DataPointIncrementer/MainChartDataPointIncrementer";
-import ChartHolder from "./ChartHolders/ChartHolder";
 import MainCharts from "./MainCharts";
-// import gridstack from 'gridstack';
 
 import './../../../node_modules/gridstack/dist/gridstack.css';
 import gridstack from './../../../node_modules/gridstack/dist/gridstack.all';
+import VotesStatsSideBarCollapser from "./ElementHandlers/VotesStatsSideBarCollapser";
 
 $(window).on('load', () => {
     const $gridStack = $('.grid-stack');
@@ -19,7 +15,13 @@ $(window).on('load', () => {
 
     console.log("votesPerCategory", votesPerCategory);
     let sideCharts = new SideCharts(votesPerCategory);
-    let mainCharts = new MainCharts([CHART_BAR, CHART_PIE]);
+
+    // let mainChartsPrefs = new MainChartsPreferences(userId);
+    // mainChartsPrefs.load().then(() => {
+        //hide progress indicator
+    // });
+    // let mainCharts = new MainCharts(mainChartsPrefs.get());
+    let mainCharts = new MainCharts([{chartType: CHART_PIE, x: 1, y: 2, width: 6, height: 6}]);
 
     Echo.channel('the-polls')
         .listen('VoteCast', e => {
@@ -32,13 +34,12 @@ $(window).on('load', () => {
             })
     });
 
+    let data;
 
     $('.stat-card').on('click', e => {
         let categoryId = $(e.target).closest('.stat-card').attr('id');
         let data = sideCharts.getSideChart(parseInt(categoryId)).getChartData();
 
-        // let chartHolder = new MainCharts().addChart({data: data.votes, labels: data.candidates}, 'bar');
-        // let chartHolder2 = new MainCharts().addChart({data: data.votes, labels: data.candidates}, 'pie');
         console.log('categoryId', categoryId);
         sideCharts.select(parseInt(categoryId));
         mainCharts.makeCharts({data: data.votes, labels: data.candidates});
@@ -47,19 +48,21 @@ $(window).on('load', () => {
     let firstSideChartId = sideCharts.getFirstChartIndex();
     $(`.stat-card#${firstSideChartId}`).trigger('click');
 
-    /*let toBeRemovedChartData;
-    let toBeDestroyedChart;
-    $('.stat-card').on('click', e => {
-        console.log(typeof toBeDestroyedChart);
-        if (typeof toBeRemovedChart !== 'undefined') {
-            // toBeRemovedChart.destroy();
-        }
-        let categoryId = $(e.target).closest('.stat-card').attr('id');
-        console.log(categoryId);
+    new VotesStatsSideBarCollapser(
+        document.getElementById('sideMenuCollapser')
+    );
+
+    $('#bar-graph').click(e => {
+        let categoryId = $('.stat-card.selected').attr('id');
         let data = sideCharts.getSideChart(parseInt(categoryId)).getChartData();
-        toBeRemovedChartData = data;
-        // $('#main-stats-container').text(JSON.stringify(data));
-    });*/
 
-
+        console.log("The data on click:", data);
+        mainCharts.addChart(
+            {data: data.votes, labels: data.candidates},
+            {
+                chartType: $(e.target).data('charttype'),
+                x: 6, y: 5, width: 5, height: 6
+            }
+        );
+    })
 });

@@ -11,10 +11,12 @@
   <title>Kenya Fashion Awards</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="./img/core-img/favicon.ico">
+  {{--<link rel="icon" href="./img/core-img/favicon.ico">--}}
+  <link rel="icon" href="{{ asset('/img/core-img/favicon.ico') }}">
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="css/style2.css">
+  {{--<link rel="stylesheet" href="css/style2.css">--}}
+  <link rel="stylesheet" href="{{ asset('css/style2.css') }}">
 
 </head>
 
@@ -35,10 +37,12 @@
         <nav class="classy-navbar justify-content-between" id="monaNav">
 
           <!-- Background Curve -->
-          <div class="bg-curve" style="background-image: url(./img/core-img/choice.png);"></div>
+          {{--<div class="bg-curve" style="background-image: url(./img/core-img/choice.png);"></div>--}}
+          <div class="bg-curve" style="background-image: url({{ asset('/img/core-img/choice.png') }});"></div>
 
           <!-- Logo -->
-          <a class="nav-brand" href="index.php"><img src="./img/core-img/KFA.jpg" alt=""></a>
+          {{--<a class="nav-brand" href="index.php"><img src="./img/core-img/KFA.jpg" alt=""></a>--}}
+          <a class="nav-brand" href="index.php"><img src="{{ asset('img/core-img/KFA.jpg') }}" alt=""></a>
         </nav>
       </div>
     </div>
@@ -72,17 +76,22 @@
 
         <!-- About Us Thumbnail -->
         <div class="col-12 col-sm-12 col-lg-4">
-            <img src="./img/bg-img/kenya10.jpg" alt="">
+            {{--<img src="./img/bg-img/kenya10.jpg" alt="">--}}
+            <img src="{{ asset('/img/bg-img/kenya10.jpg') }}" alt="">
             <span class="line2"></span>
         </div>
 
         <!-- About Us Content -->
         <div class="col-12 col-lg-8">
-          <div class="about-us-content mb-50">
-            <h2>Winnie</h2>
-            <p>She 20 years old.<br>
-            currently pursuing Bachelor in Enviroment Enginnering at UON </p>
-            <button class="bt">Vote</button>
+            <div class="about-us-content mb-50">
+                <h2>{{ $candidate->name }}</h2>
+                @if(!empty($candidate->bio))
+                    <p>$candidate->bio</p>
+                @else
+                    <p>Bio not provided</p>
+                @endif
+
+                <button id="vote-btn" class="bt">Vote</button>
           </div>
       </div>
     </div>
@@ -91,15 +100,30 @@
 
   <!-- ******* All JS ******* -->
   <!-- jQuery js -->
-  <script src='js/jquery.min.js'></script>
+  {{--<script src='js/jquery.min.js'></script>--}}
+  <script src='{{ asset('js/jquery.min.js') }}'></script>
   <!-- Popper js -->
-  <script src='js/popper.min.js'></script>
+  <script src='{{ asset('js/popper.min.js') }}'></script>
   <!-- Bootstrap js -->
-  <script src="js/bootstrap.min.js"></script>
+  <script src="{{ asset('js/bootstrap.min.js') }}"></script>
   <!-- All js -->
-  <script src="js/mona.bundle.js"></script>
+  <script src="{{ asset('js/mona.bundle.js') }}"></script>
   <!-- Active js -->
-  <script src="js/default-assets/active.js"></script>
+  <script src="{{ asset('js/default-assets/active.js') }}"></script>
+
+    <script>
+        $('#vote-btn').click(() => {
+            $.ajax({
+                url: '{{ url('vote') }}',
+                method: 'get',
+                data: {
+                    award_category: {{$candidate->application->award_category_id}},
+                    applicant: {{ $candidate->id }}
+                }
+            });
+        });
+
+    </script>
 
 </body>
 </html>

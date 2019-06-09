@@ -60,4 +60,8 @@ class AwardCategoriesController extends Controller
         ]);
     }
 
+    public function getAllCategories() {
+        return AwardCategory::all();
+    }
+
 }

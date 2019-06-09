@@ -1,6 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/css/app1.css": "/css/app1.css",
     "/js/add-awardCategory-form.js": "/js/add-awardCategory-form.js",
     "/js/applications-page.js": "/js/applications-page.js",
     "/js/awardCategories.js": "/js/awardCategories.js",

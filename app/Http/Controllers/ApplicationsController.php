@@ -15,31 +15,30 @@ class ApplicationsController extends Controller
     public function view() {
         $applications = Application::all();
 
-        $pending_applications = Application::whereNull('decision')->get();
-        $approved_applications = Application::where('decision', 'approved')->get();
-        $rejected_applications = Application::where('decision', 'rejected')->get();
+        $pending_applications   = Application::whereNull('decision')->get();
+        $approved_applications  = Application::where('decision', 'approved')->get();
+        $rejected_applications  = Application::where('decision', 'rejected')->get();
 
         return view('admin.applications', [
-            'applications' => $applications,
-            'pending_applications' => $pending_applications,
+            'applications'          => $applications,
+            'pending_applications'  => $pending_applications,
             'approved_applications' => $approved_applications,
             'rejected_applications' => $rejected_applications
         ]);
     }
-    public function create()
-    {
-        return view('/contact');
+
+    public function create(){
+        return view ('/contacts');
     }
 
-
     public function store(Request $request) {
-        //event(new TestEvent('bleble'));
+//        event(new TestEvent('bleble'));
         $this->validate($request, [
             'name' =>'required',
             'company' => 'required',
             'email' => 'required',
             'telephone_number' => 'required',
-            'award_category_id' => 'required',
+            'award_category_id' =>'required',
             'bio' => 'required'
         ]);
 
@@ -50,12 +49,12 @@ class ApplicationsController extends Controller
         $applicant->email = $request->input('email');
         $applicant->bio = $request->input('bio');
         $applicant->save();
-        return redirect('/contacts')->with('success', 'Form Submitted');
 
-        $application = new applications();
+        $application = new Application();
         $application->applicant_id = $applicant->id;
-        $application->award_category_id = $request->input('award_category_id');
+        $application->award_category_id = $request->award_category_id;
         $application->save();
+        return redirect('/contacts')->with('success', 'Form Submitted');
     }
 
     public function accept(Request $request, $id) {
