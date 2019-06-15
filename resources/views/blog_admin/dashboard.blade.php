@@ -11,7 +11,7 @@
     </div>
 
     <div class="row">
-        @if($approved_posts->count() > 0)
+        @if($new_posts->count() > 0)
             @foreach($new_posts as $post)
             <div class="col-12 mb-4">
                     <div class="card-shards card-small card-post card-post--asisde card-post--1">

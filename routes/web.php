@@ -64,7 +64,7 @@ Route::middleware(['auth', 'CheckBlogger'])->group(function() {
 
         Route::post('/createPost/{id?}', 'BlogPostsController@createPost');
 
-        Route::get('/edit_post/{id?}', 'BlogPostsController@editPost');
+        Route::get('/edit_post/{id}', 'BlogPostsController@editPost');
 
         Route::get('/update_post/{id}', 'BlogPostsController@updatePost');
 
@@ -104,10 +104,11 @@ Route::get('/models', 'pagescontroller@models');
 Route::get('/criteria', 'pagescontroller@criteria');
 Route::get('/contacts', 'pagescontroller@contact');
 Route::get('/projects', 'pagescontroller@projects');
-Route::get('/blog', 'pagescontroller@blog');
+Route::get('/blog', 'BlogPageController@index');
 // Route::get('/login', 'pagescontroller@login');
 Route::get('/signup', 'pagescontroller@signup');
 //Route::get('/votes', 'pagescontroller@vote');
+Route::get('/test', 'pagescontroller@test');
 
 Route::get('/votes/{candidate_id}', function ($candidate_id) {
     $candidate = \App\Applicant::with('application')->find($candidate_id);
@@ -149,5 +150,3 @@ Route::get('/category/all', 'AwardCategoriesController@getAllCategories');
 //Route::get("/test", function () {
 //    event(new \App\Events\TestEvent("This is awesome"));
 //});
-
-

@@ -19,19 +19,15 @@
                 <div class="card card-small mb-3">
                   <div class="card-body">
                     <form id="category-form" class="add-new-post" 
-                      action="
-                        @if(isset($post))
-                        {{ url('blogger/createPost'. '/'. $post->id) }}
-                        @else
-                        {{ url('blogger/createPost') }}
-                        @endif
-                        "
-                      enctype="multipart/form-data">
+                      action=" {{ url('blogger/createPost') }} "
+                      enctype="multipart/form-data"
+                      method="POST">
                         @csrf    
                         <input id="postTitle" name="postTitle" class="form-control form-control-lg mb-3 inputs" type="text" placeholder="Insert Post Title">
                         <!-- <textarea name="categoryRequirements" id="editor-container" class="form-control form-control-lg add-new-category__editor mb-1 inputs py-3" placeholder="Insert category requirements"></textarea> -->
                         <textarea id="ckEditor" name="richPostBody" placeholder="What are your thoughts?..."></textarea>
-                        <input id="coverImage" name="coverImage" class="btn btn-outline" type="file">
+                        <br>
+                        <label>Choose an image to upload:</label><input id="coverImage" name="coverImage" class="btn btn-outline" type="file">
                         <div class="d-flex align-items-center"> 
                             <button id="category-form-submit" type="submit" class="btn btn-outline-primary my-3">Save</button>
                             <div id="submit-success" class="d-flex ml-5 align-items-center opacity-0 submit-success">
@@ -59,7 +55,6 @@
   requirementsInput.value = '{!! $post->body !!}';
   
   </script>
-  
   @endisset
 
 <!-- Form submittion -->

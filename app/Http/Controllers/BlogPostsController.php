@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use App\User;
 use App\Post;
+use App\User;
 
 class BlogPostsController extends Controller
 {
@@ -79,10 +79,12 @@ class BlogPostsController extends Controller
         }
 
         $post->save();
-
+        
         return response()->json([
             'error' => false
-        ]);
+        ]); 
+
+        return view('blogger.blogger_dash');
     }
 
     public function create() 
