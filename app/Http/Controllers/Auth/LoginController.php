@@ -42,5 +42,11 @@ class LoginController extends Controller
         if($user->role == 'admin') {
             return redirect('admin/home');
         }
+        if($user->role == 'blogger') {
+            return redirect('blogger/home');
+        }
+        if($user->role == 'blog_admin') {
+            return redirect('blog_admin/home');
+        }
     }
 }

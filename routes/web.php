@@ -47,9 +47,56 @@ Route::middleware(['auth', 'adminCheck'])->group(function() {
         Route::get('/vote_stats', 'VotesController@view')->name('vote-stats');
 
     });
+    
 
 });
 
+
+Route::middleware(['auth', 'CheckBlogger'])->group(function() {
+
+    Route::prefix('blogger')->group(function() {
+
+        Route::get('/home', 'BlogPostsController@index');
+
+        Route::get('/myblogs', 'BlogPostsController@index');
+
+        Route::get('/create', 'BlogPostsController@create');
+
+        Route::post('/createPost/{id?}', 'BlogPostsController@createPost');
+
+        Route::get('/edit_post/{id?}', 'BlogPostsController@editPost');
+
+        Route::get('/update_post/{id}', 'BlogPostsController@updatePost');
+
+        Route::get('/delete_post/{id}', 'BlogPostsController@deletePost');
+
+        Route::get('/pending_posts', 'BlogPostsController@viewPending');
+
+    });
+
+});
+
+Route::middleware(['auth', 'CheckBloggerAdmin'])->group(function() {
+
+    Route::prefix('blog_admin')->group(function() {
+
+        Route::get('/home', 'BlogsController@view');
+
+        Route::get('/approved_posts', 'BlogsController@viewApproved');
+
+        Route::get('/rejected_posts', 'BlogsController@viewRejected');
+
+        Route::get('/approve_post/{id}', 'BlogsController@approvePost');
+
+        Route::get('/reject_post/{id}', 'BlogsController@rejectPost');
+
+        Route::get('/delete_post/{id}', 'BlogsController@deletePost');
+
+
+    });
+
+
+});
 
 Route::get('/index', 'pagescontroller@index' );
 Route::get('/category', 'pagescontroller@category');

@@ -16,7 +16,9 @@
         "laravelcollective/html": "^5.4.0",
         "league/oauth2-google": "^3.0",
         "phpmailer/phpmailer": "^6.0",
-        "pusher/pusher-php-server": "~3.0"
+        "pusher/pusher-php-server": "~3.0",
+        "unisharp/laravel-ckeditor": "^4.7",
+        "ckeditor/ckeditor": "4.*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

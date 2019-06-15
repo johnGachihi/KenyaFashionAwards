@@ -59,6 +59,7 @@
   requirementsInput.value = '{!! $post->body !!}';
   
   </script>
+  
   @endisset
 
 <!-- Form submittion -->

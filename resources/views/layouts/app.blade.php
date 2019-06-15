@@ -58,13 +58,10 @@
                                 <a class="nav-link" href="{{ url('/') }}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/') }}">About</a>
+                                <a class="nav-link" href="{{ url('/') }}">About Us</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/') }}">Categories</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/') }}">Awards</a>
+                                <a class="nav-link" href="{{ url('/') }}">Contact Us</a>
                             </li>
                         @guest
                             <li class="nav-item">

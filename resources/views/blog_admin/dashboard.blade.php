@@ -11,42 +11,46 @@
     </div>
 
     <div class="row">
-        @foreach($new_posts as $post)
-        <div class="col-12 mb-4">
-                <div class="card-shards card-small card-post card-post--asisde card-post--1">
-                    <div class="card-body">
-                        <div class="row">
-                        <div class="col-md-4 col-sm-4">
-                            <img style="width:100%;" src="{{ url('/storage/cover_images/' . $post->cover_image)}}"/>
-                        </div>
-                        <div class="col-md-8 col-sm-8">
-                        <h5 class="card-title d-flex justify-content-between">
-                            <a id="{{ $post->id}}" href="#" class="">{{ $post->title }}</a>
-                            <div>
-                                <a href="{{ url('blog_admin/approve_post/'. $post->id) }}">
-                                    <i class="material-icons ml-4" style="font-size: large;">done_outline</i>
-                                    <input type="hidden" name="approvedPostStatus" value="approved">
-                                    <input type="hidden" name="declinedPostStatus" value="declined">
-                                </a>
-                                <a href="{{ url('blog_admin/reject_post/' . $post->id) }}">
-                                    <i class="material-icons ml-1" style="font-size: large;">cancel</i>
-                                </a>
+        @if($approved_posts->count() > 0)
+            @foreach($new_posts as $post)
+            <div class="col-12 mb-4">
+                    <div class="card-shards card-small card-post card-post--asisde card-post--1">
+                        <div class="card-body">
+                            <div class="row">
+                            <div class="col-md-4 col-sm-4">
+                                <img style="width:100%;" src="{{ url('/storage/cover_images/' . $post->cover_image)}}"/>
                             </div>
-                        </h5>
-                        <hr>
-                        <div>
-                            <p style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="card-text d-inline-block mb-3">{!! $post->body !!}</p>
+                            <div class="col-md-8 col-sm-8">
+                            <h5 class="card-title d-flex justify-content-between">
+                                <a id="{{ $post->id}}" href="#" class="">{{ $post->title }}</a>
+                                <div>
+                                    <a href="{{ url('blog_admin/approve_post/'. $post->id) }}">
+                                        <i class="material-icons ml-4" style="font-size: large;">done_outline</i>
+                                        <input type="hidden" name="approvedPostStatus" value="approved">
+                                        <input type="hidden" name="declinedPostStatus" value="declined">
+                                    </a>
+                                    <a href="{{ url('blog_admin/reject_post/' . $post->id) }}">
+                                        <i class="material-icons ml-1" style="font-size: large;">cancel</i>
+                                    </a>
+                                </div>
+                            </h5>
+                            <hr>
+                            <div>
+                                <p style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="card-text d-inline-block mb-3">{!! $post->body !!}</p>
+                            </div>
+                            <hr>
+                        <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
+                            </div>
+                            <!-- <p class="card-text d-inline-block mb-3">{{ base64_decode($post->body) }}</p> -->
+                            <!-- <p class="bleble"><p>man</p></p> -->
                         </div>
-                        <hr>
-                    <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
                         </div>
-                        <!-- <p class="card-text d-inline-block mb-3">{{ base64_decode($post->body) }}</p> -->
-                        <!-- <p class="bleble"><p>man</p></p> -->
-                    </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+            @else
+            <p>No posts found</p>
+        @endif
     <!-- End Page Header -->
         
         <!-- <div class="col-12 mb-4">
