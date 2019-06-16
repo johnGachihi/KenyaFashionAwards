@@ -43,6 +43,23 @@ class BlogPostsController extends Controller
         ]);
     }
 
+    public function viewRejected()
+    {
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+
+        $posts = Post::all();
+
+        $new_posts = Post::where('post_status', 'new')->orderBy('created_at', 'desc')->get();
+        $approved_posts = Post::where('post_status', 'approved')->orderBy('created_at', 'desc')->get();
+        $rejected_posts = Post::where('post_status', 'rejected')->orderBy('created_at', 'desc')->get();
+
+        return view('blogger.rejected_posts', [
+            'posts' => $user->posts,
+            'rejected_posts' => $rejected_posts
+        ]);
+    }
+
     public function createPost(Request $request, $id = null)
     {
         $this->validate($request, [
@@ -137,8 +154,7 @@ class BlogPostsController extends Controller
         
         $post->save();
 
-        return redirect('blogger.edit');
-
+        return redirect('/blogger/myblogs');
 
         return response()->json([
             'error' => false

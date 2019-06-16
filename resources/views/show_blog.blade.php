@@ -108,11 +108,12 @@
       <div class="row h-100 align-items-end">
         <div class="col-12">
           <div class="breadcumb--con">
-            <h2 class="title">Blog</h2>
+            <a href="{{ url('/blog') }}"><h2 class="title">Blog</h2><a>
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('/index') }}"><i class="fa fa-home"></i> Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Blog</li>
+                <li class="breadcrumb-item"><a href="{{ url('/blog') }}">Blog</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{$post->title}}</li>
               </ol>
             </nav>
           </div>

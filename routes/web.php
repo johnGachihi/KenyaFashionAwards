@@ -71,11 +71,13 @@ Route::middleware(['auth', 'CheckBlogger'])->group(function() {
 
         Route::get('/edit_post/{id}', 'BlogPostsController@editPost');
 
-        Route::post('/update_post/{id}', 'BlogPostsController@updatePost');
+        Route::get('/update_post/{id}', 'BlogPostsController@updatePost');
 
         Route::get('/delete_post/{id}', 'BlogPostsController@deletePost');
 
         Route::get('/pending_posts', 'BlogPostsController@viewPending');
+
+        Route::get('/rejected_posts', 'BlogPostsController@viewRejected');
 
     });
 

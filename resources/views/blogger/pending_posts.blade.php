@@ -6,12 +6,13 @@
     <div class="page-header row no-gutters py-4">
         <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
         <span class="text-uppercase page-subtitle">Posts</span>
-        <h3 class="page-title">Pending Posts</h3>
+        <h3 class="page-title">Unpublished Posts</h3>
         </div>
     </div>
     <!-- End Page Header -->
 
     <div class="row">
+        @if($new_posts->count() > 0)
         @foreach($new_posts as $post)
         @if(Auth::user()->id == $post->user_id )
         <div class="col-12 mb-4">
@@ -53,6 +54,9 @@
         </div>
         @endif
         @endforeach
+        @else
+            <p>No posts found</p>
+        @endif
         
         <!-- <div class="col-12 mb-4">
             <div class="card card-small card-post card-post--1">
