@@ -14,7 +14,7 @@
   <link rel="icon" href="./img/core-img/favicon.ico">
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="{{asset('./css/style2.css')}}">
 
 </head>
 
@@ -35,10 +35,10 @@
         <nav class="classy-navbar justify-content-between" id="monaNav">
 
           <!-- Background Curve -->
-          <div class="bg-curve" style="background-image: url(./img/core-img/curve.png);"></div>
+         <div class="bg-curve" style="background-image: url(./img/core-img/choice.png);"></div>
 
-          <!-- Logo -->
-          <a class="nav-brand" href="index.php"><img src="./img/core-img/logo.png" alt=""></a>
+         <!-- Logo -->
+          <a class="nav-brand" href="{{ url('/index') }}"><img src="./img/core-img/KFA.jpg" alt=""></a>
 
           <!-- Navbar Toggler -->
           <div class="classy-navbar-toggler">
@@ -55,44 +55,16 @@
             <!-- Nav Start -->
             <div class="classynav">
               <ul id="nav">
-                <li class="current-item"><a href="./index.html">Home</a></li>
-                <li><a href="#">Pages</a>
+                <li><a href="{{ url('/index') }}">Home</a></li>
+                <li><a href="#">Awards</a>
                   <ul class="dropdown">
-                    <li><a href="./index.php">- Home</a></li>
-                    <li><a href="./about.php">- About Us</a></li>
-                    <li><a href="./projects.php">- Projects</a></li>
-                    <li><a href="./models.php">- Models</a></li>
-                    <li><a href="./casting.php">- Casting</a></li>
-                    <li><a href="./blog.php">- Blog</a></li>
-                    <li><a href="./single-blog.php">- Blog Details</a></li>
-                    <li><a href="./contact.php">- Contact</a></li>
-                    <li><a href="#">- Dropdown</a>
-                      <ul class="dropdown">
-                        <li><a href="#">- Dropdown Item</a></li>
-                        <li><a href="#">- Dropdown Item</a>
-                          <ul class="dropdown">
-                            <li><a href="#">- Even Dropdown</a></li>
-                            <li><a href="#">- Even Dropdown</a></li>
-                            <li><a href="#">- Even Dropdown</a></li>
-                            <li><a href="#">- Even Dropdown</a></li>
-                          </ul>
-                        </li>
-                        <li><a href="#">- Dropdown Item</a></li>
-                        <li><a href="#">- Dropdown Item</a></li>
-                      </ul>
-                    </li>
-                  </ul>
+                    <li><a href="/category">Awards Category</a></li>
+                    <li><a href="/criteria">Awards criteria</a></li>
+                    </ul>
                 </li>
-                <li><a href="./projects.php">Project</a></li>
-                <li><a href="./models.php">Models</a></li>
-                <li><a href="./casting.php">Casting</a></li>
-                <li><a href="#">Blog</a>
-                  <ul class="dropdown">
-                    <li><a href="./blog.php">- Blog</a></li>
-                    <li><a href="./single-blog.php">- Blog Details</a></li>
-                  </ul>
-                </li>
-                <li><a href="./contact.php">Contact</a></li>
+                <li><a href="/models">Vote</a></li>
+                <li  class="current-item"><a href="{{ url('/blog') }}">Blog</a></li>
+                <li><a href="/contacts">Apply</a></li>
               </ul>
 
               <!-- Search Icon -->

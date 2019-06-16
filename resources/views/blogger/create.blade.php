@@ -25,7 +25,7 @@
                         @csrf    
                         <input id="postTitle" name="postTitle" class="form-control form-control-lg mb-3 inputs" type="text" placeholder="Insert Post Title">
                         <!-- <textarea name="categoryRequirements" id="editor-container" class="form-control form-control-lg add-new-category__editor mb-1 inputs py-3" placeholder="Insert category requirements"></textarea> -->
-                        <textarea id="ckEditor" name="richPostBody" placeholder="What are your thoughts?..."></textarea>
+                        <textarea id="ckEditor" name="ckEditor" placeholder="What are your thoughts?..."></textarea>
                         <br>
                         <label>Choose an image to upload:</label><input id="coverImage" name="coverImage" class="btn btn-outline" type="file">
                         <div class="d-flex align-items-center"> 
@@ -45,17 +45,11 @@
 @endsection
 
 @section('_scripts')
-
-  @isset($post)
-  <script>
-  const titleInput = document.getElementById('postTitle');
-  const requirementsInput = document.getElementById('ckEditor');
-
-  titleInput.value = '{{ $post->title }}';
-  requirementsInput.value = '{!! $post->body !!}';
-  
+  <script src="/vendor/unisharp/lavarel-ckeditor/ckeditor.js">
   </script>
-  @endisset
+  <script>
+      CKEDITOR>replace('ckEditor');
+  </script>
 
 <!-- Form submittion -->
 <!-- <script>

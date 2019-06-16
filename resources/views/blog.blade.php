@@ -14,7 +14,7 @@
   <link rel="icon" href="./img/core-img/KFA.jpg">
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="./css/style2.css">
+  <link rel="stylesheet" href="{{asset('./css/style2.css')}}">
 
 </head>
 
@@ -170,12 +170,12 @@
             <div class="card-body">
                 <div class="row">
                 <div class="col-md-4 col-sm-4">
-                    <img style="width:100%;" src="{{ url('/storage/cover_images/' . $post->cover_image)}}"/>
+                    <img style="width:100%; " class="rounded" src="{{ url('/storage/cover_images/' . $post->cover_image)}}"/>
                 </div>
                 <div class="col-md-8 col-sm-8">
-                <h5 class="card-title d-flex justify-content-between">
-                    <a id="{{ $post->id}}" href="{{ url('blogger/edit_post/'. $post->id) }}" class="">{{ $post->title }}</a>
-                </h5>
+                <h3 class="card-title d-flex justify-content-between">
+                    <a id="{{ $post->id}}" href="{{ url('show/'. $post->id) }}" class="">{{ $post->title }}</a>
+                </h3>
                 <div>
                     <p style="display: inline-block; 
                           width: 100%;
@@ -193,6 +193,7 @@
         </div>
     </div>
     @endforeach
+  </div>
   
 
   <!-- ***** Footer Area Start ***** -->

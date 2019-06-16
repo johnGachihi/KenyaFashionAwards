@@ -122,9 +122,9 @@
   </div>
   <!-- ***** Breadcrumb Area End ***** -->
 
-  
   <!-- ***** Blog Area Start ***** -->
   <section class="mona-blog-area mb-50 section-padding-80-0">
+    @foreach($approved_posts as $post)
     <div class="container">
       <div class="row">
 
@@ -132,12 +132,11 @@
         <div class="col-12 col-lg-4">
           <div class="single-blog-post mb-30">
             <div class="post-thumbnail slide-post owl-carousel">
-              <a href="#"><img src="./img/bg-img/3.jpg" alt=""></a>
-              <a href="#"><img src="./img/bg-img/4.jpg" alt=""></a>
+              <a href="#"><img src="{{ url('/storage/cover_images/' . $post->cover_image)}}" alt=""></a>
             </div>
             <div class="post-content">
-              <a href="#" class="post-title">How To Use Eye Shadow Like The Stars</a>
-              <span class="post-date">30 Aug 2018</span>
+              <a href="/" class="post-title">{{ $post->title }}</a>
+              <small class="">Written on {{$post->created_at}} by {{$post->user->name}}</span>
             </div>
           </div>
         </div>
@@ -150,12 +149,12 @@
             <div class="col-12">
               <div class="single-blog-post featured-post mb-30">
                 <div class="post-thumbnail">
-                  <a href="#"><img src="./img/bg-img/5.jpg" alt=""></a>
+                  <a href="#"><img src="{{ url('/storage/cover_images/' . $post->cover_image)}}" alt=""></a>
                 </div>
                 <div class="post-content">
                   <div>
-                    <a href="#" class="post-title">What Curling Irons Are The Best Ones</a>
-                    <span class="post-date">30 Aug 2018</span>
+                    <a href="#" class="post-title">{{ $post->title }}</a>
+                    <span class="post-date">Written on {{$post->created_at}} by {{$post->user->name}}</span>
                   </div>
                 </div>
               </div>
@@ -165,11 +164,11 @@
             <div class="col-12 col-sm-6 col-lg-6">
               <div class="single-blog-post mb-30">
                 <div class="post-thumbnail">
-                  <a href="#"><img src="./img/bg-img/1.jpg" alt=""></a>
+                  <a href="#"><img src="{{ url('/storage/cover_images/' . $post->cover_image)}}" alt=""></a>
                 </div>
                 <div class="post-content">
-                  <a href="#" class="post-title">What Curling Irons Are The Best Ones</a>
-                  <span class="post-date">30 Aug 2018</span>
+                  <a href="#" class="post-title">{{ $post->title }}</a>
+                  <span class="post-date">Written on {{$post->created_at}} by {{$post->user->name}}</span>
                 </div>
               </div>
             </div>
@@ -178,11 +177,11 @@
             <div class="col-12 col-sm-6 col-lg-6">
               <div class="single-blog-post mb-30">
                 <div class="post-thumbnail">
-                  <a href="#"><img src="./img/bg-img/2.jpg" alt=""></a>
+                  <a href="#"><img src="{{ url('/storage/cover_images/' . $post->cover_image)}}" alt=""></a>
                 </div>
                 <div class="post-content">
-                  <a href="#" class="post-title">How To Save Money On Beauty Products</a>
-                  <span class="post-date">30 Aug 2018</span>
+                  <a href="#" class="post-title">{{ $post->title }}</a>
+                  <span class="post-date">Written on {{$post->created_at}} by {{$post->user->name}}</span>
                 </div>
               </div>
             </div>
@@ -194,11 +193,11 @@
         <div class="col-12 col-sm-6 col-lg-4">
           <div class="single-blog-post mb-30">
             <div class="post-thumbnail">
-              <a href="#"><img src="./img/bg-img/41.jpg" alt=""></a>
+              <a href="#"><img src="{{ url('/storage/cover_images/' . $post->cover_image)}}" alt=""></a>
             </div>
             <div class="post-content">
-              <a href="#" class="post-title">The Different Methods Of Hair Removal</a>
-              <span class="post-date">30 Aug 2018</span>
+              <a href="#" class="post-title">{{ $post->title }}</a>
+              <span class="post-date">Written on {{$post->created_at}} by {{$post->user->name}}</span>
             </div>
           </div>
         </div>
@@ -207,11 +206,11 @@
         <div class="col-12 col-sm-6 col-lg-4">
           <div class="single-blog-post mb-30">
             <div class="post-thumbnail">
-              <a href="#"><img src="./img/bg-img/42.jpg" alt=""></a>
+              <a href="#"><img src="{{ url('/storage/cover_images/' . $post->cover_image)}}" alt=""></a>
             </div>
             <div class="post-content">
-              <a href="#" class="post-title">Ready To Wear Bifocal Contact Lenses</a>
-              <span class="post-date">30 Aug 2018</span>
+              <a href="#" class="post-title">{{ $post->title }}</a>
+              <span class="post-date">Written on {{$post->created_at}} by {{$post->user->name}}</span>
             </div>
           </div>
         </div>
@@ -220,17 +219,18 @@
         <div class="col-12 col-lg-4">
           <div class="single-blog-post mb-30">
             <div class="post-thumbnail">
-              <a href="#"><img src="./img/bg-img/43.jpg" alt=""></a>
+              <a href="#"><img src="{{ url('/storage/cover_images/' . $post->cover_image)}}" alt=""></a>
             </div>
             <div class="post-content">
-              <a href="#" class="post-title">An Overview Of Cosmetic Procedures</a>
-              <span class="post-date">30 Aug 2018</span>
+              <a href="#" class="post-title">{{ $post->title }}</a>
+              <span class="post-date">Written on {{$post->created_at}} by {{$post->user->name}}</span>
             </div>
           </div>
         </div>
 
       </div>
     </div>
+    @endforeach
   </section>
   <!-- ***** Blog Area End ***** -->
   

@@ -71,7 +71,7 @@ class BlogPostsController extends Controller
         $post->title = $request->input('postTitle');
 
 
-        $post->body = $request->input('richPostBody');
+        $post->body = $request->input('ckEditor');
 
         $post->user_id = auth()->user()->id;
         if($request->hasFile('coverImage')) {
