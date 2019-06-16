@@ -19,6 +19,8 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('/articles', 'ArticlesController');
+Route::resource('/profiles', 'ProfilesController');
 
 Route::middleware(['auth', 'adminCheck'])->group(function() {
 
@@ -47,6 +49,9 @@ Route::middleware(['auth', 'adminCheck'])->group(function() {
         Route::get('/vote_stats', 'VotesController@view')->name('vote-stats');
 
     });
+
+
+
     
 
 });
@@ -73,6 +78,7 @@ Route::middleware(['auth', 'CheckBlogger'])->group(function() {
         Route::get('/pending_posts', 'BlogPostsController@viewPending');
 
     });
+
 
 });
 
@@ -154,3 +160,7 @@ Route::get('/category/all', 'AwardCategoriesController@getAllCategories');
 //Route::get("/test", function () {
 //    event(new \App\Events\TestEvent("This is awesome"));
 //});
+
+
+
+

@@ -55,13 +55,13 @@
             <!-- Nav Start -->
             <div class="classynav">
               <ul id="nav">
-                <li><a href="./index.html">Home</a></li>
+                <li><a href="{{ url('/') }}/index">Home</a></li>
                 <li><a href="#">Pages</a>
                   <ul class="dropdown">
-                    <li><a href="./index.php">- Home</a></li>
-                    <li><a href="./about.php">- About Us</a></li>
-                    <li><a href="./projects.php">- Projects</a></li>
-                    <li><a href="./models.php">- Models</a></li>
+                    <li><a href="{{ url('/') }}/index">- Home</a></li>
+                    <li><a href="{{ url('/') }}/about">- About Us</a></li>
+                    <li><a href="{{ url('/') }}/projects">- Projects</a></li>
+                    <li><a href="{{ url('/') }}/models">- Models</a></li>
                     <li><a href="./casting.php">- Casting</a></li>
                     <li><a href="./blog.php">- Blog</a></li>
                     <li><a href="./single-blog.php">- Blog Details</a></li>
@@ -83,16 +83,16 @@
                     </li>
                   </ul>
                 </li>
-                <li class="current-item"><a href="./projects.php">Project</a></li>
-                <li><a href="./models.php">Models</a></li>
-                <li><a href="./casting.php">Casting</a></li>
+                <li class="current-item"><a href="{{ url('/') }}/projects">Project</a></li>
+                <li><a href="{{ url('/') }}/models">Models</a></li>
+                <li><a href="{{ url('/') }}/casting">Casting</a></li>
                 <li><a href="#">Blog</a>
                   <ul class="dropdown">
-                    <li><a href="./blog.php">- Blog</a></li>
-                    <li><a href="./single-blog.php">- Blog Details</a></li>
+                    <li><a href="{{ url('/') }}/blog">- Blog</a></li>
+                    <li><a href="{{ url('/') }}/single-blog">- Blog Details</a></li>
                   </ul>
                 </li>
-                <li><a href="./contact.php">Contact</a></li>
+                <li><a href="{{ url('/') }}/contact">Contact</a></li>
               </ul>
 
               <!-- Search Icon -->

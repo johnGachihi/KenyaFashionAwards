@@ -55,13 +55,22 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/') }}">Home</a>
+                                <a class="nav-link" href="{{ url('/') }}/home">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/') }}">About Us</a>
+                                <a class="nav-link" href="{{ url('/') }}/profiles">Profiles</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/') }}">Contact Us</a>
+                                <a class="nav-link" href="{{ url('/') }}/articles">Articles</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/') }}">Awards</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/') }}/about">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/') }}/contactinfo">Contact Us</a>
                             </li>
                         @guest
                             <li class="nav-item">

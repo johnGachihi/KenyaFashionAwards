@@ -55,6 +55,46 @@
             <!-- Nav Start -->
             <div class="classynav">
               <ul id="nav">
+<<<<<<< HEAD
+                <li class="current-item"><a href="{{ url('/') }}/index">Home</a></li>
+                <li><a href="#">Pages</a>
+                  <ul class="dropdown">
+                    <li><a href="{{ url('/') }}/index">- Home</a></li>
+                    <li><a href="{{ url('/') }}/about">- About Us</a></li>
+                    <li><a href="{{ url('/') }}/projects">- Projects</a></li>
+                    <li><a href="{{ url('/') }}/models">- Models</a></li>
+                    <li><a href="{{ url('/') }}/casting">- Casting</a></li>
+                    <li><a href="{{ url('/') }}/blog">- Blog</a></li>
+                    <li><a href="{{ url('/') }}/single-blog">- Blog Details</a></li>
+                    <li><a href="{{ url('/') }}/contact">- Contact</a></li>
+                    <li><a href="#">- Dropdown</a>
+                      <ul class="dropdown">
+                        <li><a href="#">- Dropdown Item</a></li>
+                        <li><a href="#">- Dropdown Item</a>
+                          <ul class="dropdown">
+                            <li><a href="#">- Even Dropdown</a></li>
+                            <li><a href="#">- Even Dropdown</a></li>
+                            <li><a href="#">- Even Dropdown</a></li>
+                            <li><a href="#">- Even Dropdown</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="#">- Dropdown Item</a></li>
+                        <li><a href="#">- Dropdown Item</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="{{ url('/') }}/projects">Project</a></li>
+                <li><a href="{{ url('/') }}/models">Models</a></li>
+                <li><a href="{{ url('/') }}/casting">Casting</a></li>
+                <li><a href="#">Blog</a>
+                  <ul class="dropdown">
+                    <li><a href="{{ url('/') }}/blog">- Blog</a></li>
+                    <li><a href="{{ url('/') }}/single-blog">- Blog Details</a></li>
+                  </ul>
+                </li>
+                <li><a href="{{ url('/') }}/contact">Contact</a></li>
+=======
                 <li><a href="{{ url('/index') }}">Home</a></li>
                 <li><a href="#">Awards</a>
                   <ul class="dropdown">
@@ -65,6 +105,7 @@
                 <li><a href="/models">Vote</a></li>
                 <li  class="current-item"><a href="{{ url('/blog') }}">Blog</a></li>
                 <li><a href="/contacts">Apply</a></li>
+>>>>>>> 3d4f205257e403adb3d98d2b3ccc7d257510fac5
               </ul>
 
               <!-- Search Icon -->
