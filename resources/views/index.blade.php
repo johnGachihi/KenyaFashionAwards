@@ -11,7 +11,7 @@
   <title>Kenya Fashion Awards</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="img/core-img/KFA.jpg">
 
   <!-- Core Stylesheet -->
   <link rel="stylesheet" href="./css/style2.css">
@@ -38,7 +38,7 @@
          <div class="bg-curve" style="background-image: url(./img/core-img/choice.png);"></div>
 
          <!-- Logo -->
-          <a class="nav-brand" href="index.php"><img src="./img/core-img/KFA.png" alt=""></a>
+          <a class="nav-brand" href="index.php"><img src="./img/core-img/KFA.jpg" alt=""></a>
 
           <!-- Navbar Toggler -->
           <div class="classy-navbar-toggler">
@@ -55,16 +55,18 @@
             <!-- Nav Start -->
             <div class="classynav">
               <ul id="nav">
-                <li class="current-item"><a href="/">Home</a></li>
+                <li class="current-item"><a href="{{ url('/index') }}">Home</a></li>
                 <li><a href="#">Awards</a>
                   <ul class="dropdown">
-                    <li><a href="/category">Awards Category</a></li>
-                    <li><a href="/criteria">Awards criteria</a></li>
+                    <li><a href="{{ url('/') }}/category">Awards Category</a></li>
+                    <li><a href="{{ url('/') }}/criteria">Awards criteria</a></li>
                     </ul>
                 </li>
+                <li><a href="{{ url('/') }}/models">Vote</a></li>
+                <li><a href="{{ url('/') }}/blog">Blog</a></li>
+                <li><a href="{{ url('/') }}/contacts">Apply</a></li>
                 <li><a href="/models">Vote</a></li>
-                <li><a href="/blog.php">Blog</a></li>
-                <li><a href="/contacts">Apply</a></li>
+
               </ul>
 
               <!-- Search Icon -->

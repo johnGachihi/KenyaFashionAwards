@@ -35,7 +35,7 @@
                             <span class="applicant-dets-titles" style="font-size: 11px; display: block; letter-spacing: 3px;">Bio:</span>
                             <span>
                                 @if(!empty($application->applicant->bio))
-                                    $application->applicant->bio
+                                    {{$application->applicant->bio}}
                                 @else
                                     Not provided.
                                 @endif

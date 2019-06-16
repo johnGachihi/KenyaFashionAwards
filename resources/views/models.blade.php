@@ -58,16 +58,16 @@
             <!-- Nav Start -->
             <div class="classynav">
               <ul id="nav">
-                  <li><a href="/">Home</a></li>
+                  <li><a href="{{ url('/') }}/index">Home</a></li>
                   <li><a href="#">Awards</a>
                     <ul class="dropdown">
-                      <li><a href="/category">Awards category</a></li>
-                      <li><a href="/criteria">awards criteria</a></li>
+                      <li><a href="{{ url('/') }}/category">Awards category</a></li>
+                      <li><a href="{{ url('/') }}/criteria">awards criteria</a></li>
                       </ul>
                   </li>
-                  <li class="current-item"><a href="/models">Vote</a></li>
-                  <li><a href="./blog.php">Blog</a></li>
-                  <li><a href="/contacts">Apply</a></li>
+                  <li class="current-item"><a href="{{ url('/') }}/models">Vote</a></li>
+                  <li><a href="{{ url('/') }}/blog">Blog</a></li>
+                  <li><a href="{{ url('/') }}/contacts">Apply</a></li>
                 
               </ul>
 

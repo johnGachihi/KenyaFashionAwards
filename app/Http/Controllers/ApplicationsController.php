@@ -8,7 +8,7 @@ use App\Listeners\SendApplicationResponseEmail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Application;
-use App\Applicant;
+use App\applicant;
 
 class ApplicationsController extends Controller
 {
@@ -27,14 +27,19 @@ class ApplicationsController extends Controller
         ]);
     }
 
-    public function create(Request $request) {
+    public function create(){
+        return view ('/contacts');
+    }
+
+    public function store(Request $request) {
 //        event(new TestEvent('bleble'));
-        $request->validate([
-            'name'          => 'required',
-            'company'       => 'required',
-            'phone-number'  => 'required',
-            'email'         => 'required',
-            'category'      => 'required'
+        $this->validate($request, [
+            'name' =>'required',
+            'company' => 'required',
+            'email' => 'required',
+            'telephone_number' => 'required',
+            'award_category_id' =>'required',
+            'bio' => 'required'
         ]);
 
         $applicant = new Applicant();
@@ -47,8 +52,10 @@ class ApplicationsController extends Controller
 
         $application = new Application();
         $application->applicant_id = $applicant->id;
-        $application->award_category_id = $request->input('category');
+//        $application->award_category_id = $request->input('category');
+        $application->award_category_id = $request->award_category_id;
         $application->save();
+        return redirect('/contacts')->with('success', 'Form Submitted');
     }
 
     public function accept(Request $request, $id) {
