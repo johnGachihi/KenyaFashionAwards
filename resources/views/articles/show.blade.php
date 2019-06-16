@@ -3,7 +3,7 @@
 @section('content')
 	<div class="container">
 	<h1> {{$article->title}} </h1>
-	<img style="width: 100%" src="storage/cover_image/{{$article->cover_image}}">
+	<!--<img style="width: 100%" src="storage/cover_image/{{$article->cover_image}}"> -->
 	<br><br>
 		<small>Written on {{$article->created_at}} by {{$article->user->name}}</small>
 	<div>
