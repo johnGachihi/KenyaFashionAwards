@@ -18,6 +18,8 @@ Route::get('/welcome', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('/articles', 'ArticlesController');
+Route::resource('/profiles', 'ProfilesController');
 
 
 Route::middleware(['auth', 'adminCheck'])->group(function() {
@@ -47,7 +49,7 @@ Route::middleware(['auth', 'adminCheck'])->group(function() {
         Route::get('/vote_stats', 'VotesController@view')->name('vote-stats');
 
     });
-
+ 
 });
 
 
@@ -55,7 +57,7 @@ Route::get('/index', 'pagescontroller@index' );
 Route::get('/category', 'pagescontroller@category');
 Route::get('/models', 'pagescontroller@models');
 Route::get('/criteria', 'pagescontroller@criteria');
-Route::get('/contacts', 'pagescontroller@contact');
+Route::get('/contact', 'pagescontroller@contact');
 Route::get('/projects', 'pagescontroller@projects');
 Route::get('/blog', 'pagescontroller@blog');
 // Route::get('/login', 'pagescontroller@login');
