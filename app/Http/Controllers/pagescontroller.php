@@ -39,4 +39,7 @@ class pagescontroller extends Controller
     public function vote(){
         return view ('vote');
     }
+    public function test(){
+        return view ('test');
+    }
 }

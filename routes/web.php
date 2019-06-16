@@ -18,9 +18,9 @@ Route::get('/welcome', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::resource('/articles', 'ArticlesController');
 Route::resource('/profiles', 'ProfilesController');
-
 
 Route::middleware(['auth', 'adminCheck'])->group(function() {
 
@@ -49,9 +49,61 @@ Route::middleware(['auth', 'adminCheck'])->group(function() {
         Route::get('/vote_stats', 'VotesController@view')->name('vote-stats');
 
     });
- 
+
+
+<<<<<<< HEAD
+=======
+    
+
 });
 
+
+Route::middleware(['auth', 'CheckBlogger'])->group(function() {
+
+    Route::prefix('blogger')->group(function() {
+
+        Route::get('/home', 'BlogPostsController@index');
+
+        Route::get('/myblogs', 'BlogPostsController@index');
+
+        Route::get('/create', 'BlogPostsController@create');
+
+        Route::post('/createPost/{id?}', 'BlogPostsController@createPost');
+
+        Route::get('/edit_post/{id}', 'BlogPostsController@editPost');
+
+        Route::get('/update_post/{id}', 'BlogPostsController@updatePost');
+
+        Route::get('/delete_post/{id}', 'BlogPostsController@deletePost');
+
+        Route::get('/pending_posts', 'BlogPostsController@viewPending');
+
+    });
+
+>>>>>>> 3d4f205257e403adb3d98d2b3ccc7d257510fac5
+});
+
+Route::middleware(['auth', 'CheckBloggerAdmin'])->group(function() {
+
+    Route::prefix('blog_admin')->group(function() {
+
+        Route::get('/home', 'BlogsController@view');
+
+        Route::get('/approved_posts', 'BlogsController@viewApproved');
+
+        Route::get('/rejected_posts', 'BlogsController@viewRejected');
+
+        Route::get('/approve_post/{id}', 'BlogsController@approvePost');
+
+        Route::get('/reject_post/{id}', 'BlogsController@rejectPost');
+
+        Route::get('/delete_post/{id}', 'BlogsController@deletePost');
+
+
+    });
+
+
+});
 
 Route::get('/index', 'pagescontroller@index' );
 Route::get('/category', 'pagescontroller@category');
@@ -59,10 +111,11 @@ Route::get('/models', 'pagescontroller@models');
 Route::get('/criteria', 'pagescontroller@criteria');
 Route::get('/contact', 'pagescontroller@contact');
 Route::get('/projects', 'pagescontroller@projects');
-Route::get('/blog', 'pagescontroller@blog');
+Route::get('/blog', 'BlogPageController@index');
 // Route::get('/login', 'pagescontroller@login');
 Route::get('/signup', 'pagescontroller@signup');
 //Route::get('/votes', 'pagescontroller@vote');
+Route::get('/test', 'pagescontroller@test');
 
 Route::get('/votes/{candidate_id}', function ($candidate_id) {
     $candidate = \App\Applicant::with('application')->find($candidate_id);
@@ -104,5 +157,7 @@ Route::get('/category/all', 'AwardCategoriesController@getAllCategories');
 //Route::get("/test", function () {
 //    event(new \App\Events\TestEvent("This is awesome"));
 //});
+
+
 
 

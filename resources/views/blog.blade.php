@@ -8,10 +8,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Title -->
-  <title>Kenya Fashion Awards</title>
+  <title>Blog | Kenya Fashion Awards</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="./img/core-img/favicon.ico">
+  <link rel="icon" href="./img/core-img/KFA.jpg">
 
   <!-- Core Stylesheet -->
   <link rel="stylesheet" href="./css/style2.css">
@@ -35,10 +35,10 @@
         <nav class="classy-navbar justify-content-between" id="monaNav">
 
           <!-- Background Curve -->
-          <div class="bg-curve" style="background-image: url(./img/core-img/choice.png);"></div>
+         <div class="bg-curve" style="background-image: url(./img/core-img/choice.png);"></div>
 
-          <!-- Logo -->
-          <a class="nav-brand" href="index.php"><img src="./img/core-img/logo.png" alt=""></a>
+         <!-- Logo -->
+          <a class="nav-brand" href="{{ url('/index') }}"><img src="./img/core-img/KFA.jpg" alt=""></a>
 
           <!-- Navbar Toggler -->
           <div class="classy-navbar-toggler">
@@ -55,6 +55,7 @@
             <!-- Nav Start -->
             <div class="classynav">
               <ul id="nav">
+<<<<<<< HEAD
                 <li class="current-item"><a href="{{ url('/') }}/index">Home</a></li>
                 <li><a href="#">Pages</a>
                   <ul class="dropdown">
@@ -93,6 +94,18 @@
                   </ul>
                 </li>
                 <li><a href="{{ url('/') }}/contact">Contact</a></li>
+=======
+                <li><a href="{{ url('/index') }}">Home</a></li>
+                <li><a href="#">Awards</a>
+                  <ul class="dropdown">
+                    <li><a href="/category">Awards Category</a></li>
+                    <li><a href="/criteria">Awards criteria</a></li>
+                    </ul>
+                </li>
+                <li><a href="/models">Vote</a></li>
+                <li  class="current-item"><a href="{{ url('/blog') }}">Blog</a></li>
+                <li><a href="/contacts">Apply</a></li>
+>>>>>>> 3d4f205257e403adb3d98d2b3ccc7d257510fac5
               </ul>
 
               <!-- Search Icon -->
@@ -139,7 +152,7 @@
             <h2 class="title">Blog</h2>
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('/index') }}"><i class="fa fa-home"></i> Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Blog</li>
               </ol>
             </nav>
@@ -150,116 +163,37 @@
   </div>
   <!-- ***** Breadcrumb Area End ***** -->
 
-  <!-- ***** Blog Area Start ***** -->
-  <section class="mona-blog-area mb-50 section-padding-80-0">
-    <div class="container">
-      <div class="row">
-
-        <!-- Single Blog Post -->
-        <div class="col-12 col-lg-4">
-          <div class="single-blog-post mb-30">
-            <div class="post-thumbnail slide-post owl-carousel">
-              <a href="#"><img src="./img/bg-img/3.jpg" alt=""></a>
-              <a href="#"><img src="./img/bg-img/4.jpg" alt=""></a>
+  <div class="row">
+    @foreach($approved_posts as $post)
+    <div class="col-12 mb-4">
+        <div class="card-shards card-small card-post card-post--asisde card-post--1">
+            <div class="card-body">
+                <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <img style="width:100%;" src="{{ url('/storage/cover_images/' . $post->cover_image)}}"/>
+                </div>
+                <div class="col-md-8 col-sm-8">
+                <h5 class="card-title d-flex justify-content-between">
+                    <a id="{{ $post->id}}" href="{{ url('blogger/edit_post/'. $post->id) }}" class="">{{ $post->title }}</a>
+                </h5>
+                <div>
+                    <p style="display: inline-block; 
+                          width: 100%;
+                          white-space: nowrap; 
+                          overflow: hidden; 
+                          text-overflow: ellipsis;"
+                      class="card-text d-inline-block mb-3">{!! $post->body !!}</p>
+                </div>
+                <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
+                </div>
+                <!-- <p class="card-text d-inline-block mb-3">{{ base64_decode($post->body) }}</p> -->
+                <!-- <p class="bleble"><p>man</p></p> -->
             </div>
-            <div class="post-content">
-              <a href="#" class="post-title">How To Use Eye Shadow Like The Stars</a>
-              <span class="post-date">30 Aug 2018</span>
             </div>
-          </div>
         </div>
-
-        <!-- Single Blog Post -->
-        <div class="col-12 col-lg-8">
-          <div class="row">
-
-            <!-- Single Blog Post -->
-            <div class="col-12">
-              <div class="single-blog-post featured-post mb-30">
-                <div class="post-thumbnail">
-                  <a href="#"><img src="./img/bg-img/5.jpg" alt=""></a>
-                </div>
-                <div class="post-content">
-                  <div>
-                    <a href="#" class="post-title">What Curling Irons Are The Best Ones</a>
-                    <span class="post-date">30 Aug 2018</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Single Blog Post -->
-            <div class="col-12 col-sm-6 col-lg-6">
-              <div class="single-blog-post mb-30">
-                <div class="post-thumbnail">
-                  <a href="#"><img src="./img/bg-img/1.jpg" alt=""></a>
-                </div>
-                <div class="post-content">
-                  <a href="#" class="post-title">What Curling Irons Are The Best Ones</a>
-                  <span class="post-date">30 Aug 2018</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Single Blog Post -->
-            <div class="col-12 col-sm-6 col-lg-6">
-              <div class="single-blog-post mb-30">
-                <div class="post-thumbnail">
-                  <a href="#"><img src="./img/bg-img/2.jpg" alt=""></a>
-                </div>
-                <div class="post-content">
-                  <a href="#" class="post-title">How To Save Money On Beauty Products</a>
-                  <span class="post-date">30 Aug 2018</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Single Blog Post -->
-        <div class="col-12 col-sm-6 col-lg-4">
-          <div class="single-blog-post mb-30">
-            <div class="post-thumbnail">
-              <a href="#"><img src="./img/bg-img/41.jpg" alt=""></a>
-            </div>
-            <div class="post-content">
-              <a href="#" class="post-title">The Different Methods Of Hair Removal</a>
-              <span class="post-date">30 Aug 2018</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Single Blog Post -->
-        <div class="col-12 col-sm-6 col-lg-4">
-          <div class="single-blog-post mb-30">
-            <div class="post-thumbnail">
-              <a href="#"><img src="./img/bg-img/42.jpg" alt=""></a>
-            </div>
-            <div class="post-content">
-              <a href="#" class="post-title">Ready To Wear Bifocal Contact Lenses</a>
-              <span class="post-date">30 Aug 2018</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Single Blog Post -->
-        <div class="col-12 col-lg-4">
-          <div class="single-blog-post mb-30">
-            <div class="post-thumbnail">
-              <a href="#"><img src="./img/bg-img/43.jpg" alt=""></a>
-            </div>
-            <div class="post-content">
-              <a href="#" class="post-title">An Overview Of Cosmetic Procedures</a>
-              <span class="post-date">30 Aug 2018</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
     </div>
-  </section>
-  <!-- ***** Blog Area End ***** -->
+    @endforeach
+  
 
   <!-- ***** Footer Area Start ***** -->
   <footer class="footer-area section-padding-80-0">
@@ -270,7 +204,7 @@
         <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
           <div class="single-footer-widget mb-60">
             <!-- Logo -->
-            <a href="#" class="d-block mb-4"><img src="./img/core-img/logo.png" alt=""></a>
+            <a href="#" class="d-block mb-4"><img src="./img/core-img/KFA.jpg" alt=""></a>
             <p>Integer vehicula mauris libero, at molestie eros imperdiet sit amet. Suspendisse mattis ante sit amet ante.</p>
             <div class="copywrite-text">
               <p>&copy; 
@@ -310,8 +244,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             <h4 class="widget-title">Contact</h4>
             <!-- Footer Content -->
             <div class="footer-content mb-30">
-              <h4>+01-3-8888-6868</h4>
-              <h6>40 Baria Sreet 133/2 NewYork City</h6>
+              <h4>+254-712-345-678</h4>
+              <h6>i&M Building Kenyatta Avenue, Nairobi</h6>
             </div>
             <!-- Social Info -->
             <div class="footer-social-info">
