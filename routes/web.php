@@ -51,8 +51,7 @@ Route::middleware(['auth', 'adminCheck'])->group(function() {
     });
 
 
-<<<<<<< HEAD
-=======
+
     
 
 });
@@ -80,7 +79,7 @@ Route::middleware(['auth', 'CheckBlogger'])->group(function() {
 
     });
 
->>>>>>> 3d4f205257e403adb3d98d2b3ccc7d257510fac5
+
 });
 
 Route::middleware(['auth', 'CheckBloggerAdmin'])->group(function() {
