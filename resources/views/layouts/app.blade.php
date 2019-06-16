@@ -112,10 +112,5 @@
 
     @yield('scripts')
 
-    <script src="/vendor/unisharp/lavarel-ckeditor/ckeditor.js">
-    </script>
-    <script>
-        CKEDITOR>replace('article-ckeditor');
-    </script>
 </body>
 </html>

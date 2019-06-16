@@ -110,7 +110,11 @@ Route::get('/blog', 'BlogPageController@index');
 // Route::get('/login', 'pagescontroller@login');
 Route::get('/signup', 'pagescontroller@signup');
 //Route::get('/votes', 'pagescontroller@vote');
-Route::get('/test', 'pagescontroller@test');
+Route::get('/test', 'BlogPageController@index');
+Route::get('/single_blog/{id}', 'BlogPageController@single');
+
+
+Route::get('/show/{id}', 'BlogPageController@show');
 
 Route::get('/votes/{candidate_id}', function ($candidate_id) {
     $candidate = \App\Applicant::with('application')->find($candidate_id);

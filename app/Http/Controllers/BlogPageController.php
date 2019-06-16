@@ -14,8 +14,23 @@ class BlogPageController extends Controller
         $approved_posts = Post::where('post_status', 'approved')->get();
 
         return view('blog', [
-            'posts' => $posts,
             'approved_posts' => $approved_posts
+        ]);
+    }
+
+    public function show($id)
+    {
+        $post = Post::find($id);
+        return view('single-blog',[
+            'post' => $post
+        ]);
+    }
+
+    public function single($id)
+    {
+        $post = Post::find($id);
+        return view('show_blog', [
+            'post' => $post
         ]);
     }
 }
