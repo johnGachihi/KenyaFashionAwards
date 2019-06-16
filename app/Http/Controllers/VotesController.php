@@ -41,12 +41,12 @@ class VotesController extends Controller
     public function view() {
         $votes_per_category = $this->getVotesDataByAwardCategories();
         $categories = AwardCategory::all();
-        $chartsPreferences = ChartsPreference::select('preferences')->find(Auth::user()->id);
+//        $chartsPreferences = ChartsPreference::select('preferences')->find(Auth::user()->id);
 
         return view('admin.vote_stats', [
             'categories' => $categories,
             'votes_per_category' => $votes_per_category,
-            'chartsPreferences' => $chartsPreferences
+//            'chartsPreferences' => $chartsPreferences
         ]);
     }
 

@@ -33,7 +33,7 @@
                 </div>
                 <script>
                     let votesPerCategory = @json($votes_per_category);
-                    let chartsPreferences = @json($chartsPreferences);
+                    {{--let chartsPreferences = @json($chartsPreferences);--}}
                 </script>
             </div>
             <div id="main-stats-container" class="col">
