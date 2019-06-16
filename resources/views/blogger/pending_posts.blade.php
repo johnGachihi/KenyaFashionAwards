@@ -13,6 +13,7 @@
 
     <div class="row">
         @foreach($new_posts as $post)
+        @if(Auth::user()->id == $post->user_id )
         <div class="col-12 mb-4">
             <div class="card-shards card-small card-post card-post--asisde card-post--1">
                 <div class="card-body">
@@ -34,7 +35,12 @@
                     </h5>
                     <hr>
                     <div>
-                        <p style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="card-text d-inline-block mb-3">{!! $post->body !!}</p>
+                        <p style="display: inline-block; 
+                        width: 100%;
+                        white-space: nowrap; 
+                        overflow: hidden; 
+                        text-overflow: ellipsis;" 
+                        class="card-text d-inline-block mb-3">{!! $post->body !!}</p>
                     </div>
                     <hr>
                     <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
@@ -45,6 +51,7 @@
                 </div>
             </div>
         </div>
+        @endif
         @endforeach
         
         <!-- <div class="col-12 mb-4">

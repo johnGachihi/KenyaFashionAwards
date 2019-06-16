@@ -71,7 +71,7 @@ Route::middleware(['auth', 'CheckBlogger'])->group(function() {
 
         Route::get('/edit_post/{id}', 'BlogPostsController@editPost');
 
-        Route::get('/update_post/{id}', 'BlogPostsController@updatePost');
+        Route::post('/update_post/{id}', 'BlogPostsController@updatePost');
 
         Route::get('/delete_post/{id}', 'BlogPostsController@deletePost');
 

@@ -16,10 +16,10 @@ class BlogPostsController extends Controller
 
         $posts = Post::all();
 
-        $new_posts = Post::where('post_status', 'new')->get();
-        $approved_posts = Post::where('post_status', 'approved')->get();
-        $rejected_posts = Post::where('post_status', 'rejected')->get();
-
+        $new_posts = Post::where('post_status', 'new')->orderBy('created_at', 'desc')->get();
+        $approved_posts = Post::where('post_status', 'approved')->orderBy('created_at', 'desc')->get();
+        $rejected_posts = Post::where('post_status', 'rejected')->orderBy('created_at', 'desc')->get();
+        
         return view('blogger.blogger_dash', [
             'posts' => $user->posts,
             'approved_posts' => $approved_posts
@@ -33,9 +33,9 @@ class BlogPostsController extends Controller
 
         $posts = Post::all();
 
-        $new_posts = Post::where('post_status', 'new')->get();
-        $approved_posts = Post::where('post_status', 'approved')->get();
-        $rejected_posts = Post::where('post_status', 'rejected')->get();
+        $new_posts = Post::where('post_status', 'new')->orderBy('created_at', 'desc')->get();
+        $approved_posts = Post::where('post_status', 'approved')->orderBy('created_at', 'desc')->get();
+        $rejected_posts = Post::where('post_status', 'rejected')->orderBy('created_at', 'desc')->get();
 
         return view('blogger.pending_posts', [
             'posts' => $user->posts,
@@ -92,27 +92,21 @@ class BlogPostsController extends Controller
         return view('blogger.create');
     }
 
-    public function editPost(Request $request, $id)
+    public function editPost($id)
     {
         $post = Post::find($id);
 
-        /*if (auth()->user()->id !==$post->user_id) {
-            return redirect('/posts')->with('error', 'Unauthorised Page!');
+        if (auth()->user()->id !==$post->user_id) {
+            return redirect('/blog')->with('error', 'Unauthorised Page!');
         }
-        */
 
-        return view('blogger.create', [
+        return view('blogger.edit', [
             'post' => $post
         ]);
     }
 
     /** This method may be integrated with `createCategory()` */
     public function updatePost(Request $request, $id) {
-        $post = Post::find($id);
-        
-        $post->title = $request->input('postTitle');
-
-        $post->body = $request->input('richPostBody');
 
         //Handle File Upload
         if($request->hasFile('coverImage')) {
@@ -130,22 +124,33 @@ class BlogPostsController extends Controller
             $fileNameToStore = 'noimage.jpg';
         }
 
-        $post->user_id = auth()->user()->id;
+        
+
+        $post = Post::find($id);
+        
+        $post->title = $request->input('postTitle');
+        $post->body = $request->input('ckEditor');
+        
         if($request->hasFile('coverImage')) {
             $post->cover_image = $fileNameToStore;
         }
-
+        
         $post->save();
+
+        return redirect('blogger.edit');
+
 
         return response()->json([
             'error' => false
         ]);
-
-        return view('blogger.blogger_dash');
     }
 
     public function deletePost($id) {
         Post::destroy($id);
+
+        if (auth()->user()->id !==$post->user_id) {
+            return redirect('/myblog')->with('error', 'Unauthorised Page!');
+        }
 
         return response()->json([
             'error' => false

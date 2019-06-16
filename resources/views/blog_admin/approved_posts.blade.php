@@ -24,19 +24,26 @@
                             <h5 class="card-title d-flex justify-content-between">
                                 <a id="{{ $post->id}}" href="#" class="">{{ $post->title }}</a>
                                 <div>
-                                    <a href="{{ url('blog_admin/reject_post/'. $post->id) }}">
-                                        <i class="material-icons ml-4" style="font-size: large;">cancel</i>
-                                        <input type="hidden" name="approvedPostStatus" value="approved">
-                                        <input type="hidden" name="declinedPostStatus" value="declined">
-                                    </a>
-                                    <a href="#" class="deletor" data-id="{{ $post->id }}" data-title="{{ $post->title }}">
-                                        <i class="material-icons ml-1" style="font-size: large;">delete</i>
+                                    <div class="d-flex">
+                                            
+                                            <div>
+                                                <a href="{{ url('blog_admin/reject_post/' . $post->id) }}"><button id="rejectButton" class="mdc-button mdc-button--outlined mdc-button--dense mx-1"
+                                                        >
+                                                    Reject
+                                                </button></a>
+                                            </div>
+                                        </div>
                                     </a>
                                 </div>
                             </h5>
                             <hr>
                             <div>
-                                <p style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="card-text d-inline-block mb-3">{!! $post->body !!}</p>
+                                <p style="display: inline-block; 
+                                width: 100%;
+                                white-space: nowrap; 
+                                overflow: hidden; 
+                                text-overflow: ellipsis;"
+                            class="card-text d-inline-block mb-3" class="card-text d-inline-block mb-3">{!! $post->body !!}</p>
                             </div>
                             <hr>
                     <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>

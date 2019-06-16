@@ -55,46 +55,6 @@
             <!-- Nav Start -->
             <div class="classynav">
               <ul id="nav">
-<<<<<<< HEAD
-                <li class="current-item"><a href="{{ url('/') }}/index">Home</a></li>
-                <li><a href="#">Pages</a>
-                  <ul class="dropdown">
-                    <li><a href="{{ url('/') }}/index">- Home</a></li>
-                    <li><a href="{{ url('/') }}/about">- About Us</a></li>
-                    <li><a href="{{ url('/') }}/projects">- Projects</a></li>
-                    <li><a href="{{ url('/') }}/models">- Models</a></li>
-                    <li><a href="{{ url('/') }}/casting">- Casting</a></li>
-                    <li><a href="{{ url('/') }}/blog">- Blog</a></li>
-                    <li><a href="{{ url('/') }}/single-blog">- Blog Details</a></li>
-                    <li><a href="{{ url('/') }}/contact">- Contact</a></li>
-                    <li><a href="#">- Dropdown</a>
-                      <ul class="dropdown">
-                        <li><a href="#">- Dropdown Item</a></li>
-                        <li><a href="#">- Dropdown Item</a>
-                          <ul class="dropdown">
-                            <li><a href="#">- Even Dropdown</a></li>
-                            <li><a href="#">- Even Dropdown</a></li>
-                            <li><a href="#">- Even Dropdown</a></li>
-                            <li><a href="#">- Even Dropdown</a></li>
-                          </ul>
-                        </li>
-                        <li><a href="#">- Dropdown Item</a></li>
-                        <li><a href="#">- Dropdown Item</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li><a href="{{ url('/') }}/projects">Project</a></li>
-                <li><a href="{{ url('/') }}/models">Models</a></li>
-                <li><a href="{{ url('/') }}/casting">Casting</a></li>
-                <li><a href="#">Blog</a>
-                  <ul class="dropdown">
-                    <li><a href="{{ url('/') }}/blog">- Blog</a></li>
-                    <li><a href="{{ url('/') }}/single-blog">- Blog Details</a></li>
-                  </ul>
-                </li>
-                <li><a href="{{ url('/') }}/contact">Contact</a></li>
-=======
                 <li><a href="{{ url('/index') }}">Home</a></li>
                 <li><a href="#">Awards</a>
                   <ul class="dropdown">
@@ -105,7 +65,6 @@
                 <li><a href="/models">Vote</a></li>
                 <li  class="current-item"><a href="{{ url('/blog') }}">Blog</a></li>
                 <li><a href="/contacts">Apply</a></li>
->>>>>>> 3d4f205257e403adb3d98d2b3ccc7d257510fac5
               </ul>
 
               <!-- Search Icon -->
@@ -132,7 +91,7 @@
             <!-- Close Button -->
             <button type="button" class="btn close-btn" data-dismiss="modal"><i class="fa fa-times"></i></button>
             <!-- Form -->
-            <form action="index.php" method="post">
+            <form action="" method="post">
               <input type="search" name="top-search-bar" class="form-control" placeholder="Search and hit enter...">
               <button type="submit">Search</button>
             </form>
@@ -162,38 +121,37 @@
     </div>
   </div>
   <!-- ***** Breadcrumb Area End ***** -->
-
-  <div class="row">
+  <section class="mona-blog-area mb-50 section-padding-80-0">
+  <div class="container">
+    <div class="row">
     @foreach($approved_posts as $post)
-    <div class="col-12 mb-4">
-        <div class="card-shards card-small card-post card-post--asisde card-post--1">
-            <div class="card-body">
-                <div class="row">
-                <div class="col-md-4 col-sm-4">
-                    <img style="width:100%; " class="rounded" src="{{ url('/storage/cover_images/' . $post->cover_image)}}"/>
-                </div>
-                <div class="col-md-8 col-sm-8">
-                <h3 class="card-title d-flex justify-content-between">
-                    <a id="{{ $post->id}}" href="{{ url('show/'. $post->id) }}" class="">{{ $post->title }}</a>
-                </h3>
-                <div>
+    <div class="col-12 mb-4 shadow-lg p-3 mb-5 rounded">
+        <div class="single-blog-post">
+          <div class="row">
+            <div class="post-thumbnail col-md-4 col-sm-4" >
+              <a><img style="" class="rounded" src="{{ url('/storage/cover_images/' . $post->cover_image)}}"/>
+            </div>
+            <div class="post-content col-md-8 col-sm-8">
+              <h3 class="post-title">
+                <a id="{{ $post->id}}" href="{{ url('show/'. $post->id) }}" class="">{{ $post->title }}</a>
+              </h3>
                     <p style="display: inline-block; 
-                          width: 100%;
+                          width: 75%;
                           white-space: nowrap; 
                           overflow: hidden; 
                           text-overflow: ellipsis;"
                       class="card-text d-inline-block mb-3">{!! $post->body !!}</p>
-                </div>
-                <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
-                </div>
+                <br><small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
+            </div>
+          </div>  
+        </div>
                 <!-- <p class="card-text d-inline-block mb-3">{{ base64_decode($post->body) }}</p> -->
                 <!-- <p class="bleble"><p>man</p></p> -->
-            </div>
-            </div>
-        </div>
     </div>
     @endforeach
   </div>
+  </div>
+  </section>
   
 
   <!-- ***** Footer Area Start ***** -->

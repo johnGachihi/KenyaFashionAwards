@@ -36,7 +36,12 @@
                             </h5>
                             <hr>
                             <div>
-                                <p style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="card-text d-inline-block mb-3">{!! $post->body !!}</p>
+                                <p style="display: inline-block; 
+                                width: 100%;
+                                white-space: nowrap; 
+                                overflow: hidden; 
+                                text-overflow: ellipsis;"
+                            class="card-text d-inline-block mb-3" class="card-text d-inline-block mb-3">{!! $post->body !!}</p>
                             </div>
                             <hr>
                         <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>

@@ -15,6 +15,7 @@
 
   <!-- Core Stylesheet -->
   <link rel="stylesheet" href="{{asset('./css/style2.css')}}">
+  <link rel="stylesheet" href="{{asset('./css/style.css')}}">
 
 </head>
 
@@ -491,19 +492,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
       </div>
     </div>
   </footer>
-  <!-- ***** Footer Area End ***** -->
-
-  <!-- ******* All JS ******* -->
-  <!-- jQuery js -->
-  <script src="js/jquery.min.js"></script>
-  <!-- Popper js -->
-  <script src="js/popper.min.js"></script>
-  <!-- Bootstrap js -->
-  <script src="js/bootstrap.min.js"></script>
-  <!-- All js -->
-  <script src="js/mona.bundle.js"></script>
-  <!-- Active js -->
-  <script src="js/default-assets/active.js"></script>
+  
 
 </body>
 

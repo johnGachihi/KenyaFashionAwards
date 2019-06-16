@@ -10,9 +10,9 @@ class BlogsController extends Controller
     public function view() {
         $posts = Post::all();
 
-        $new_posts = Post::where('post_status', 'new')->get();
-        $approved_posts = Post::where('post_status', 'approved')->get();
-        $rejected_posts = Post::where('post_status', 'rejected')->get();
+        $new_posts = Post::where('post_status', 'new')->orderBy('created_at', 'desc')->get();
+        $approved_posts = Post::where('post_status', 'approved')->orderBy('created_at', 'desc')->get();
+        $rejected_posts = Post::where('post_status', 'rejected')->orderBy('created_at', 'desc')->get();
 
         return view('blog_admin.dashboard', [
             'posts' => $posts,
@@ -25,9 +25,9 @@ class BlogsController extends Controller
     public function viewApproved() {
         $posts = Post::all();
 
-        $new_posts = Post::where('post_status', 'new')->get();
-        $approved_posts = Post::where('post_status', 'approved')->get();
-        $rejected_posts = Post::where('post_status', 'rejected')->get();
+        $new_posts = Post::where('post_status', 'new')->orderBy('created_at', 'desc')->get();
+        $approved_posts = Post::where('post_status', 'approved')->orderBy('created_at', 'desc')->get();
+        $rejected_posts = Post::where('post_status', 'rejected')->orderBy('created_at', 'desc')->get();
 
         return view('blog_admin.approved_posts', [
             'posts' => $posts,
@@ -40,9 +40,9 @@ class BlogsController extends Controller
     public function viewRejected() {
         $posts = Post::all();
 
-        $new_posts = Post::where('post_status', 'new')->get();
-        $approved_posts = Post::where('post_status', 'approved')->get();
-        $rejected_posts = Post::where('post_status', 'rejected')->get();
+        $new_posts = Post::where('post_status', 'new')->orderBy('created_at', 'desc')->get();
+        $approved_posts = Post::where('post_status', 'approved')->orderBy('created_at', 'desc')->get();
+        $rejected_posts = Post::where('post_status', 'rejected')->orderBy('created_at', 'desc')->get();
 
         return view('blog_admin.rejected_posts', [
             'posts' => $posts,
