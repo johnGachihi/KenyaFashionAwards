@@ -499,7 +499,7 @@ function callIfFunction(callback) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HOME_URL", function() { return HOME_URL; });
-var HOME_URL = 'http://localhost/kenyafashionawards/public/index.php';
+var HOME_URL = 'http://localhost/kenyafashionawards/John/public/index.php';
 
 /***/ }),
 

@@ -3,10 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use app\Application;
 
 class applicants extends Model
 {
-    public function application(){
-        return $this->hasOne('app\application');
+    public function Application(){
+        return $this->hasOne('App\Application');
     }
 }

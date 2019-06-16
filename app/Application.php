@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use \App\Events\ApplicationRespondedToEvent;
+use app\applicants;
+use app\awardAwardCategory;
 
 class Application extends Model
 {
@@ -13,7 +15,7 @@ class Application extends Model
 //    ];
 
     public function applicant() {
-        return $this->belongsTo('App\Applicant');
+        return $this->belongsTo('App\applicants');
     }
 
     public function award_category() {

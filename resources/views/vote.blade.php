@@ -58,7 +58,7 @@
             <h2 class="title">Vote</h2>
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i> Home</a></li>
+                <li class="breadcrumb-item"><a href="{{url ('index')}}"><i class="fa fa-home"></i> Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Vote</li>
               </ol>
             </nav>

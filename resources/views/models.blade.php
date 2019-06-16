@@ -58,16 +58,16 @@
             <!-- Nav Start -->
             <div class="classynav">
               <ul id="nav">
-                  <li><a href="/">Home</a></li>
+                  <li><a href="{{url ('index')}}">Home</a></li>
                   <li><a href="#">Awards</a>
                     <ul class="dropdown">
-                      <li><a href="/category">Awards category</a></li>
+                      <li><a href="{{url ('category')}}">Awards category</a></li>
                       <li><a href="/criteria">awards criteria</a></li>
                       </ul>
                   </li>
-                  <li class="current-item"><a href="/models">Vote</a></li>
+                  <li class="current-item"><a href="{{url ('models')}}">Vote</a></li>
                   <li><a href="./blog.php">Blog</a></li>
-                  <li><a href="/contacts">Apply</a></li>
+                  <li><a href="{{url ('contacts')}}">Apply</a></li>
                 
               </ul>
 
@@ -134,52 +134,16 @@
     <div class="row flex-wrap align-content-sm-around">                 
         <!-- Single Model Item -->
         <div class="card-deck">
-            @foreach($candidates as $candidate)
+            {{-- @foreach($candidates as $candidate)
                 <div class="col-sm-6 col-md-4 col-lg-3">
                     <div class="card" style="width: 15rem;">
-                        <img class="card-img-top" src="{{ asset('img/bg-img/kenya10.jpg') }}" alt="Card image cap">
+                        <img class="card-img-top" src="/storage/pictures/{{$applicant->picture}}" alt="Card image cap">
                         <div class="card-footer">
-                            <a href="{{ url('/votes/'. $candidate->id) }}" class="card-link"><strong>{{ $candidate->name }}</strong></a>
+                            <a href="{{ url('/votes/.$candidate->id') }}" class="card-link"><strong>{{ $candidate->name }}</strong></a>
                         </div>
                     </div>
                 </div>
-            @endforeach
-
-            {{--<div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card" style="width: 15rem;">
-                    <img class="card-img-top" src="{{ asset('img/bg-img/kenya10.jpg') }}" alt="Card image cap">
-                    <div class="card-footer">
-                        <a href="{{ url('/votes') }}" class="card-link"><strong>Winnie</strong></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card" style="width: 15rem;">
-                    <img class="card-img-top" src="./img/bg-img/kenya11.jpg" alt="Card image cap">
-                    <div class="card-footer">
-                        <a href="#" class="card-link"><strong>Sessie</strong></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card" style="width: 15rem;">
-                    <img class="card-img-top" src="./img/bg-img/kenya12.jpg" alt="Card image cap">
-                    <div class="card-footer">
-                        <a href="#" class="card-link"><strong>Aminah</strong></a>
-                  </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card" style="width: 15rem;">
-                    <img class="card-img-top" src="./img/bg-img/kenya13.jpg" alt="Card image cap">
-                    <div class="card-footer">
-                        <a href="#" class="card-link"><strong>Aminah</strong></a>
-                    </div>
-                </div>
-            </div>--}}
+            @endforeach --}}
     
         </div>
         </div>

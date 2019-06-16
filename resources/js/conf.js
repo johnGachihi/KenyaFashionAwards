@@ -1,1 +1,1 @@
-export const HOME_URL = 'http://localhost/kenyafashionawards/public/index.php';
+export const HOME_URL = 'http://localhost/kenyafashionawards/John/public/index.php';

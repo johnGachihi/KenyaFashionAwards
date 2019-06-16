@@ -55,16 +55,16 @@
             <!-- Nav Start -->
             <div class="classynav">
               <ul id="nav">
-                <li class="current-item"><a href="/">Home</a></li>
+                <li class="current-item"><a href="{{url ('index')}}">Home</a></li>
                 <li><a href="#">Awards</a>
                   <ul class="dropdown">
-                    <li><a href="/category">Awards Category</a></li>
-                    <li><a href="/criteria">Awards criteria</a></li>
+                    <li><a href="{{url ('category')}}">Awards Category</a></li>
+                    <li><a href="{{url ('criteria')}}">Awards criteria</a></li>
                     </ul>
                 </li>
-                <li><a href="/models">Vote</a></li>
+                <li><a href="{{url ('models')}}">Vote</a></li>
                 <li><a href="/blog.php">Blog</a></li>
-                <li><a href="/contacts">Apply</a></li>
+                <li><a href="{{url ('contacts')}}">Apply</a></li>
               </ul>
 
               <!-- Search Icon -->
