@@ -10,7 +10,7 @@
 	</div>
 	<div class="form-group">
 		{{Form::label('body', 'Body')}}
-		{{Form::textarea('body', '', ['class' => 'form-control','placeholder'=>'Body'])}}
+		{{Form::textarea('body', '', ['class' => 'form-control','id' => 'article-ckeditor','placeholder'=>'Body'])}}
 	</div>
 	<div class="form-group">
 		{{Form::file('cover_image')}}

@@ -108,7 +108,7 @@ Route::get('/index', 'pagescontroller@index' );
 Route::get('/category', 'pagescontroller@category');
 Route::get('/models', 'pagescontroller@models');
 Route::get('/criteria', 'pagescontroller@criteria');
-Route::get('/contact', 'pagescontroller@contact');
+Route::get('/contacts', 'pagescontroller@contact');
 Route::get('/projects', 'pagescontroller@projects');
 Route::get('/blog', 'BlogPageController@index');
 // Route::get('/login', 'pagescontroller@login');

@@ -58,7 +58,6 @@
                                 <a class="nav-link" href="{{ url('/') }}/home">Home</a>
                             </li>
                             <li class="nav-item">
-<<<<<<< HEAD
                                 <a class="nav-link" href="about">About</a>
                             </li>
                             <li class="nav-item">
@@ -76,12 +75,10 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/') }}">Awards</a>
-=======
                                 <a class="nav-link" href="{{ url('/') }}">About Us</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/') }}">Contact Us</a>
->>>>>>> 3d4f205257e403adb3d98d2b3ccc7d257510fac5
                             </li>
                         @guest
                             <li class="nav-item">

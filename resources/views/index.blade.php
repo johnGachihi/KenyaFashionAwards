@@ -62,15 +62,11 @@
                     <li><a href="{{ url('/') }}/criteria">Awards criteria</a></li>
                     </ul>
                 </li>
-<<<<<<< HEAD
                 <li><a href="{{ url('/') }}/models">Vote</a></li>
                 <li><a href="{{ url('/') }}/blog">Blog</a></li>
                 <li><a href="{{ url('/') }}/contacts">Apply</a></li>
-=======
                 <li><a href="/models">Vote</a></li>
-                <li><a href="{{ url('/blog') }}">Blog</a></li>
-                <li><a href="/contacts">Apply</a></li>
->>>>>>> 3d4f205257e403adb3d98d2b3ccc7d257510fac5
+
               </ul>
 
               <!-- Search Icon -->
