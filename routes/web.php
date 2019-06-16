@@ -63,7 +63,7 @@ Route::get('/signup', 'pagescontroller@signup');
 //Route::get('/votes', 'pagescontroller@vote');
 
 Route::get('/votes/{candidate_id}', function ($candidate_id) {
-    $candidate = \App\applicants::with('application')->find($candidate_id);
+    $candidate = \App\Application::with('applicant')->find($candidate_id);
 
     return view('vote',
         ['candidate' => $candidate]
@@ -72,7 +72,7 @@ Route::get('/votes/{candidate_id}', function ($candidate_id) {
 });
 
 Route::get('/models', function () {
-    $approved_applications  = \App\applicants::whereHas('Application', function ($query) {
+    $approved_applications  = \App\Application::whereHas('applicant', function ($query) {
         $query->where('decision', 'approved');
     })->get();
 

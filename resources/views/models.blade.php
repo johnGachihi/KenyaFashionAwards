@@ -134,16 +134,16 @@
     <div class="row flex-wrap align-content-sm-around">                 
         <!-- Single Model Item -->
         <div class="card-deck">
-            {{-- @foreach($candidates as $candidate)
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="card" style="width: 15rem;">
-                        <img class="card-img-top" src="/storage/pictures/{{$applicant->picture}}" alt="Card image cap">
+            @foreach($candidates as $candidate)
+                <div class="col-sm-6 col-md-4 col-lg-4">
+                    <div class="card" style="width: 15rem; margin-bottom:40px;">
+                        <img class="card-img-top" src="{{ asset('storage/pictures/'.$candidate->applicant->pictures)}}" alt="Card image cap">
                         <div class="card-footer">
-                            <a href="{{ url('/votes/.$candidate->id') }}" class="card-link"><strong>{{ $candidate->name }}</strong></a>
+                            <a href="{{ url('votes/'.$candidate->id) }}" class="card-link"><strong>{{ $candidate->applicant->name }}</strong></a>
                         </div>
                     </div>
                 </div>
-            @endforeach --}}
+            @endforeach
     
         </div>
         </div>

@@ -8,6 +8,6 @@ use app\Application;
 class applicants extends Model
 {
     public function Application(){
-        return $this->hasOne('App\Application');
+        return $this->hasMany('App\Application');
     }
 }

@@ -44,7 +44,7 @@
                         <div class="col-7">
                             <span class="applicant-dets-titles" style="font-size: 11px; display: block; letter-spacing: 3px;">Photo</span>
                     
-                            <img style="width:100%; height:100%" src="/storage/pictures/{{$application->applicant->pictures}}">
+                            <img style="width:100%" src="{{ asset('storage/pictures/'.$application->applicant->pictures)}}">
                             
                         </div>
                     </div>
