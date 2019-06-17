@@ -113,7 +113,7 @@ class BlogPostsController extends Controller
     {
         $post = Post::find($id);
 
-        if (auth()->user()->id !==$post->user_id) {
+        if (auth()->user()->id !== $post->user_id) {
             return redirect('/blog')->with('error', 'Unauthorised Page!');
         }
 

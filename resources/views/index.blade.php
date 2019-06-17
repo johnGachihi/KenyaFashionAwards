@@ -63,7 +63,7 @@
                     </ul>
                 </li>
                 <li><a href="{{url ('models')}}">Vote</a></li>
-                <li><a href="/blog.php">Blog</a></li>
+                <li><a href="{{url ('/blog')}}">Blog</a></li>
                 <li><a href="{{url ('contacts')}}">Apply</a></li>
               </ul>
 

@@ -56,14 +56,14 @@
             <div class="classynav">
               <ul id="nav">
                 <li><a href="{{url ('index')}}">Home</a></li>
-                <li><a href="#">Awards</a>
+                <li class="current-item"><a href="#">Awards</a>
                   <ul class="dropdown">
                     <li><a href="{{url ('category')}}">Awards category</a></li>
-                    <li><a href="{{url ('category')}}">awards criteria</a></li>
-                    </ul>
+                    <li><a href="{{url ('criteria')}}">awards criteria</a></li>
+                  </ul>
                 </li>
                 <li><a href="{{url ('models')}}">Vote</a></li>
-                <li><a href="./blog.php">Blog</a></li>
+                <li><a href="{{ url('/') }}/blog">Blog</a></li>
                 <li><a href="{{url ('contacts')}}">Apply</a></li>
               </ul>
 

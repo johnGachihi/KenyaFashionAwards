@@ -12,7 +12,7 @@
     <!-- End Page Header -->
 
     <div class="row">
-            @if($approved_posts->count() > 0)
+        @if($approved_posts->count() > 0)
         @foreach($approved_posts as $post)
         @if(Auth::user()->id == $post->user_id )
         <div class="col-12 mb-4">

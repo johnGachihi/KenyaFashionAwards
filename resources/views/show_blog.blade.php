@@ -55,17 +55,19 @@
             <!-- Nav Start -->
             <div class="classynav">
               <ul id="nav">
-                <li><a href="{{ url('/index') }}">Home</a></li>
+                <li><a href="{{ url('/') }}/index">Home</a></li>
                 <li><a href="#">Awards</a>
                   <ul class="dropdown">
-                    <li><a href="/category">Awards Category</a></li>
-                    <li><a href="/criteria">Awards criteria</a></li>
-                    </ul>
+                    <li><a href="{{ url('/') }}/category">Awards category</a></li>
+                    <li><a href="{{ url('/') }}/criteria">awards criteria</a></li>
+                  </ul>
                 </li>
-                <li><a href="/models">Vote</a></li>
-                <li  class="current-item"><a href="{{ url('/blog') }}">Blog</a></li>
-                <li><a href="/contacts">Apply</a></li>
+                <li><a href="{{ url('/') }}/models">Vote</a></li>
+                <li class="current-item"><a href="{{ url('/') }}/blog">Blog</a></li>
+                <li><a href="{{ url('/') }}/contacts">Apply</a></li>
+
               </ul>
+
 
               <!-- Search Icon -->
               <div class="search-icon" data-toggle="modal" data-target="#searchModal">
@@ -130,7 +132,7 @@
             <div class="blog-details-content mt-5 mb-80">
               <!-- Post Details Text -->
               <div class="post-details-text">
-                <img src="{{ url('/storage/cover_images/' . $post->cover_image)}}" alt="">
+                <img src="{{ asset('/storage/cover_images/' . $post->cover_image)}}" alt="">
   
                 <div class="post-content mt-30 mb-30">
                   <a href="#" class="post-date">{{$post->created_at}}</a>
@@ -295,12 +297,12 @@
   
                 <!-- catagories list -->
                 <ul class="catagories-list">
-                  <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Business</a></li>
-                  <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Design</a></li>
-                  <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Marketing</a></li>
-                  <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> MBA Courses</a></li>
-                  <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Technology</a></li>
-                  <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Web Development</a></li>
+                  <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Beauty Products</a></li>
+                  <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Fashion Design</a></li>
+                  <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Fashion Trends</a></li>
+                  <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Cosmetology</a></li>
+                  <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Traveling</a></li>
+                  <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Leisure</a></li>
                 </ul>
               </div>
   
@@ -453,15 +455,18 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
   <!-- ******* All JS ******* -->
   <!-- jQuery js -->
-  <script src="../js/jquery.min.js"></script>
+  <script src="{{ asset('js/jquery.min.js') }}"></script>
   <!-- Popper js -->
-  <script src="../js/popper.min.js"></script>
+  {{--<script src="js/popper.min.js"></script>--}}
+  <script src="{{ asset('js/popper.min.js') }}"></script>
   <!-- Bootstrap js -->
-  <script src="../js/bootstrap.min.js"></script>
+  {{--<script src="js/bootstrap.min.js"></script>--}}
+  <script src="{{ asset('js/bootstrap.min.js') }}"></script>
   <!-- All js -->
-  <script src="../js/mona.bundle.js"></script>
+  {{--<script src="js/mona.bundle.js"></script>--}}
+  <script src="{{ asset('js/mona.bundle.js') }}"></script>
   <!-- Active js -->
-  <script src="../js/default-assets/active.js"></script>
+  <script src="{{ asset('js/default-assets/active.js') }}"></script>
 
 </body>
 
