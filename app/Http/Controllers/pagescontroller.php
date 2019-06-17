@@ -10,13 +10,13 @@ class pagescontroller extends Controller
     	return view('index');
     }
     public function category(){
-        return view('category');
+        return view('user.category');
     }
     public function blog(){
         return view('blog');
     }
     public function criteria(){
-        return view('criteria');
+        return view('user.criteria');
     }
     public function contact(){
         return view('contact');

@@ -68,6 +68,7 @@
                   <li class="current-item"><a href="{{ url('/') }}/models">Vote</a></li>
                   <li><a href="{{ url('/') }}/blog">Blog</a></li>
                   <li><a href="{{ url('/') }}/contacts">Apply</a></li>
+                  <li><a href="/models">Vote</a></li>
                 
               </ul>
 

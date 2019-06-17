@@ -60,7 +60,7 @@ class ArticlesController extends Controller
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('cover_image')->getClientOriginalExtension();
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
-            $path = $request->file('cover_image')->storeAs('public/cover_images'.$fileNameToStore);
+            $path = $request->file('cover_image')->storeAs('public/cover_images'.$fileNameToStore, $fileNameToStore);
         }else{
             $fileNameToStore = 'noimage.jpg';
         }
@@ -120,7 +120,7 @@ class ArticlesController extends Controller
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('cover_image')->getClientOriginalExtension();
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
-            $path = $request->file('cover_image')->storeAs('public/cover_images'.$fileNameToStore);
+            $path = $request->file('cover_image')->storeAs('public/cover_images'.$fileNameToStore, $fileNameToStore);
         }
 
         $article = Article::find($id);

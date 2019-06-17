@@ -11,10 +11,10 @@
   <title>Kenya Fashion Awards</title>
 
   <!-- Favicon -->
-    <link rel="icon" href="img/core-img/KFA.jpg">
+    <link rel="icon" href="{{ asset('img/core-img/KFA.jpg') }}">
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="./css/style2.css">
+  <link rel="stylesheet" href="{{ asset('./css/style2.css') }}">
 
 </head>
 
@@ -35,10 +35,10 @@
         <nav class="classy-navbar justify-content-between" id="monaNav">
 
           <!-- Background Curve -->
-         <div class="bg-curve" style="background-image: url(./img/core-img/choice.png);"></div>
+         <div class="bg-curve" style="background-image: url('{{asset('/img/core-img/choice.png')}}');"></div>
 
          <!-- Logo -->
-          <a class="nav-brand" href="index.php"><img src="./img/core-img/KFA.jpg" alt=""></a>
+          <a class="nav-brand" href="index.php"><img src="{{ asset('/img/core-img/KFA.jpg') }}" alt=""></a>
 
           <!-- Navbar Toggler -->
           <div class="classy-navbar-toggler">
@@ -112,9 +112,9 @@
       <!-- Single Welcome Slide -->
       <div class="single-welcome-slide">
         <!-- Background Curve -->
-        <div class="bg-curve" style="background-image: url(./img/core-img/choice.png);"></div>
+        <div class="bg-curve" style="background-image: url({{ asset('/img/core-img/choice.png') }});"></div>
         <!-- Main Background Image -->
-        <div class="main-bg-img bg-img" data-animation="fadeInUpBig" data-delay="200ms" style="background-image: url(./img/bg-img/18.jpg);"></div>
+        <div class="main-bg-img bg-img" data-animation="fadeInUpBig" data-delay="200ms" style="background-image: url({{ asset('/img/bg-img/18.jpg') }});"></div>
         <!-- Welcome Text -->
         <div class="container h-100">
           <div class="row h-100 align-items-center">
@@ -144,9 +144,9 @@
       <!-- Single Welcome Slide -->
       <div class="single-welcome-slide">
         <!-- Background Curve -->
-        <div class="bg-curve" style="background-image: url(./img/core-img/choice.png);"></div>
+        <div class="bg-curve" style="background-image: url({{ asset('/img/core-img/choice.png') }});"></div>
         <!-- Main Background Image -->
-        <div class="main-bg-img bg-img" data-animation="fadeInUpBig" data-delay="200ms" style="background-image: url(./img/bg-img/kenya8.jpg);"></div>
+        <div class="main-bg-img bg-img" data-animation="fadeInUpBig" data-delay="200ms" style="background-image: url({{ asset('/img/bg-img/kenya8.jpg') }});"></div>
         <!-- Welcome Text -->
         <div class="container h-100">
           <div class="row h-100 align-items-center">
@@ -176,9 +176,9 @@
       <!-- Single Welcome Slide -->
       <div class="single-welcome-slide">
         <!-- Background Curve -->
-        <div class="bg-curve" style="background-image: url(./img/core-img/choice.png);"></div>
+        <div class="bg-curve" style="background-image: url({{ asset('/img/core-img/choice.png') }});"></div>
         <!-- Main Background Image -->
-        <div class="main-bg-img bg-img" data-animation="fadeInUpBig" data-delay="200ms" style="background-image: url(./img/bg-img/kenya9.jpg);"></div>
+        <div class="main-bg-img bg-img" data-animation="fadeInUpBig" data-delay="200ms" style="background-image: url({{ asset('/img/bg-img/kenya9.jpg') }});"></div>
         <!-- Welcome Text -->
         <div class="container h-100">
           <div class="row h-100 align-items-center">
@@ -218,7 +218,7 @@
         <div class="col-12 col-sm-6 col-lg-4">
           <div class="about-us-thumbnail mb-50 wow fadeInUp" data-wow-delay="100ms">
             <span class="line"></span>
-            <img src="./img/bg-img/kenya4.jpg" alt="">
+            <img src="{{ asset('/img/bg-img/kenya4.jpg') }}" alt="">
             <span class="line2"></span>
           </div>
         </div>
@@ -227,7 +227,7 @@
         <div class="col-12 col-sm-6 col-lg-4">
           <div class="about-us-thumbnail mb-50 wow fadeInUp" data-wow-delay="400ms">
             <span class="line"></span>
-            <img src="./img/bg-img/kenya2.jpg" alt="">
+            <img src="{{ asset('/img/bg-img/kenya2.jpg') }}" alt="">
             <span class="line2"></span>
           </div>
         </div>
@@ -329,9 +329,9 @@
                   <div class="single-model-item">
                     <div class="model-thumbnail">
                       <!-- First Thumbnail -->
-                      <img class="first-thumbnail" src="./img/bg-img/kenya10.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya10.jpg') }}" alt="">
                       <!-- Second Thumbnail -->
-                      <img class="second-thumbnail" src="./img/bg-img/kenya10.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya10.jpg') }}" alt="">
                       <!-- Share Info -->
                       <div class="share-info">
                         <!-- Share Icon -->
@@ -358,9 +358,9 @@
                   <div class="single-model-item">
                     <div class="model-thumbnail">
                       <!-- First Thumbnail -->
-                      <img class="first-thumbnail" src="./img/bg-img/kenya11.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya11.jpg') }}" alt="">
                       <!-- Second Thumbnail -->
-                      <img class="second-thumbnail" src="./img/bg-img/kenya11.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya11.jpg') }}" alt="">
                       <!-- Share Info -->
                       <div class="share-info">
                         <!-- Share Icon -->
@@ -387,9 +387,9 @@
                   <div class="single-model-item">
                     <div class="model-thumbnail">
                       <!-- First Thumbnail -->
-                      <img class="first-thumbnail" src="./img/bg-img/kenya12.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya12.jpg') }}" alt="">
                       <!-- Second Thumbnail -->
-                      <img class="second-thumbnail" src="./img/bg-img/kenya12.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya12.jpg') }}" alt="">
                       <!-- Share Info -->
                       <div class="share-info">
                         <!-- Share Icon -->
@@ -416,9 +416,9 @@
                   <div class="single-model-item">
                     <div class="model-thumbnail">
                       <!-- First Thumbnail -->
-                      <img class="first-thumbnail" src="./img/bg-img/kenya13.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya13.jpg') }}" alt="">
                       <!-- Second Thumbnail -->
-                      <img class="second-thumbnail" src="./img/bg-img/kenya13.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya13.jpg') }}" alt="">
                       <!-- Share Info -->
                       <div class="share-info">
                         <!-- Share Icon -->
@@ -445,9 +445,9 @@
                   <div class="single-model-item">
                     <div class="model-thumbnail">
                       <!-- First Thumbnail -->
-                      <img class="first-thumbnail" src="./img/bg-img/kenya14.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya14.jpg') }}" alt="">
                       <!-- Second Thumbnail -->
-                      <img class="second-thumbnail" src="./img/bg-img/kenya14.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya14.jpg') }}" alt="">
                       <!-- Share Info -->
                       <div class="share-info">
                         <!-- Share Icon -->
@@ -474,9 +474,9 @@
                   <div class="single-model-item">
                     <div class="model-thumbnail">
                       <!-- First Thumbnail -->
-                      <img class="first-thumbnail" src="./img/bg-img/kenya15.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya15.jpg') }}" alt="">
                       <!-- Second Thumbnail -->
-                      <img class="second-thumbnail" src="./img/bg-img/kenya15.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya15.jpg') }}" alt="">
                       <!-- Share Info -->
                       <div class="share-info">
                         <!-- Share Icon -->
@@ -503,9 +503,9 @@
                   <div class="single-model-item">
                     <div class="model-thumbnail">
                       <!-- First Thumbnail -->
-                      <img class="first-thumbnail" src="./img/bg-img/kenya16.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya16.jpg') }}" alt="">
                       <!-- Second Thumbnail -->
-                       <img class="second-thumbnail" src="./img/bg-img/kenya16.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya16.jpg') }}" alt="">
                       <!-- Share Info -->
                       <div class="share-info">
                         <!-- Share Icon -->
@@ -532,9 +532,9 @@
                   <div class="single-model-item">
                     <div class="model-thumbnail">
                       <!-- First Thumbnail -->
-                      <img class="first-thumbnail" src="./img/bg-img/kenya17.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya17.jpg') }}" alt="">
                       <!-- Second Thumbnail -->
-                      <img class="second-thumbnail" src="./img/bg-img/kenya17.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya17.jpg') }}" alt="">
                       <!-- Share Info -->
                       <div class="share-info">
                         <!-- Share Icon -->
@@ -561,9 +561,9 @@
                   <div class="single-model-item">
                     <div class="model-thumbnail">
                       <!-- First Thumbnail -->
-                      <img class="first-thumbnail" src="./img/bg-img/kenya18.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya18.jpg') }}" alt="">
                       <!-- Second Thumbnail -->
-                      <img class="second-thumbnail" src="./img/bg-img/kenya18.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya18.jpg') }}" alt="">
                       <!-- Share Info -->
                       <div class="share-info">
                         <!-- Share Icon -->
@@ -590,9 +590,9 @@
                   <div class="single-model-item">
                     <div class="model-thumbnail">
                       <!-- First Thumbnail -->
-                      <img class="first-thumbnail" src="./img/bg-img/kenya19.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya19.jpg') }}" alt="">
                       <!-- Second Thumbnail -->
-                      <img class="second-thumbnail" src="./img/bg-img/kenya19.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya19.jpg') }}" alt="">
                       <!-- Share Info -->
                       <div class="share-info">
                         <!-- Share Icon -->
@@ -625,9 +625,9 @@
                   <div class="single-model-item">
                     <div class="model-thumbnail">
                       <!-- First Thumbnail -->
-                      <img class="first-thumbnail" src="./img/bg-img/kenya10.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya10.jpg') }}" alt="">
                       <!-- Second Thumbnail -->
-                      <img class="second-thumbnail" src="./img/bg-img/kenya10.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya10.jpg') }}" alt="">
                       <!-- Share Info -->
                       <div class="share-info">
                         <!-- Share Icon -->
@@ -654,9 +654,9 @@
                   <div class="single-model-item">
                     <div class="model-thumbnail">
                       <!-- First Thumbnail -->
-                      <img class="first-thumbnail" src="./img/bg-img/kenya11.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya11.jpg') }}}" alt="">
                       <!-- Second Thumbnail -->
-                      <img class="second-thumbnail" src="./img/bg-img/kenya11.jpg" alt="">
+                      <img class="second-thumbnail" src="{{ asset('/img/bg-img/kenya11.jpg') }}" alt="">
                       <!-- Share Info -->
                       <div class="share-info">
                         <!-- Share Icon -->
@@ -675,17 +675,16 @@
                     </div>
                     <div class="model-info">
                       <h3>Adelphi Leather</h3>
-                      <h6>Model</h6>
-                    </div>
-                  </div>
+                      <h6>Model</h6>{{ asset('</div>
+                ') }}  </div>
 
                   <!-- Single Model Item -->
                   <div class="single-model-item">
                     <div class="model-thumbnail">
                       <!-- First Thumbnail -->
-                      <img class="first-thumbnail" src="./img/bg-img/kenya12.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya12.jpg') }}" alt="">
                       <!-- Second Thumbnail -->
-                      <img class="second-thumbnail" src="./img/bg-img/kenya12.jpg" alt="">
+                      <img class="second-thumbnail" src="{{ asset('/img/bg-img/kenya12.jpg') }}" alt="">
                       <!-- Share Info -->
                       <div class="share-info">
                         <!-- Share Icon -->
@@ -712,9 +711,9 @@
                   <div class="single-model-item">
                     <div class="model-thumbnail">
                       <!-- First Thumbnail -->
-                      <img class="first-thumbnail" src="./img/bg-img/kenya14.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya14.jpg') }}" alt="">
                       <!-- Second Thumbnail -->
-                      <img class="second-thumbnail" src="./img/bg-img/kenya14.jpg" alt="">
+                      <img class="second-thumbnail" src="{{ asset('/img/bg-img/kenya14.jpg') }}" alt="">
                       <!-- Share Info -->
                       <div class="share-info">
                         <!-- Share Icon -->
@@ -746,9 +745,9 @@
                   <div class="single-model-item">
                     <div class="model-thumbnail">
                       <!-- First Thumbnail -->
-                      <img class="first-thumbnail" src="./img/bg-img/kenya15.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya15.jpg') }}" alt="">
                       <!-- Second Thumbnail -->
-                      <img class="second-thumbnail" src="./img/bg-img/kenya15.jpg" alt="">
+                      <img class="second-thumbnail" src="{{ asset('/img/bg-img/kenya15.jpg') }}" alt="">
                       <!-- Share Info -->
                       <div class="share-info">
                         <!-- Share Icon -->
@@ -775,9 +774,9 @@
                   <div class="single-model-item">
                     <div class="model-thumbnail">
                       <!-- First Thumbnail -->
-                      <img class="first-thumbnail" src="./img/bg-img/kenya16.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya16.jpg') }}" alt="">
                       <!-- Second Thumbnail -->
-                      <img class="second-thumbnail" src="./img/bg-img/kenya16.jpg" alt="">
+                      <img class="second-thumbnail" src="{{ asset('/img/bg-img/kenya16.jpg') }}" alt="">
                       <!-- Share Info -->
                       <div class="share-info">
                         <!-- Share Icon -->
@@ -804,9 +803,9 @@
                   <div class="single-model-item">
                     <div class="model-thumbnail">
                       <!-- First Thumbnail -->
-                      <img class="first-thumbnail" src="./img/bg-img/kenya17.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya17.jpg') }}" alt="">
                       <!-- Second Thumbnail -->
-                      <img class="second-thumbnail" src="./img/bg-img/kenya17.jpg" alt="">
+                      <img class="second-thumbnail" src="{{ asset('/img/bg-img/kenya17.jpg') }}" alt="">
                       <!-- Share Info -->
                       <div class="share-info">
                         <!-- Share Icon -->
@@ -833,9 +832,9 @@
                   <div class="single-model-item">
                     <div class="model-thumbnail">
                       <!-- First Thumbnail -->
-                      <img class="first-thumbnail" src="./img/bg-img/kenya19.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya19.jpg') }}" alt="">
                       <!-- Second Thumbnail -->
-                      <img class="second-thumbnail" src="./img/bg-img/kenya19.jpg" alt="">
+                      <img class="second-thumbnail" src="{{ asset('/img/bg-img/kenya19.jpg') }}" alt="">
                       <!-- Share Info -->
                       <div class="share-info">
                         <!-- Share Icon -->
@@ -868,9 +867,9 @@
                   <div class="single-model-item">
                     <div class="model-thumbnail">
                       <!-- First Thumbnail -->
-                      <img class="first-thumbnail" src="./img/bg-img/kenya13.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya13.jpg') }}" alt="">
                       <!-- Second Thumbnail -->
-                      <img class="second-thumbnail" src="./img/bg-img/kenya13.jpg" alt="">
+                      <img class="second-thumbnail" src="{{ asset('/img/bg-img/kenya13.jpg') }}" alt="">
                       <!-- Share Info -->
                       <div class="share-info">
                         <!-- Share Icon -->
@@ -897,9 +896,9 @@
                   <div class="single-model-item">
                     <div class="model-thumbnail">
                       <!-- First Thumbnail -->
-                      <img class="first-thumbnail" src="./img/bg-img/kenya18.jpg" alt="">
+                      <img class="first-thumbnail" src="{{ asset('/img/bg-img/kenya18.jpg') }}" alt="">
                       <!-- Second Thumbnail -->
-                      <img class="second-thumbnail" src="./img/bg-img/kenya18.jpg" alt="">
+                      <img class="second-thumbnail" src="{{ asset('/img/bg-img/kenya18.jpg') }}" alt="">
                       <!-- Share Info -->
                       <div class="share-info">
                         <!-- Share Icon -->
@@ -929,9 +928,9 @@
         </div>
       </div>
 
-    </div>
+    </{{ asset('iv>
 
-  </section>
+  </section>') }}
   <!-- ***** Model Area End ***** -->
 
   <!-- ***** Client Feedback Area Start ***** -->
@@ -1054,19 +1053,19 @@
         <div class="col-12 col-md-6 col-lg-5">
           <div class="slider slider-nav">
             <div class="client-thumbnail">
-              <img src="./img/bg-img/6.jpg" alt="">
+              <img src="{{ asset('/img/bg-img/6.jpg') }}" alt="">
             </div>
             <div class="client-thumbnail">
-              <img src="./img/bg-img/7.jpg" alt="">
+              <img src="{{ asset('/img/bg-img/7.jpg') }}" alt="">
             </div>
             <div class="client-thumbnail">
-              <img src="./img/bg-img/8.jpg" alt="">
+              <img src="{{ asset('/img/bg-img/8.jpg') }}" alt="">
             </div>
             <div class="client-thumbnail">
-              <img src="./img/bg-img/6.jpg" alt="">
+              <img src="{{ asset('/img/bg-img/6.jpg') }}" alt="">
             </div>
             <div class="client-thumbnail">
-              <img src="./img/bg-img/7.jpg" alt="">
+              <img src="{{ asset('/img/bg-img/7.jpg') }}" alt="">
             </div>
           </div>
         </div>
@@ -1108,8 +1107,8 @@
         <div class="col-12 col-lg-4">
           <div class="single-blog-post mb-30 wow fadeInUp" data-wow-delay="100ms">
             <div class="post-thumbnail slide-post owl-carousel">
-              <a href="#"><img src="./img/bg-img/3.jpg" alt=""></a>
-              <a href="#"><img src="./img/bg-img/4.jpg" alt=""></a>
+              <a href="#"><img src="{{ asset('/img/bg-img/3.jpg') }}" alt=""></a>
+              <a href="#"><img src="{{ asset('/img/bg-img/4.jpg') }}" alt=""></a>
             </div>
             <div class="post-content">
               <a href="#" class="post-title">How To Use Eye Shadow Like The Stars</a>
@@ -1125,7 +1124,7 @@
             <div class="col-12">
               <div class="single-blog-post featured-post mb-30 wow fadeInUp" data-wow-delay="300ms">
                 <div class="post-thumbnail">
-                  <a href="#"><img src="./img/bg-img/5.jpg" alt=""></a>
+                  <a href="#"><img src="{{ asset('/img/bg-img/5.jpg') }}" alt=""></a>
                 </div>
                 <div class="post-content">
                   <div>
@@ -1140,7 +1139,7 @@
             <div class="col-12 col-sm-6">
               <div class="single-blog-post mb-30 wow fadeInUp" data-wow-delay="500ms">
                 <div class="post-thumbnail">
-                  <a href="#"><img src="./img/bg-img/1.jpg" alt=""></a>
+                  <a href="#"><img src="{{ asset('/img/bg-img/1.jpg') }}" alt=""></a>
                 </div>
                 <div class="post-content">
                   <a href="#" class="post-title">What Curling Irons Are The Best Ones</a>
@@ -1153,7 +1152,7 @@
             <div class="col-12 col-sm-6">
               <div class="single-blog-post mb-30 wow fadeInUp" data-wow-delay="700ms">
                 <div class="post-thumbnail">
-                  <a href="#"><img src="./img/bg-img/2.jpg" alt=""></a>
+                  <a href="#"><img src="{{ asset('/img/bg-img/2.jpg') }}" alt=""></a>
                 </div>
                 <div class="post-content">
                   <a href="#" class="post-title">How To Save Money On Beauty Products</a>
@@ -1178,7 +1177,7 @@
         <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
           <div class="single-footer-widget mb-60">
             <!-- Logo -->
-            <a href="#" class="d-block mb-4"><img src="./img/core-img/logo.png" alt=""></a>
+            <a href="#" class="d-block mb-4"><img src="{{ asset('/img/core-img/logo.png') }}" alt=""></a>
             <p>Integer vehicula mauris libero, at molestie eros imperdiet sit amet. Suspendisse mattis ante sit amet ante.</p>
             <div class="copywrite-text">
               <p>&copy; 
@@ -1238,16 +1237,18 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   <!-- ***** Footer Area End ***** -->
 
   <!-- ******* All JS ******* -->
-  <!-- jQuery js -->
-  <script src="js/jquery.min.js"></script>
+  <script src="{{ asset('js/jquery.min.js') }}"></script>
   <!-- Popper js -->
-  <script src="js/popper.min.js"></script>
+  {{--<script src="js/popper.min.js"></script>--}}
+  <script src="{{ asset('js/popper.min.js') }}"></script>
   <!-- Bootstrap js -->
-  <script src="js/bootstrap.min.js"></script>
+  {{--<script src="js/bootstrap.min.js"></script>--}}
+  <script src="{{ asset('js/bootstrap.min.js') }}"></script>
   <!-- All js -->
-  <script src="js/mona.bundle.js"></script>
+  {{--<script src="js/mona.bundle.js"></script>--}}
+  <script src="{{ asset('js/mona.bundle.js') }}"></script>
   <!-- Active js -->
-  <script src="js/default-assets/active.js"></script>
+  <script src="{{ asset('js/default-assets/active.js') }}"></script>
 
 
 </body>

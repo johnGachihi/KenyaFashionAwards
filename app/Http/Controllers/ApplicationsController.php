@@ -8,7 +8,7 @@ use App\Listeners\SendApplicationResponseEmail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Application;
-use App\applicant;
+use App\Applicant;
 
 class ApplicationsController extends Controller
 {
@@ -45,7 +45,7 @@ class ApplicationsController extends Controller
         $applicant = new Applicant();
         $applicant->name = $request->input('name');
         $applicant->company = $request->input('company');
-        $applicant->phone_number = $request->input('phone-number');
+        $applicant->phone_number = $request->input('telephone_number');
         $applicant->email = $request->input('email');
         $applicant->bio = $request->input('bio');
         $applicant->save();

@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/', function () {
+    return redirect()->route('login');
+});
+
 Route::get('/welcome', function () {
     return view('welcome');
 });
@@ -25,9 +29,9 @@ Route::resource('/profiles', 'ProfilesController');
 Route::middleware(['auth', 'adminCheck'])->group(function() {
 
     Route::prefix('admin')->group(function() {
-    
-        Route::get('/home', 'AwardCategoriesController@awardCategories');
 
+        Route::get('/',                 'AwardCategoriesController@awardCategories');
+        Route::get('/home',             'AwardCategoriesController@awardCategories');
         Route::get('/award_categories', 'AwardCategoriesController@awardCategories');
 
         Route::post('/createCategory/{id?}', 'AwardCategoriesController@createCategory');

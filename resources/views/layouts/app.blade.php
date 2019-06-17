@@ -63,15 +63,15 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/') }}/articles">Articles</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/') }}">Awards</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/') }}/about">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/') }}/contactinfo">Contact Us</a>
-                            </li>
+                            {{--<li class="nav-item">--}}
+                                {{--<a class="nav-link" href="{{ url('/') }}">Awards</a>--}}
+                            {{--</li>--}}
+                            {{--<li class="nav-item">--}}
+                                {{--<a class="nav-link" href="{{ url('/') }}/about">About Us</a>--}}
+                            {{--</li>--}}
+                            {{--<li class="nav-item">--}}
+                                {{--<a class="nav-link" href="{{ url('/') }}/contactinfo">Contact Us</a>--}}
+                            {{--</li>--}}
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
