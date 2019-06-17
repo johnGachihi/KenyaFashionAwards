@@ -58,7 +58,7 @@
             <h2 class="title">Vote</h2>
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i> Home</a></li>
+                <li class="breadcrumb-item"><a href="{{url ('index')}}"><i class="fa fa-home"></i> Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Vote</li>
               </ol>
             </nav>
@@ -77,16 +77,16 @@
         <!-- About Us Thumbnail -->
         <div class="col-12 col-sm-12 col-lg-4">
             {{--<img src="./img/bg-img/kenya10.jpg" alt="">--}}
-            <img src="{{ asset('/img/bg-img/kenya10.jpg') }}" alt="">
+            <img src="{{ asset('storage/pictures/'.$candidate->applicant->pictures)}}" alt="">
             <span class="line2"></span>
         </div>
 
         <!-- About Us Content -->
         <div class="col-12 col-lg-8">
             <div class="about-us-content mb-50">
-                <h2>{{ $candidate->name }}</h2>
-                @if(!empty($candidate->bio))
-                    <p>$candidate->bio</p>
+                <h2>{{ $candidate->applicant->name }}</h2>
+                @if(!empty($candidate->applicant->bio))
+                    <p>{{$candidate->applicant->bio}}</p>
                 @else
                     <p>Bio not provided</p>
                 @endif
@@ -117,7 +117,7 @@
                 url: '{{ url('vote') }}',
                 method: 'get',
                 data: {
-                    award_category: {{$candidate->application->award_category_id}},
+                    award_category: {{$candidate->award_category_id}},
                     applicant: {{ $candidate->id }}
                 }
             });

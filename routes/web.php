@@ -121,7 +121,7 @@ Route::get('/single_blog/{id}', 'BlogPageController@single');
 Route::get('/show/{id}', 'BlogPageController@show');
 
 Route::get('/votes/{candidate_id}', function ($candidate_id) {
-    $candidate = \App\Applicant::with('application')->find($candidate_id);
+    $candidate = \App\Application::with('applicant')->find($candidate_id);
 
     return view('vote',
         ['candidate' => $candidate]
@@ -130,7 +130,7 @@ Route::get('/votes/{candidate_id}', function ($candidate_id) {
 });
 
 Route::get('/models', function () {
-    $approved_applications  = \App\Applicant::whereHas('application', function ($query) {
+    $approved_applications  = \App\Application::whereHas('applicant', function ($query) {
         $query->where('decision', 'approved');
     })->get();
 

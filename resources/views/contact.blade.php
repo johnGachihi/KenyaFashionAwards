@@ -55,16 +55,17 @@
             <!-- Nav Start -->
             <div class="classynav">
               <ul id="nav">
-                <li><a href="{{ url('/') }}/index">Home</a></li>
+                <li><a href="{{url ('index')}}">Home</a></li>
                 <li><a href="#">Awards</a>
                   <ul class="dropdown">
-                    <li><a href="{{ url('/') }}/category">Awards Category</a></li>
-                    <li><a href="{{ url('/') }}/criteria">Awards criteria</a></li>
+                    <li><a href="{{url ('category')}}">Awards Category</a></li>
+                    <li><a href="{{url ('criteria')}}">Awards criteria</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ url('/') }}/models">Vote</a></li>
-                <li><a href="{{ url('/') }}/blog">Blog</a></li>
-                <li class="current-item"><a href="{{ url('/') }}/contacts">Apply</a></li>
+              <li><a href="{{ url('models') }}">Vote</a></li>
+                <li><a href="/blog.php">Blog</a></li>
+              <li><a href="{{ url('contacts')}}">Apply</a></li>
+              <li class="current-item"><a href="{{url ('contacts')}}">Apply</a></li>
               </ul>
 
               <!-- Search Icon -->
@@ -130,7 +131,7 @@
 
         <!-- Contact Form -->
                 <div class="col-12 col-lg-12">
-                  {!! Form::open(['action' => 'ApplicationsController@store', 'method'=> 'POST']) !!}
+                  {!! Form::open(['action' => 'ApplicationsController@store', 'method'=> 'POST', 'enctype' => 'multipart/form-data']) !!}
                       <div class="form-group">
                         {{Form::label('name', 'Name')}}
                         {{Form::text('name', '', ['placeholder' => 'Name'])}}
@@ -156,6 +157,9 @@
                               <br />
                               {{Form::radio('award_category_id', '1')}}Fashion Designer
                               <br />
+                            </div>
+                            <div class="form-group">
+                              {{Form::file('pictures')}}
                             </div>
                           <div class="form-group">
                               {{Form::label('bio', 'Bio')}}

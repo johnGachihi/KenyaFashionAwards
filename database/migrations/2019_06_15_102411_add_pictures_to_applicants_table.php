@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddBioToApplicantsTable extends Migration
+class AddPicturesToApplicantsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddBioToApplicantsTable extends Migration
     public function up()
     {
         Schema::table('applicants', function (Blueprint $table) {
-            $table->mediumText('bio')->nullable();
+            $table->string('pictures')->after('phone_number');
         });
     }
 
@@ -26,7 +26,7 @@ class AddBioToApplicantsTable extends Migration
     public function down()
     {
         Schema::table('applicants', function (Blueprint $table) {
-            $table->dropColumn('bio');
+            $table->dropColumn('pictures')->after('phone_number');
         });
     }
 }

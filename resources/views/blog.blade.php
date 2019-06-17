@@ -11,7 +11,7 @@
   <title>Blog | Kenya Fashion Awards</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="./img/core-img/KFA.jpg">
+  <link rel="icon" href="{{ asset('/img/core-img/KFA.jpg') }}.">
 
   <!-- Core Stylesheet -->
   <link rel="stylesheet" href="{{asset('./css/style2.css')}}">
@@ -35,10 +35,10 @@
         <nav class="classy-navbar justify-content-between" id="monaNav">
 
           <!-- Background Curve -->
-         <div class="bg-curve" style="background-image: url(./img/core-img/choice.png);"></div>
+         <div class="bg-curve" style="background-image: url({{ asset('/img/core-img/choice.png') }});"></div>
 
          <!-- Logo -->
-          <a class="nav-brand" href="{{ url('/index') }}"><img src="./img/core-img/KFA.jpg" alt=""></a>
+          <a class="nav-brand" href="{{ url('/index') }}"><img src="{{ asset('/img/core-img/KFA.jpg') }}" alt=""></a>
 
           <!-- Navbar Toggler -->
           <div class="classy-navbar-toggler">
@@ -55,7 +55,6 @@
             <!-- Nav Start -->
             <div class="classynav">
               <ul id="nav">
-<<<<<<< HEAD
                 <li class="current-item"><a href="{{ url('/') }}/index">Home</a></li>
                 <li><a href="#">Pages</a>
                   <ul class="dropdown">
@@ -105,7 +104,6 @@
                 <li><a href="/models">Vote</a></li>
                 <li  class="current-item"><a href="{{ url('/blog') }}">Blog</a></li>
                 <li><a href="/contacts">Apply</a></li>
->>>>>>> 3d4f205257e403adb3d98d2b3ccc7d257510fac5
               </ul>
 
               <!-- Search Icon -->
@@ -170,7 +168,7 @@
             <div class="card-body">
                 <div class="row">
                 <div class="col-md-4 col-sm-4">
-                    <img style="width:100%; " class="rounded" src="{{ url('/storage/cover_images/' . $post->cover_image)}}"/>
+                    <img style="width:100%; " class="rounded" src="{{ asset('/storage/cover_images/' . $post->cover_image)}}"/>
                 </div>
                 <div class="col-md-8 col-sm-8">
                 <h3 class="card-title d-flex justify-content-between">
@@ -265,16 +263,19 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   <!-- ***** Footer Area End ***** -->
 
   <!-- ******* All JS ******* -->
-  <!-- jQuery js -->
-  <script src="js/jquery.min.js"></script>
+  <!-- ******* All JS ******* -->
+  <script src="{{ asset('js/jquery.min.js') }}"></script>
   <!-- Popper js -->
-  <script src="js/popper.min.js"></script>
+  {{--<script src="js/popper.min.js"></script>--}}
+  <script src="{{ asset('js/popper.min.js') }}"></script>
   <!-- Bootstrap js -->
-  <script src="js/bootstrap.min.js"></script>
+  {{--<script src="js/bootstrap.min.js"></script>--}}
+  <script src="{{ asset('js/bootstrap.min.js') }}"></script>
   <!-- All js -->
-  <script src="js/mona.bundle.js"></script>
+  {{--<script src="js/mona.bundle.js"></script>--}}
+  <script src="{{ asset('js/mona.bundle.js') }}"></script>
   <!-- Active js -->
-  <script src="js/default-assets/active.js"></script>
+  <script src="{{ asset('js/default-assets/active.js') }}"></script>
 
 </body>
 

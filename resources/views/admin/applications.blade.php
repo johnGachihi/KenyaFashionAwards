@@ -23,7 +23,7 @@
                         <div class="d-flex">
                             <div>
                                 <button id="acceptButton" class="mdc-button mdc-button--raised mdc-button--dense mx-1"
-                                        data-applicationid="{{ $application->id }}"
+                                        data-applicationid="{{ $application->id }}",
                                         data-applicant="{{ $application->applicant->name }}">
                                     Accept
                                 </button>
@@ -73,81 +73,6 @@
 
 @section('_scripts')
     <script>
-
-        /*const DECISION_ACCEPT = 'accept';
-        const DECISION_REJECT = 'reject';
-
-        const applicationsContainer = document.querySelector('#applications-container');
-
-        applicationsContainer.addEventListener('click', e => {
-            const clickedItem = e.target;
-
-            console.log(e.target);
-            if(clickedItem.id === 'collapse-btn') {
-                if(clickedItem.innerText === 'expand_more') {
-                    clickedItem.innerText = 'expand_less';
-                } else {
-                    clickedItem.innerText = 'expand_more';
-                }
-            }
-            else if(clickedItem.id === 'acceptButton') {
-                handleDecision(e, DECISION_ACCEPT);
-            }
-            else if(clickedItem.id === 'rejectButton') {
-                handleDecision(e, DECISION_REJECT);
-            }
-
-            // e.stopPropagation();
-        });
-
-        function handleDecision(e, decision) {
-            let decisionText;
-            if(decision === DECISION_ACCEPT) {
-                decisionText = 'Accept';
-            } else if(decision === DECISION_REJECT) {
-                decisionText = 'Reject'
-            }
-            const applicant = $(e.target).data('applicant');
-            const applicationId = $(e.target).data('applicationid');
-
-            setUpAndShowModal(
-                decisionText,
-                applicant,
-                {{--`{{ url('admin/applications/decision') }}/${decision}/${applicationId}`--}}
-            );
-        }
-
-
-        function setUpAndShowModal(decisionText, applicant, url) {
-            $('#modal-title').text(`${decisionText} Application`);
-            $('#modal-body-text').text(`${decisionText} ${applicant} application`);
-            $('#modal-decision-btn').text(decisionText);
-            $('#modal-decision-btn').data('url', url);
-
-            $('#decision-modal').modal('show');
-        }
-
-        window.onload = () => {
-            $('#modal-decision-btn').on('click', e => {
-                // fetch($('#modal-decision-btn').data('url'))
-                //     .then(response => response.json())
-                //     .then(result => {
-                //         if(!result.error) {
-                //             $('#decision-modal').modal('hide');
-                //             location.reload();
-                //         } else {
-                //             console.log(result);
-                //         }
-                //     })
-                //     .catch(err => console.log(err));
-                submitDecision($('#modal-decision-btn').data('url'), {
-                    onConnectionError: (err) => console.log("Error: ", err),
-                    onSuccess: (data) => console.log("Success: " + data),
-                    onFailure: (err) => console.log("Failure: " + err)
-                });
-            })
-        }
-*/
     </script>
 
 @endsection

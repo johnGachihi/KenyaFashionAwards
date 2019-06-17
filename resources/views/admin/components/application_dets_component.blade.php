@@ -29,9 +29,9 @@
                 </div>
 
                 {{-- Collapsible --}}
-                <div class="collapse mb-3" id="collapsibleSection{{ $application->id }}">
+                <div class="collapse" id="collapsibleSection{{ $application->id }}">
                     <div class="row">
-                        <div class="col-7">
+                        <div class="col-3">
                             <span class="applicant-dets-titles" style="font-size: 11px; display: block; letter-spacing: 3px;">Bio:</span>
                             <span>
                                 @if(!empty($application->applicant->bio))
@@ -40,6 +40,12 @@
                                     Not provided.
                                 @endif
                             </span>
+                        </div>
+                        <div class="col-7">
+                            <span class="applicant-dets-titles" style="font-size: 11px; display: block; letter-spacing: 3px;">Photo</span>
+                    
+                            <img style="width:100%" src="{{ asset('storage/pictures/'.$application->applicant->pictures)}}">
+                            
                         </div>
                     </div>
                 </div>

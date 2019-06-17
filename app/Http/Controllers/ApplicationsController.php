@@ -38,9 +38,25 @@ class ApplicationsController extends Controller
             'company' => 'required',
             'email' => 'required',
             'telephone_number' => 'required',
+            'pictures' => 'image|max:1999|required',
             'award_category_id' =>'required',
             'bio' => 'required'
         ]);
+        //handle file upload
+        if($request->hasFile('pictures')){
+            //get filename with the extension
+            $filenameWithExt=$request->file('pictures')->getClientOriginalName();
+            //get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            //get just ext
+            $extension = $request->file('pictures')->getClientOriginalExtension();
+            //filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            //upload image
+            $path = $request->file('pictures')->storeAs('public/pictures', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'noimage.jpg';
+        }
 
         $applicant = new Applicant();
         $applicant->name = $request->input('name');
@@ -48,6 +64,7 @@ class ApplicationsController extends Controller
         $applicant->phone_number = $request->input('telephone_number');
         $applicant->email = $request->input('email');
         $applicant->bio = $request->input('bio');
+        $applicant->pictures=$fileNameToStore;
         $applicant->save();
 
         $application = new Application();

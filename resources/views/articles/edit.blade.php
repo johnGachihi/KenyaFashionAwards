@@ -12,9 +12,9 @@
 		{{Form::label('body', 'Body')}}
 		{{Form::textarea('body', $article->body, ['class' => 'form-control','placeholder'=>'Body'])}}
 	</div>
-	<div class="form-group">
-		{{Form::file('cover_image')}}
-	</div>
+	{{--<div class="form-group">--}}
+		{{--{{Form::file('cover_image')}}--}}
+	{{--</div>--}}
 	<!-- spoofing a request-->
 	{{Form::hidden('_method','PUT')}}
 	{{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
