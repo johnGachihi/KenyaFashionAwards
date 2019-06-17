@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_blogger')
 
 @section('stylesheets')
 @yield('_stylesheets')
@@ -59,6 +59,13 @@
                                 <span>Pending Posts</span>
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                                <a class="nav-link " href="{{ url('blogger/rejected_posts') }}">
+                                    <i class="material-icons">block</i>
+                                    <span>Rejected Posts</span>
+                                </a>
+                            </li>
 
                     <!-- <li class="nav-item">
                         <a class="nav-link " href="form-components.html">

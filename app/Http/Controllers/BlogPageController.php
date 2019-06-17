@@ -11,7 +11,7 @@ class BlogPageController extends Controller
     {
         $posts = Post::all();
 
-        $approved_posts = Post::where('post_status', 'approved')->get();
+        $approved_posts = Post::where('post_status', 'approved')->orderBy('created_at', 'desc')->get();
 
         return view('blog', [
             'approved_posts' => $approved_posts
@@ -21,7 +21,7 @@ class BlogPageController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        return view('single-blog',[
+        return view('show_blog',[
             'post' => $post
         ]);
     }
@@ -29,7 +29,7 @@ class BlogPageController extends Controller
     public function single($id)
     {
         $post = Post::find($id);
-        return view('show_blog', [
+        return view('single-blog', [
             'post' => $post
         ]);
     }

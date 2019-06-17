@@ -5,22 +5,22 @@
     <!-- Page Header -->
     <div class="page-header row no-gutters py-4">
         <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-        <span class="text-uppercase page-subtitle">Blogs</span>
-        <h3 class="page-title">Your Blog</h3>
+        <span class="text-uppercase page-subtitle">Posts</span>
+        <h3 class="page-title">Rejected Posts</h3>
         </div>
     </div>
     <!-- End Page Header -->
 
     <div class="row">
-            @if($approved_posts->count() > 0)
-        @foreach($approved_posts as $post)
+        @if($rejected_posts->count() > 0)
+        @foreach($rejected_posts as $post)
         @if(Auth::user()->id == $post->user_id )
         <div class="col-12 mb-4">
             <div class="card-shards card-small card-post card-post--asisde card-post--1">
                 <div class="card-body">
                     <div class="row">
                     <div class="col-md-4 col-sm-4">
-                        <img style="width:100%;" src="{{ asset('/storage/cover_images/' . $post->cover_image)}}"/>
+                        <img style="width:100%;" src="{{ url('/storage/cover_images/' . $post->cover_image)}}"/>
                     </div>
                     <div class="col-md-8 col-sm-8">
                     <h5 class="card-title d-flex justify-content-between">

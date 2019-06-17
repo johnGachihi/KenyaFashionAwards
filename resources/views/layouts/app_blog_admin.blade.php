@@ -44,8 +44,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-primary sticky-top">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand" href="{{ url('/blog_admin/home') }}">
+                    {{ config('app.name', 'Kenya Fashion Awards') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -61,23 +61,23 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/') }}/home">Home</a>
+                                <a class="nav-link" href="{{ url('/blog_admin/home') }}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/') }}/profiles">Profiles</a>
+                                <a class="nav-link" href="{{ url('/blog_admin/home') }}">New Posts</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/') }}/articles">Articles</a>
+                                <a class="nav-link" href="{{ url('/') }}">Profile</a>
                             </li>
-                            {{--<li class="nav-item">--}}
-                                {{--<a class="nav-link" href="{{ url('/') }}">Awards</a>--}}
-                            {{--</li>--}}
-                            {{--<li class="nav-item">--}}
-                                {{--<a class="nav-link" href="{{ url('/') }}/about">About Us</a>--}}
-                            {{--</li>--}}
-                            {{--<li class="nav-item">--}}
-                                {{--<a class="nav-link" href="{{ url('/') }}/contactinfo">Contact Us</a>--}}
-                            {{--</li>--}}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/') }}">Manage Bloggers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/') }}/about">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/') }}/contactinfo">Contact Us</a>
+                            </li>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

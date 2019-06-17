@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_blog_admin')
 
 @section('stylesheets')
 @yield('_stylesheets')

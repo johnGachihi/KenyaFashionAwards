@@ -9,7 +9,7 @@
             <div class="page-header row no-gutters py-4">
               <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
                 <span class="text-uppercase page-subtitle">Blog</span>
-                <h3 class="page-title">Add New Post</h3>
+                <h3 class="page-title">Edit Post: {{$post->title}} </h3>
               </div>
             </div>
             <!-- End Page Header -->
@@ -19,13 +19,13 @@
                 <div class="card card-small mb-3">
                   <div class="card-body">
                     <form id="category-form" class="add-new-post" 
-                      action=" {{ url('blogger/createPost') }} "
+                      action=" {{ url('blogger/update_post/'. $post->id )}}"
                       enctype="multipart/form-data"
                       method="POST">
                         @csrf    
-                        <input id="postTitle" name="postTitle" class="form-control form-control-lg mb-3 inputs" type="text" placeholder="Insert Post Title">
+                        <input id="postTitle" name="postTitle" class="form-control form-control-lg mb-3 inputs" type="text" placeholder="Insert Post Title" value="{{ $post->title}}" required>
                         <!-- <textarea name="categoryRequirements" id="editor-container" class="form-control form-control-lg add-new-category__editor mb-1 inputs py-3" placeholder="Insert category requirements"></textarea> -->
-                        <textarea id="ckEditor" name="ckEditor" placeholder="What are your thoughts?..."></textarea>
+                        <textarea id="ckEditor" name="ckEditor" placeholder="What are your thoughts?..." >{!! $post->body !!}</textarea>
                         <br>
                         <label>Choose an image to upload:</label><input id="coverImage" name="coverImage" class="btn btn-outline" type="file">
                         <div class="d-flex align-items-center"> 
@@ -45,6 +45,11 @@
 @endsection
 
 @section('_scripts')
+  <script src="../vendor/unisharp/lavarel-ckeditor/ckeditor.js">
+  </script>
+  <script>
+      CKEDITOR>replace('ckEditor');
+  </script>
 
 <!-- Form submittion -->
 <!-- <script>
