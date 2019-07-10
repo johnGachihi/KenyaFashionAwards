@@ -60,6 +60,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                            @auth
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/') }}/home">Home</a>
                             </li>
@@ -69,6 +70,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/') }}/articles">Articles</a>
                             </li>
+                            @endauth
                             {{--<li class="nav-item">--}}
                                 {{--<a class="nav-link" href="{{ url('/') }}">Awards</a>--}}
                             {{--</li>--}}
